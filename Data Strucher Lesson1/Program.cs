@@ -109,7 +109,6 @@ namespace Data_Strucher_Lesson1
 
             Console.WriteLine();
 
-
             int[] testValues = { 3, 5, 7 };
             Console.WriteLine("The List :");
             IntNode.print(node1);
@@ -148,6 +147,36 @@ namespace Data_Strucher_Lesson1
             {
                 Console.WriteLine($"There is no node before {node3.GetValue()}.");
             }
+
+            Console.WriteLine();
+            Console.WriteLine("Lesson2 :");
+            Console.WriteLine();
+           
+            Node<int> node11 = new Node<int>(10);
+            Console.WriteLine("Node1 Value: " + node1.GetValue()); 
+
+            
+            Node<string> node12 = new Node<string>("Hello");
+            Console.WriteLine("Node2 Value: " + node2.GetValue()); 
+
+            
+            Node<int> node13 = new Node<int>(20);
+            Node<int> node14 = new Node<int>(30, node13);
+            Node<int> node15 = new Node<int>(40, node14);
+            
+            Console.WriteLine("Node5 List: " + node15.ToPrint()); 
+
+            
+            Node<string> node16 = new Node<string>("World");
+            Node<string> node7 = new Node<string>("Hello", node16);
+
+            Console.WriteLine("Node7 List: " + node7.ToPrint()); 
+
+            
+            node11.SetValue(50);
+            node11.SetNext(node15);
+
+            Console.WriteLine("Node1 Modified List: " + node11.ToPrint());
         }
     }
 
