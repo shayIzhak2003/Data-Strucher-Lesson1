@@ -177,6 +177,9 @@ namespace Data_Strucher_Lesson1
             node11.SetNext(node15);
 
             Console.WriteLine("Node1 Modified List: " + node11.ToPrint());
+            Console.WriteLine();
+            Console.WriteLine("Lesson2 HomeWork :");
+            DemoRunHomeWork.DemoMain();
         }
     }
 
