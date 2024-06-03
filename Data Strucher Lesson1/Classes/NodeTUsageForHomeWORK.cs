@@ -234,9 +234,32 @@ namespace Data_Strucher_Lesson1.Classes
             node13.GetNext().SetNext(new Node<Circle>(c3));
             node13.GetNext().GetNext().SetNext(new Node<Circle>(c4));
 
+            //EX4 Exactiuntion
             // חישוב מספר העיגולים שמרכזם בנקודה (1, 2)
             int count = NodeTUsageForHomeWORK.CountCirclesWithCenter(node13, p);
             Console.WriteLine("Number of circles with center at " + p + ": " + count);
+            Console.WriteLine();
+            //EX5 Exactiuntion
+            // יצירת ביטויים חשבוניים לדוגמה
+            Expr expr1 = new Expr(5, 3, '+');
+            Expr expr2 = new Expr(10, 2, '-');
+            Expr expr3 = new Expr(4, 5, '*');
+            Expr expr4 = new Expr(20, 4, '/');
+
+            // יצירת רשימה של ביטויים חשבוניים
+            List<Expr> expressions = new List<Expr> { expr1, expr2, expr3, expr4 };
+
+            // הדפסת הביטויים והחישובים שלהם
+            foreach (Expr expr in expressions)
+            {
+                Console.WriteLine($"{expr.ToString()} = {expr.Calculate()}");
+            }
+
+            // חישוב סכום כל הביטויים החשבוניים ברשימה
+            double sum = Expr.SumExpressions(expressions);
+
+            // הדפסת הסכום הכולל של הביטויים
+            Console.WriteLine("Sum of expressions: " + sum);
 
         }
     }
