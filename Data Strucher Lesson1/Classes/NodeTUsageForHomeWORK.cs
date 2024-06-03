@@ -153,7 +153,7 @@ namespace Data_Strucher_Lesson1.Classes
             while (current != null)
             {
                 Circle circle = current.GetValue();
-                if (circle.Center.Equals(p))
+                if (circle.GetCenter().Equals(p))
                 {
                     count++;
                 }

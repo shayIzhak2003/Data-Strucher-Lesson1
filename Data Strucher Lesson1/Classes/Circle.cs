@@ -6,15 +6,37 @@ using System.Threading.Tasks;
 
 namespace Data_Strucher_Lesson1.Classes
 {
+    //EX5
+
     public class Point
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        private int x;
+        private int y;
 
         public Point(int x, int y)
         {
-            X = x;
-            Y = y;
+            this.x = x;
+            this.y = y;
+        }
+
+        public int GetX()
+        {
+            return this.x;
+        }
+
+        public void SetX(int x)
+        {
+            this.x = x;
+        }
+
+        public int GetY()
+        {
+            return this.y;
+        }
+
+        public void SetY(int y)
+        {
+            this.y = y;
         }
 
         public override bool Equals(object obj)
@@ -22,36 +44,56 @@ namespace Data_Strucher_Lesson1.Classes
             if (obj is Point)
             {
                 Point other = (Point)obj;
-                return this.X == other.X && this.Y == other.Y;
+                return this.x == other.x && this.y == other.y;
             }
             return false;
         }
 
         public override int GetHashCode()
         {
-            return X.GetHashCode() ^ Y.GetHashCode();
+            return x.GetHashCode() ^ y.GetHashCode();
         }
 
         public override string ToString()
         {
-            return $"({X}, {Y})";
+            return $"({this.x}, {this.y})";
         }
     }
 
     public class Circle
     {
-        public Point Center { get; set; }
-        public int Radius { get; set; }
+        private Point center;
+        private int radius;
 
         public Circle(Point center, int radius)
         {
-            Center = center;
-            Radius = radius;
+            this.center = center;
+            this.radius = radius;
+        }
+
+        public Point GetCenter()
+        {
+            return this.center;
+        }
+
+        public void SetCenter(Point center)
+        {
+            this.center = center;
+        }
+
+        public int GetRadius()
+        {
+            return this.radius;
+        }
+
+        public void SetRadius(int radius)
+        {
+            this.radius = radius;
         }
 
         public override string ToString()
         {
-            return $"Center: {Center}, Radius: {Radius}";
+            return $"Center: {this.center}, Radius: {this.radius}";
         }
     }
 }
