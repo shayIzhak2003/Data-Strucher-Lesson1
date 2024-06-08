@@ -57,7 +57,7 @@ namespace Data_Strucher_Lesson1.Classes
             return strand1 == null && strand2 == null;
         }
 
-        private static bool IsComplementary(char base1, char base2)
+        public static bool IsComplementary(char base1, char base2)
         {
             return (base1 == 'A' && base2 == 'T') ||
                    (base1 == 'T' && base2 == 'A') ||
@@ -95,7 +95,7 @@ namespace Data_Strucher_Lesson1.Classes
             return newHead;
         }
 
-        private static char GetComplementaryBase(char baseChar)
+        public static char GetComplementaryBase(char baseChar)
         {
             if (baseChar == 'A')
             {
@@ -179,7 +179,7 @@ namespace Data_Strucher_Lesson1.Classes
             Console.WriteLine("Even Nodes (Maintain Order): " + evenNodeList.ToPrint());
 
             Console.WriteLine();
-            // יצירת גדילי DNA לדוגמה
+            
             Node<char> strand1 = new Node<char>('A');
             strand1.SetNext(new Node<char>('T'));
             strand1.GetNext().SetNext(new Node<char>('C'));
@@ -190,17 +190,16 @@ namespace Data_Strucher_Lesson1.Classes
             strand2.GetNext().SetNext(new Node<char>('G'));
             strand2.GetNext().GetNext().SetNext(new Node<char>('C'));
 
-            // בדיקת תקינות הגדילים
+            
             bool areComplementary = NodeTUsageForHomeWORK.AreComplementary(strand1, strand2);
             Console.WriteLine("Are Complementary: " + areComplementary); 
 
-            // יצירת גדיל תואם לגדיל נתון
             Node<char> complementaryStrand = NodeTUsageForHomeWORK.GetComplementaryStrand(strand1);
             Console.WriteLine("Complementary Strand: " + complementaryStrand.ToPrint());
 
             Console.WriteLine();
 
-            // יצירת שרשרת לדוגמה
+          
             Node<int> node12 = new Node<int>(8);
             node12.SetNext(new Node<int>(8));
             node12.GetNext().SetNext(new Node<int>(5));
@@ -211,9 +210,9 @@ namespace Data_Strucher_Lesson1.Classes
             node12.GetNext().GetNext().GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(3));
             node12.GetNext().GetNext().GetNext().GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(8));
 
-            Console.WriteLine("Original List: " + node12.ToPrint()); // Output: 8=>8=>5=>8=>2=>8=>4=>3=>8=>null
+            Console.WriteLine("Original List: " + node12.ToPrint()); 
 
-            // הסרת כל המופעים של המספר 8
+            
             Node<int> newHead = NodeTUsageForHomeWORK.RemoveAllOccurrences(node12, 8);
 
             Console.WriteLine("Modified List: " + newHead.ToPrint());
@@ -222,43 +221,42 @@ namespace Data_Strucher_Lesson1.Classes
 
             Point p = new Point(1, 2);
 
-            // יצירת עיגולים לדוגמה
+           
             Circle c1 = new Circle(new Point(1, 2), 5);
             Circle c2 = new Circle(new Point(3, 4), 7);
             Circle c3 = new Circle(new Point(1, 2), 10);
             Circle c4 = new Circle(new Point(5, 6), 12);
 
-            // יצירת שרשרת חוליות של עיגולים
+           
             Node<Circle> node13 = new Node<Circle>(c1);
             node13.SetNext(new Node<Circle>(c2));
             node13.GetNext().SetNext(new Node<Circle>(c3));
             node13.GetNext().GetNext().SetNext(new Node<Circle>(c4));
 
-            //EX4 Exactiuntion
-            // חישוב מספר העיגולים שמרכזם בנקודה (1, 2)
+            
             int count = NodeTUsageForHomeWORK.CountCirclesWithCenter(node13, p);
             Console.WriteLine("Number of circles with center at " + p + ": " + count);
             Console.WriteLine();
-            //EX5 Exactiuntion
-            // יצירת ביטויים חשבוניים לדוגמה
+            
             Expr expr1 = new Expr(5, 3, '+');
             Expr expr2 = new Expr(10, 2, '-');
             Expr expr3 = new Expr(4, 5, '*');
             Expr expr4 = new Expr(20, 4, '/');
 
-            // יצירת רשימה של ביטויים חשבוניים
+            
             List<Expr> expressions = new List<Expr> { expr1, expr2, expr3, expr4 };
 
-            // הדפסת הביטויים והחישובים שלהם
-            foreach (Expr expr in expressions)
+            
+
+            for(int i = 0; i < expressions.Count; i++)
             {
-                Console.WriteLine($"{expr.ToString()} = {expr.Calculate()}");
+                Console.WriteLine($"{expressions[i].ToString()} = {expressions[i].Calculate()}");
             }
 
-            // חישוב סכום כל הביטויים החשבוניים ברשימה
+          
             double sum = Expr.SumExpressions(expressions);
 
-            // הדפסת הסכום הכולל של הביטויים
+            
             Console.WriteLine("Sum of expressions: " + sum);
 
         }

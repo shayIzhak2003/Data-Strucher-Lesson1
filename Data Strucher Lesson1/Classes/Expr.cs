@@ -63,9 +63,9 @@ namespace Data_Strucher_Lesson1.Classes
         {
             double sum = 0;
 
-            foreach (Expr expr in expressions)
+            for (int i = 0; i < expressions.Count; i++)
             {
-                sum += expr.Calculate();
+                sum += expressions[i].Calculate();
             }
 
             return sum;
