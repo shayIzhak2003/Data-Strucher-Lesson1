@@ -163,6 +163,51 @@ namespace Data_Strucher_Lesson1.Classes.Lesson3
             return newHead;
         }
 
+
+        //EX7
+        public static Node<int> ReverseLinkedList(Node<int> head)
+        {
+            Node<int> prev = null;
+            Node<int> current = head;
+            Node<int> next = null;
+
+            while(current != null)
+            {
+                next = current.GetNext(); 
+                current.SetNext(prev); 
+
+                
+                prev = current;
+                current = next;
+            }   
+             
+            head = prev;
+
+            return head;
+        }
+
+        //EX8
+        public static bool IsCircularLinkedList(Node<int> head)
+        {
+            if (head == null)
+                return false;
+
+            Node<int> slow = head;
+            Node<int> fast = head;
+
+            while (fast != null && fast.GetNext() != null)
+            {
+                slow = slow.GetNext();
+                fast = fast.GetNext().GetNext();
+
+                // If fast and slow pointers meet, then the linked list is cyclic
+                if (slow == fast)
+                    return true;
+            }
+
+            // If we reach here, it means we didn't encounter a cycle
+            return false;
+        }
     }
 
 
@@ -246,6 +291,12 @@ namespace Data_Strucher_Lesson1.Classes.Lesson3
             // הפעלת הפונקציה ListBuild
             Node<int> result2 = Ls3NoneEx.ListBuild(node9);
             Console.WriteLine("Result List: " + result2.ToPrint());
+            Console.WriteLine("\noriginnal list :" + node9.ToPrint());
+            Node<int> result3 = Ls3NoneEx.ReverseLinkedList(node9);
+            Console.WriteLine("Reversed List: " + result3.ToPrint());
+
+           bool result4 = Ls3NoneEx.IsCircularLinkedList(node9);
+            Console.WriteLine($"\nIs The List : => {node9.ToPrint()} reciceled ? : {result4}");
         }
     }
 
