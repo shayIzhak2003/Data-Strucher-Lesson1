@@ -174,8 +174,9 @@ namespace Data_Strucher_Lesson1.Classes
             Node<int> node3 = new Node<int>(3, node2);
             Node<int> node4 = new Node<int>(4, node3);
             Node<int> node5 = new Node<int>(5, node4);
+            Node<int> node6 = new Node<int>(6, node5);
 
-            Node<int> evenNodeList = NodeTUsageForHomeWORK.FilterEvenValuesMaintainOrder(node5);
+            Node<int> evenNodeList = NodeTUsageForHomeWORK.FilterEvenValuesMaintainOrder(node6);
             Console.WriteLine("Even Nodes (Maintain Order): " + evenNodeList.ToPrint());
 
             Console.WriteLine();

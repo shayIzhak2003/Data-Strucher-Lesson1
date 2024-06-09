@@ -46,6 +46,7 @@
     <Compile Include="Classes\Circle.cs" />
     <Compile Include="Classes\Expr.cs" />
     <Compile Include="Classes\IntNode.cs" />
+    <Compile Include="Classes\Lesson3\Ls3NoneEx.cs" />
     <Compile Include="Classes\Node.cs" />
     <Compile Include="Classes\NodeEx.cs" />
     <Compile Include="Classes\NodeTUsageForHomeWORK.cs" />
