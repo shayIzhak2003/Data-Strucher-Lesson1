@@ -15,7 +15,15 @@ namespace Data_Strucher_Lesson1.Classes
         public Expr(int num1, int num2, char op)
         {
             if (num1 <= 0 || num2 <= 0)
-                throw new ArgumentException("Numbers must be greater than 0");
+            {
+                // Set the text color to red
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Numbers must be greater than 0");
+
+                // Reset the color to default
+                Console.ResetColor();
+            }
+                
 
             if (op != '+' && op != '-' && op != '*' && op != '/')
                 throw new ArgumentException("Invalid operator");

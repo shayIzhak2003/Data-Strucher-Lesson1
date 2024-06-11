@@ -180,10 +180,10 @@ namespace Data_Strucher_Lesson1
             //Console.WriteLine("Node1 Modified List: " + node11.ToPrint());
             //Console.WriteLine();
             //Console.WriteLine("Lesson2 HomeWork :");
-            //DemoRunHomeWork.DemoMain();
+            DemoRunHomeWork.DemoMain();
 
             //Lesson3
-            RunLs3NoneEx.RunDemoMain();
+            //RunLs3NoneEx.RunDemoMain();
 
 
         }

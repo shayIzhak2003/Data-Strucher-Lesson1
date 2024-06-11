@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data_Strucher_Lesson1.Classes
 {
-    //EX5
+    // EX5
 
     public class Point
     {
@@ -39,19 +39,10 @@ namespace Data_Strucher_Lesson1.Classes
             this.y = y;
         }
 
-        public override bool Equals(object obj)
+        public bool Equals(Point other)
         {
-            if (obj is Point)
-            {
-                Point other = (Point)obj;
-                return this.x == other.x && this.y == other.y;
-            }
-            return false;
-        }
-
-        public override int GetHashCode()
-        {
-            return x.GetHashCode() ^ y.GetHashCode();
+            if (other == null) return false;
+            return this.x == other.x && this.y == other.y;
         }
 
         public override string ToString()
@@ -89,6 +80,12 @@ namespace Data_Strucher_Lesson1.Classes
         public void SetRadius(int radius)
         {
             this.radius = radius;
+        }
+
+        public bool Equals(Circle other)
+        {
+            if (other == null) return false;
+            return this.radius == other.radius && this.center.Equals(other.center);
         }
 
         public override string ToString()
