@@ -47,6 +47,7 @@
     <Compile Include="Classes\Expr.cs" />
     <Compile Include="Classes\IntNode.cs" />
     <Compile Include="Classes\Lesson3\Ls3NoneEx.cs" />
+    <Compile Include="Classes\Lesson4HomeWork\Exercise4.cs" />
     <Compile Include="Classes\Lesson4HomeWork\HalfCircleList.cs" />
     <Compile Include="Classes\Lesson4HomeWork\ListNode.cs" />
     <Compile Include="Classes\Lesson4HomeWork\PolynomialAddition.cs" />
