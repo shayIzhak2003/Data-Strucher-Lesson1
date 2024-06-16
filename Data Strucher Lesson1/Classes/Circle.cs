@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data_Strucher_Lesson1.Classes
+namespace Data_Structure_Lesson1.Classes
 {
-    // EX5
+    // EX4
 
     public class Point
     {
@@ -48,6 +48,12 @@ namespace Data_Strucher_Lesson1.Classes
         public override string ToString()
         {
             return $"({this.x}, {this.y})";
+        }
+
+        // New GetValue method
+        public Point GetValue()
+        {
+            return this;
         }
     }
 

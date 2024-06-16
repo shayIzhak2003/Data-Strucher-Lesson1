@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data_Structure_Lesson1.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -166,9 +167,8 @@ namespace Data_Strucher_Lesson1.Classes
     {
         public static void DemoMain()
         {
-
-            //Lesson2 homework
-            Console.WriteLine();
+            // Lesson2 homework
+            Console.WriteLine("Filter Even Values Maintain Order:");
             Node<int> node1 = new Node<int>(1);
             Node<int> node2 = new Node<int>(2, node1);
             Node<int> node3 = new Node<int>(3, node2);
@@ -179,8 +179,7 @@ namespace Data_Strucher_Lesson1.Classes
             Node<int> evenNodeList = NodeTUsageForHomeWORK.FilterEvenValuesMaintainOrder(node6);
             Console.WriteLine("Even Nodes (Maintain Order): " + evenNodeList.ToPrint());
 
-            Console.WriteLine();
-            
+            Console.WriteLine("\nDNA Strand Complementarity:");
             Node<char> strand1 = new Node<char>('A');
             strand1.SetNext(new Node<char>('T'));
             strand1.GetNext().SetNext(new Node<char>('C'));
@@ -191,16 +190,13 @@ namespace Data_Strucher_Lesson1.Classes
             strand2.GetNext().SetNext(new Node<char>('G'));
             strand2.GetNext().GetNext().SetNext(new Node<char>('C'));
 
-            
             bool areComplementary = NodeTUsageForHomeWORK.AreComplementary(strand1, strand2);
-            Console.WriteLine("Are Complementary: " + areComplementary); 
+            Console.WriteLine("Are Complementary: " + areComplementary);
 
             Node<char> complementaryStrand = NodeTUsageForHomeWORK.GetComplementaryStrand(strand1);
             Console.WriteLine("Complementary Strand: " + complementaryStrand.ToPrint());
 
-            Console.WriteLine();
-
-          
+            Console.WriteLine("\nRemove All Occurrences:");
             Node<int> node12 = new Node<int>(8);
             node12.SetNext(new Node<int>(8));
             node12.GetNext().SetNext(new Node<int>(5));
@@ -211,55 +207,44 @@ namespace Data_Strucher_Lesson1.Classes
             node12.GetNext().GetNext().GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(3));
             node12.GetNext().GetNext().GetNext().GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(8));
 
-            Console.WriteLine("Original List: " + node12.ToPrint()); 
+            Console.WriteLine("Original List: " + node12.ToPrint());
 
-            
             Node<int> newHead = NodeTUsageForHomeWORK.RemoveAllOccurrences(node12, 8);
-
             Console.WriteLine("Modified List: " + newHead.ToPrint());
 
-            Console.WriteLine();
-
+            Console.WriteLine("\nCount Circles with Specific Center:");
             Point p = new Point(1, 2);
 
-           
             Circle c1 = new Circle(new Point(1, 2), 5);
             Circle c2 = new Circle(new Point(3, 4), 7);
             Circle c3 = new Circle(new Point(1, 2), 10);
             Circle c4 = new Circle(new Point(5, 6), 12);
 
-           
             Node<Circle> node13 = new Node<Circle>(c1);
             node13.SetNext(new Node<Circle>(c2));
             node13.GetNext().SetNext(new Node<Circle>(c3));
             node13.GetNext().GetNext().SetNext(new Node<Circle>(c4));
 
-            
             int count = NodeTUsageForHomeWORK.CountCirclesWithCenter(node13, p);
-            Console.WriteLine("Number of circles with center at " + p + ": " + count);
-            Console.WriteLine();
-            
+            Console.WriteLine($"Number of circles with center at {p}: {count}");
+
+            Console.WriteLine("\nExpression Evaluation:");
             Expr expr1 = new Expr(5, 3, '+');
             Expr expr2 = new Expr(10, 2, '-');
             Expr expr3 = new Expr(4, 5, '*');
             Expr expr4 = new Expr(20, 4, '/');
 
-            
             List<Expr> expressions = new List<Expr> { expr1, expr2, expr3, expr4 };
 
-            
 
-            for(int i = 0; i < expressions.Count; i++)
+            for (int i = 0; i < expressions.Count; i++)
             {
                 Console.WriteLine($"{expressions[i].ToString()} = {expressions[i].Calculate()}");
             }
 
-          
+
             double sum = Expr.SumExpressions(expressions);
-
-            
             Console.WriteLine("Sum of expressions: " + sum);
-
         }
     }
 
