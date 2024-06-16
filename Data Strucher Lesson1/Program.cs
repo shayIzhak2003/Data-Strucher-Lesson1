@@ -188,11 +188,11 @@ namespace Data_Strucher_Lesson1
             //=======================
             //Lesson4
             //EX1
-            //RunApp.DemoMain();
+            RunApp.DemoMain();
             //EX2
             //BinaryListOperations.DemoMain();
             //EX3
-            RunHalfCircleList.DemoMain();
+            //RunHalfCircleList.DemoMain();
 
 
         }
