@@ -1,5 +1,6 @@
 ﻿using Data_Strucher_Lesson1.Classes;
 using Data_Strucher_Lesson1.Classes.Lesson3;
+using Data_Strucher_Lesson1.Classes.Lesson4HomeWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -180,10 +181,18 @@ namespace Data_Strucher_Lesson1
             //Console.WriteLine("Node1 Modified List: " + node11.ToPrint());
             //Console.WriteLine();
             //Console.WriteLine("Lesson2 HomeWork :");
-            DemoRunHomeWork.DemoMain();
+            //DemoRunHomeWork.DemoMain();
 
             //Lesson3
             //RunLs3NoneEx.RunDemoMain();
+            //=======================
+            //Lesson4
+            //EX1
+            //RunApp.DemoMain();
+            //EX2
+            //BinaryListOperations.DemoMain();
+            //EX3
+            RunHalfCircleList.DemoMain();
 
 
         }

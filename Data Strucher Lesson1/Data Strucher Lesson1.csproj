@@ -47,6 +47,9 @@
     <Compile Include="Classes\Expr.cs" />
     <Compile Include="Classes\IntNode.cs" />
     <Compile Include="Classes\Lesson3\Ls3NoneEx.cs" />
+    <Compile Include="Classes\Lesson4HomeWork\HalfCircleList.cs" />
+    <Compile Include="Classes\Lesson4HomeWork\ListNode.cs" />
+    <Compile Include="Classes\Lesson4HomeWork\PolynomialAddition.cs" />
     <Compile Include="Classes\Node.cs" />
     <Compile Include="Classes\NodeEx.cs" />
     <Compile Include="Classes\NodeTUsageForHomeWORK.cs" />
@@ -56,5 +59,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
