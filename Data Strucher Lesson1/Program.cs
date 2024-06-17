@@ -194,7 +194,7 @@ namespace Data_Strucher_Lesson1
             //EX3
             //RunHalfCircleList.DemoMain();
             //EX4
-
+            RunExercise4.DemoMain();
 
         }
     }
