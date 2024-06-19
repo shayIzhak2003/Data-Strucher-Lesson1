@@ -12,9 +12,21 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
     // Represents a term in the polynomial
     public class Term
     {
-        public int Coefficient { get; set; }
-        public int Exponent { get; set; }
+        private int Coefficient;
+        private int Exponent;
 
+        public int GetCoefficient()
+        {
+            return this.Coefficient;
+        }
+        public int GetExponent()
+        {
+           return this.Exponent;
+        }
+        public void SetCoefficient(int coefficient)
+        {
+            this.Coefficient = coefficient;
+        }
         public Term(int coefficient, int exponent)
         {
             Coefficient = coefficient;
@@ -34,16 +46,18 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
         {
             // Find the maximum exponent to determine the length of the result array
             int maxExponent = 0;
-            foreach (var term in polynomial1)
+    
+            for (int i = 0; i < polynomial1.Length; i++)
             {
-                if (term.Exponent > maxExponent)
-                    maxExponent = term.Exponent;
+                if (polynomial1[i].GetExponent() > maxExponent)
+                    maxExponent = polynomial1[i].GetExponent();
             }
-            foreach (var term in polynomial2)
+            for (int i = 0; i < polynomial2.Length; i++)
             {
-                if (term.Exponent > maxExponent)
-                    maxExponent = term.Exponent;
+                if (polynomial2[i].GetExponent() > maxExponent)
+                    maxExponent = polynomial2[i].GetExponent();
             }
+          
 
             Term[] result = new Term[maxExponent + 1]; // Resulting polynomial array
 
@@ -54,22 +68,28 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
             }
 
             // Add coefficients from polynomial1
-            foreach (var term in polynomial1)
+            for (int i = 0; i < polynomial1.Length; i++)
             {
-                result[term.Exponent].Coefficient += term.Coefficient;
+                int exponent = polynomial1[i].GetExponent();
+                result[exponent].SetCoefficient(
+                    result[exponent].GetCoefficient() + polynomial1[i].GetCoefficient()
+                );
             }
 
             // Add coefficients from polynomial2
-            foreach (var term in polynomial2)
+            for (int i = 0; i < polynomial2.Length; i++)
             {
-                result[term.Exponent].Coefficient += term.Coefficient;
+                int exponent = polynomial2[i].GetExponent();
+                result[exponent].SetCoefficient(
+                    result[exponent].GetCoefficient() + polynomial2[i].GetCoefficient()
+                );
             }
 
             // Print the resulting polynomial
             Console.Write("Sum Polynomial: ");
             for (int i = maxExponent; i >= 0; i--)
             {
-                if (result[i].Coefficient != 0)
+                if (result[i].GetCoefficient() != 0)
                 {
                     Console.Write(result[i]);
                     if (i > 0)

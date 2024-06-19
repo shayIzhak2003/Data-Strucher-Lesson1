@@ -188,13 +188,13 @@ namespace Data_Strucher_Lesson1
             //=======================
             //Lesson4
             //EX1
-            //RunApp.DemoMain();
+            RunApp.DemoMain();
             //EX2
             RunZeroLinkedList.DemoMain();
             //EX3
-            //RunHalfCircleList.DemoMain();
+            RunHalfCircleList.DemoMain();
             //EX4
-            //RunExercise4.DemoMain();
+            RunExercise4.DemoMain();
 
         }
     }
