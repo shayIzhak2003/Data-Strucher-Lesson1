@@ -190,11 +190,11 @@ namespace Data_Strucher_Lesson1
             //EX1
             //RunApp.DemoMain();
             //EX2
-            //BinaryListOperations.DemoMain();
+            RunZeroLinkedList.DemoMain();
             //EX3
             //RunHalfCircleList.DemoMain();
             //EX4
-            RunExercise4.DemoMain();
+            //RunExercise4.DemoMain();
 
         }
     }
