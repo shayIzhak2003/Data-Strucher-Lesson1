@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
 {
+    //EX2
  // ZeroLinkedList operations
     public class ZeroLinkedList
     {
