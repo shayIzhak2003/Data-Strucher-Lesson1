@@ -85,11 +85,11 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
 
             // Demonstrate the NextZero function
             Node<int> nextZero = zeroLinkedList.NextZero(head, node2);
-            Console.WriteLine($"The next zero after node2 is: {nextZero?.GetValue()}");
+            Console.WriteLine($"The next zero after node2 is: {nextZero.GetValue()}");
 
             // Demonstrate the PrevZero function
             Node<int> prevZero = zeroLinkedList.PrevZero(head, node4);
-            Console.WriteLine($"The previous zero before node4 is: {prevZero?.GetValue()}");
+            Console.WriteLine($"The previous zero before node4 is: {prevZero.GetValue()}");
 
             // Demonstrate the CountZero function
             int zeroCount = zeroLinkedList.CountZero(head);
