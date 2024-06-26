@@ -158,7 +158,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             }
 
             IntNode current = lst;
-            while(current.HasNext())
+            while (current.HasNext())
             {
                 int diff = current.GetNext().GetValue() - current.GetValue();
                 if (current.GetNext().GetValue() - current.GetValue() != diff)
@@ -168,7 +168,88 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
                 current = current.GetNext();
             }
             return true;
-           
+
+        }
+        //EX11
+        public static IntNode RemovePos(IntNode lst, int num)
+        {
+            IntNode pos = lst;
+            int count = 0;
+            while (pos != null)
+            {
+                count++;
+                if (count == num)
+                {
+                    pos.setNext(pos.GetNext().GetNext());
+                }
+                pos = pos.GetNext();
+            }
+            return pos;
+        }
+        //EX12
+        //public static IntNode ReturnAtPos(IntNode lst, int step)
+        //{
+        //    int count = 0;
+        //    int val = 0;
+        //    IntNode pos = lst;
+        //    while (lst != null)
+        //    {
+        //        count++;
+        //        if(count == step)
+        //        {
+        //             val = pos.GetValue();
+
+        //        }
+        //    }
+        //    return val;
+        //}
+
+        //EX13
+        public static int ReturnNum(IntNode lst, int num)
+        {
+            IntNode pos = lst;
+            int index = 0;
+            while (pos != null)
+            {
+                if (pos.GetValue() == num)
+                {
+                    return index;
+                }
+                pos = pos.GetNext();
+                index++;
+            }
+            return -1;
+        }
+
+        //EX14
+        public static int Max(IntNode lst)
+        {
+            IntNode pos = lst;
+            int max = pos.GetValue();
+            while (pos != null)
+            {
+                if(pos.GetValue() > max)
+                {
+                    max = pos.GetValue();
+                }
+                pos = pos.GetNext();
+            }
+            return max;
+        }
+        //EX15
+        public static int Prev(IntNode lst, int num)
+        {
+            IntNode pos = lst;
+            int prev = 0;
+            while (pos != null)
+            {
+                if(pos.GetNext().GetValue() == num)
+                {
+                    return pos.GetValue();
+                }
+                pos = pos.GetNext();
+            }
+            return -1;
         }
     }
 
@@ -234,7 +315,15 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             Console.WriteLine();
             Ex1.EnterInOrder(node1, 6);
             IntNode.print(node1);
-
+            Console.WriteLine("================");
+            Console.WriteLine("the list :");
+            IntNode.print(node1);
+            Ex1.RemovePos(node1, 6);
+            IntNode.print(node1);
+            //Console.WriteLine(Ex1.ReturnAtPos(node1,3));
+            Console.WriteLine(Ex1.ReturnNum(node1, 30));
+            Console.WriteLine($"the biggest num is {Ex1.Max(node1)}");
+            Console.WriteLine(Ex1.Prev(node1,5));
 
         }
     }
