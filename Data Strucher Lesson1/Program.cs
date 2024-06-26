@@ -1,4 +1,5 @@
 ﻿using Data_Strucher_Lesson1.Classes;
+using Data_Strucher_Lesson1.Classes.extrecices_for_test;
 using Data_Strucher_Lesson1.Classes.Lesson3;
 using Data_Strucher_Lesson1.Classes.Lesson4HomeWork;
 using Data_Strucher_Lesson1.Classes.Lesson5;
@@ -200,8 +201,11 @@ namespace Data_Strucher_Lesson1
             //*****************************
             //Lesson5
             //RunRainfallMismatch.DemoMainForReal();
-            RunGarbage.DemoMain();
+            //RunGarbage.DemoMain();
 
+            // some extrecics!
+
+            RunEx1.DemoMain();
 
         }
     }
