@@ -203,9 +203,10 @@ namespace Data_Strucher_Lesson1
             //RunRainfallMismatch.DemoMainForReal();
             //RunGarbage.DemoMain();
 
+            //=======================
             // some extrecics!
-
-            RunEx1.DemoMain();
+            //RunEx1.DemoMain();
+            RunEx2.DemoMain();
 
         }
     }
