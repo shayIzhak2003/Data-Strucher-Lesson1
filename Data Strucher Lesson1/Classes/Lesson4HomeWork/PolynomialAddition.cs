@@ -13,7 +13,9 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
     // Represents a term in the polynomial
     public class Term
     {
+        // מקדם
         public int Coefficient { get; set; }
+        // מעריך
         public int Exponent { get; set; }
 
         public Term(int coefficient, int exponent)
