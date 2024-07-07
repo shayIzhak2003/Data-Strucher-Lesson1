@@ -3,6 +3,7 @@ using Data_Strucher_Lesson1.Classes.extrecices_for_test;
 using Data_Strucher_Lesson1.Classes.Lesson3;
 using Data_Strucher_Lesson1.Classes.Lesson4HomeWork;
 using Data_Strucher_Lesson1.Classes.Lesson5;
+using Data_Strucher_Lesson1.Classes.Lesson6;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -190,7 +191,7 @@ namespace Data_Strucher_Lesson1
             //=======================
             //Lesson4
             //EX1
-            RunApp.DemoMain();
+            //RunApp.DemoMain();
             //EX2
             //RunZeroLinkedList.DemoMain();
             //EX3
@@ -207,6 +208,9 @@ namespace Data_Strucher_Lesson1
             // some extrecics!
             //RunEx1.DemoMain();
             //RunEx2.DemoMain();
+            //=======================
+            //Lesson6
+            RunCircularLinkedList.DemoMain();
 
         }
     }
