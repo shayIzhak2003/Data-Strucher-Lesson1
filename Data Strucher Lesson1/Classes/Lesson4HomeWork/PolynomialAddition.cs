@@ -10,27 +10,18 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
     //EX1
     // Represents a term in the polynomial
     // Represents a term in the polynomial
+    // Represents a term in the polynomial
     public class Term
     {
-        private int Coefficient;
-        private int Exponent;
+        public int Coefficient { get; set; }
+        public int Exponent { get; set; }
+        public Term Next { get; set; }  // Reference to the next term
 
-        public int GetCoefficient()
-        {
-            return this.Coefficient;
-        }
-        public int GetExponent()
-        {
-           return this.Exponent;
-        }
-        public void SetCoefficient(int coefficient)
-        {
-            this.Coefficient = coefficient;
-        }
         public Term(int coefficient, int exponent)
         {
             Coefficient = coefficient;
             Exponent = exponent;
+            Next = null;
         }
 
         public override string ToString()
@@ -41,76 +32,71 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
 
     public class PolynomialAddition
     {
-        // Adds two polynomials represented as arrays of Term objects and prints the resulting polynomial
-        public void AddPolynomials(Term[] polynomial1, Term[] polynomial2)
+        // Adds two polynomials represented as linked lists of Term objects and prints the resulting polynomial
+        public void AddPolynomials(Term poly1, Term poly2)
         {
-            // Find the maximum exponent to determine the length of the result array
-            int maxExponent = 0;
-    
-            for (int i = 0; i < polynomial1.Length; i++)
-            {
-                if (polynomial1[i].GetExponent() > maxExponent)
-                    maxExponent = polynomial1[i].GetExponent();
-            }
-            for (int i = 0; i < polynomial2.Length; i++)
-            {
-                if (polynomial2[i].GetExponent() > maxExponent)
-                    maxExponent = polynomial2[i].GetExponent();
-            }
-          
+            Term resultHead = null;
+            Term resultTail = null;
 
-            Term[] result = new Term[maxExponent + 1]; // Resulting polynomial array
-
-            // Initialize the result array with zero coefficients
-            for (int i = 0; i <= maxExponent; i++)
+            // Add terms from both polynomials
+            while (poly1 != null || poly2 != null)
             {
-                result[i] = new Term(0, i);
-            }
+                int exponent;
+                int coefficient = 0;
 
-            // Add coefficients from polynomial1
-            for (int i = 0; i < polynomial1.Length; i++)
-            {
-                int exponent = polynomial1[i].GetExponent();
-                result[exponent].SetCoefficient(
-                    result[exponent].GetCoefficient() + polynomial1[i].GetCoefficient()
-                );
-            }
+                if (poly1 != null && (poly2 == null || poly1.Exponent >= poly2.Exponent))
+                {
+                    exponent = poly1.Exponent;
+                    coefficient += poly1.Coefficient;
+                    poly1 = poly1.Next;
+                }
+                else
+                {
+                    exponent = poly2.Exponent;
+                    coefficient += poly2.Coefficient;
+                    poly2 = poly2.Next;
+                }
 
-            // Add coefficients from polynomial2
-            for (int i = 0; i < polynomial2.Length; i++)
-            {
-                int exponent = polynomial2[i].GetExponent();
-                result[exponent].SetCoefficient(
-                    result[exponent].GetCoefficient() + polynomial2[i].GetCoefficient()
-                );
+                if (poly1 != null && poly2 != null && poly1.Exponent == poly2.Exponent)
+                {
+                    coefficient += poly2.Coefficient;
+                    poly2 = poly2.Next;
+                }
+
+                if (coefficient != 0)
+                {
+                    Term newTerm = new Term(coefficient, exponent);
+                    if (resultHead == null)
+                    {
+                        resultHead = newTerm;
+                        resultTail = newTerm;
+                    }
+                    else
+                    {
+                        resultTail.Next = newTerm;
+                        resultTail = newTerm;
+                    }
+                }
             }
 
             // Print the resulting polynomial
             Console.Write("Sum Polynomial: ");
-            for (int i = maxExponent; i >= 0; i--)
-            {
-                if (result[i].GetCoefficient() != 0)
-                {
-                    Console.Write(result[i]);
-                    if (i > 0)
-                    {
-                        Console.Write(" + ");
-                    }
-                }
-            }
-            Console.WriteLine();
+            PrintPolynomial(resultHead);
         }
 
         // Helper function to print a polynomial
-        public void PrintPolynomial(Term[] polynomial)
+        public void PrintPolynomial(Term polynomial)
         {
-            for (int i = 0; i < polynomial.Length; i++)
+            bool first = true;
+            while (polynomial != null)
             {
-                Console.Write(polynomial[i]);
-                if (i < polynomial.Length - 1)
+                if (!first)
                 {
                     Console.Write(" + ");
                 }
+                Console.Write(polynomial);
+                polynomial = polynomial.Next;
+                first = false;
             }
             Console.WriteLine();
         }
@@ -121,18 +107,14 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
         public static void DemoMain()
         {
             // First polynomial: 1*x^5 + 5*x^3 + -16*x^0
-            Term[] polynomial1 = {
-                new Term(1, 5),
-                new Term(5, 3),
-                new Term(-16, 0)
-            };
+            Term polynomial1 = new Term(1, 5);
+            polynomial1.Next = new Term(5, 3);
+            polynomial1.Next.Next = new Term(-16, 0);
 
             // Second polynomial: 2*x^4 + 6*x^3 + 24*x^1
-            Term[] polynomial2 = {
-                new Term(2, 4),
-                new Term(6, 3),
-                new Term(24, 1)
-            };
+            Term polynomial2 = new Term(2, 4);
+            polynomial2.Next = new Term(6, 3);
+            polynomial2.Next.Next = new Term(24, 1);
 
             // Create an instance of PolynomialAddition
             PolynomialAddition polyAddition = new PolynomialAddition();
