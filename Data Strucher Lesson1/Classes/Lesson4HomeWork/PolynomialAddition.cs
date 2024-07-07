@@ -15,13 +15,11 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
     {
         public int Coefficient { get; set; }
         public int Exponent { get; set; }
-        public Term Next { get; set; }  // Reference to the next term
 
         public Term(int coefficient, int exponent)
         {
             Coefficient = coefficient;
             Exponent = exponent;
-            Next = null;
         }
 
         public override string ToString()
@@ -32,11 +30,11 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
 
     public class PolynomialAddition
     {
-        // Adds two polynomials represented as linked lists of Term objects and prints the resulting polynomial
-        public void AddPolynomials(Term poly1, Term poly2)
+        // Adds two polynomials represented as linked lists of Node<Term> objects and returns the resulting polynomial as a linked list
+        public Node<Term> AddPolynomials(Node<Term> poly1, Node<Term> poly2)
         {
-            Term resultHead = null;
-            Term resultTail = null;
+            Node<Term> resultHead = null;
+            Node<Term> resultTail = null;
 
             // Add terms from both polynomials
             while (poly1 != null || poly2 != null)
@@ -44,48 +42,47 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
                 int exponent;
                 int coefficient = 0;
 
-                if (poly1 != null && (poly2 == null || poly1.Exponent >= poly2.Exponent))
+                if (poly1 != null && (poly2 == null || poly1.GetValue().Exponent >= poly2.GetValue().Exponent))
                 {
-                    exponent = poly1.Exponent;
-                    coefficient += poly1.Coefficient;
-                    poly1 = poly1.Next;
+                    exponent = poly1.GetValue().Exponent;
+                    coefficient += poly1.GetValue().Coefficient;
+                    poly1 = poly1.GetNext();
                 }
                 else
                 {
-                    exponent = poly2.Exponent;
-                    coefficient += poly2.Coefficient;
-                    poly2 = poly2.Next;
+                    exponent = poly2.GetValue().Exponent;
+                    coefficient += poly2.GetValue().Coefficient;
+                    poly2 = poly2.GetNext();
                 }
 
-                if (poly1 != null && poly2 != null && poly1.Exponent == poly2.Exponent)
+                if (poly1 != null && poly2 != null && poly1.GetValue().Exponent == poly2.GetValue().Exponent)
                 {
-                    coefficient += poly2.Coefficient;
-                    poly2 = poly2.Next;
+                    coefficient += poly2.GetValue().Coefficient;
+                    poly2 = poly2.GetNext();
                 }
 
                 if (coefficient != 0)
                 {
                     Term newTerm = new Term(coefficient, exponent);
+                    Node<Term> newNode = new Node<Term>(newTerm);
                     if (resultHead == null)
                     {
-                        resultHead = newTerm;
-                        resultTail = newTerm;
+                        resultHead = newNode;
+                        resultTail = newNode;
                     }
                     else
                     {
-                        resultTail.Next = newTerm;
-                        resultTail = newTerm;
+                        resultTail.SetNext(newNode);
+                        resultTail = newNode;
                     }
                 }
             }
 
-            // Print the resulting polynomial
-            Console.Write("Sum Polynomial: ");
-            PrintPolynomial(resultHead);
+            return resultHead;
         }
 
         // Helper function to print a polynomial
-        public void PrintPolynomial(Term polynomial)
+        public void PrintPolynomial(Node<Term> polynomial)
         {
             bool first = true;
             while (polynomial != null)
@@ -94,8 +91,8 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
                 {
                     Console.Write(" + ");
                 }
-                Console.Write(polynomial);
-                polynomial = polynomial.Next;
+                Console.Write(polynomial.GetValue());
+                polynomial = polynomial.GetNext();
                 first = false;
             }
             Console.WriteLine();
@@ -107,14 +104,14 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
         public static void DemoMain()
         {
             // First polynomial: 1*x^5 + 5*x^3 + -16*x^0
-            Term polynomial1 = new Term(1, 5);
-            polynomial1.Next = new Term(5, 3);
-            polynomial1.Next.Next = new Term(-16, 0);
+            Node<Term> polynomial1 = new Node<Term>(new Term(1, 5));
+            polynomial1.SetNext(new Node<Term>(new Term(5, 3)));
+            polynomial1.GetNext().SetNext(new Node<Term>(new Term(-16, 0)));
 
             // Second polynomial: 2*x^4 + 6*x^3 + 24*x^1
-            Term polynomial2 = new Term(2, 4);
-            polynomial2.Next = new Term(6, 3);
-            polynomial2.Next.Next = new Term(24, 1);
+            Node<Term> polynomial2 = new Node<Term>(new Term(2, 4));
+            polynomial2.SetNext(new Node<Term>(new Term(6, 3)));
+            polynomial2.GetNext().SetNext(new Node<Term>(new Term(24, 1)));
 
             // Create an instance of PolynomialAddition
             PolynomialAddition polyAddition = new PolynomialAddition();
@@ -127,7 +124,11 @@ namespace Data_Strucher_Lesson1.Classes.Lesson4HomeWork
             polyAddition.PrintPolynomial(polynomial2);
 
             // Add the polynomials using the instance method
-            polyAddition.AddPolynomials(polynomial1, polynomial2);
+            Node<Term> result = polyAddition.AddPolynomials(polynomial1, polynomial2);
+
+            // Print the resulting polynomial
+            Console.Write("Sum Polynomial: ");
+            polyAddition.PrintPolynomial(result);
         }
     }
 }
