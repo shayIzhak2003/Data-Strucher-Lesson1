@@ -210,9 +210,12 @@ namespace Data_Strucher_Lesson1
             //RunEx2.DemoMain();
             //=======================
             //Lesson6
+            //EX1   
             //RunCircularLinkedList.DemoMain();
-            RunCircularToLinear.DemoMain();
-
+            //EX2
+            //RunCircularToLinear.DemoMain();
+            //EX3
+            RunCircularNumberRotations.DemoMain();
         }
     }
 
