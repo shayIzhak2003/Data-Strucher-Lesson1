@@ -11,20 +11,23 @@ namespace Data_Strucher_Lesson1.Classes.Lesson6
         private Node<int> head;
         private Random random = new Random();
 
-        // Constructor to create a circular linked list from an array of values
-        public Game(int[] values)
+        // Constructor to create a circular linked list
+        public Game()
         {
-            if (values.Length < 2)
-                throw new ArgumentException("Path must have at least two cells.");
+            // Create nodes manually to form a circular path
+            Node<int> node1 = new Node<int>(1);
+            Node<int> node2 = new Node<int>(3, node1);
+            Node<int> node3 = new Node<int>(5, node2);
+            Node<int> node4 = new Node<int>(0, node3);
+            Node<int> node5 = new Node<int>(2, node4);
+            Node<int> node6 = new Node<int>(4, node5);
+            Node<int> node7 = new Node<int>(0, node6);
+            Node<int> node8 = new Node<int>(6, node7);
 
-            head = new Node<int>(values[0]);
-            Node<int> current = head;
-            for (int i = 1; i < values.Length; i++)
-            {
-                current.SetNext(new Node<int>(values[i]));
-                current = current.GetNext();
-            }
-            current.SetNext(head); // Close the loop to make it circular
+            // Close the loop to make it circular
+            node1.SetNext(node8);
+
+            head = node1; // Set the head of the list
         }
 
         // Roll two dice and return the sum
@@ -74,11 +77,8 @@ namespace Data_Strucher_Lesson1.Classes.Lesson6
     {
         public static void DemoMain()
         {
-            // Define the game path values
-            int[] pathValues = { 1, 3, 5, 0, 2, 4, 0, 6 };
-
             // Create the game instance
-            Game game = new Game(pathValues);
+            Game game = new Game();
 
             // Play the game
             bool won = game.Play();
