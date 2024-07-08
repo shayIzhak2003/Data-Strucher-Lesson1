@@ -208,6 +208,7 @@ namespace Data_Strucher_Lesson1
             // some extrecics!
             //RunEx1.DemoMain();
             //RunEx2.DemoMain();
+            EX3.DemoMain();
             //=======================
             //Lesson6
             //EX1   
@@ -217,7 +218,7 @@ namespace Data_Strucher_Lesson1
             //EX3
             //RunCircularNumberRotations.DemoMain();
             //EX4
-            RunGame.DemoMain();
+            //RunGame.DemoMain();
         }
     }
 
