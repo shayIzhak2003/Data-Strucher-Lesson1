@@ -57,6 +57,7 @@
     <Compile Include="Classes\Lesson5\Garbage.cs" />
     <Compile Include="Classes\Lesson5\RainfallMismatch.cs" />
     <Compile Include="Classes\Lesson6\CircularLinkedList.cs" />
+    <Compile Include="Classes\Lesson6\CircularToLinearList.cs" />
     <Compile Include="Classes\Node.cs" />
     <Compile Include="Classes\NodeEx.cs" />
     <Compile Include="Classes\NodeTUsageForHomeWORK.cs" />
