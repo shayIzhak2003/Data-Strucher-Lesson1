@@ -215,7 +215,9 @@ namespace Data_Strucher_Lesson1
             //EX2
             //RunCircularToLinear.DemoMain();
             //EX3
-            RunCircularNumberRotations.DemoMain();
+            //RunCircularNumberRotations.DemoMain();
+            //EX4
+            RunGame.DemoMain();
         }
     }
 
