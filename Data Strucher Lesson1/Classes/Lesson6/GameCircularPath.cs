@@ -18,14 +18,14 @@ namespace Data_Strucher_Lesson1.Classes.Lesson6
         public Game()
         {
             // Create nodes manually to form a circular path
-            Node<int> node1 = new Node<int>(1);
+            Node<int> node1 = new Node<int>(1); // First node (not 0)
             Node<int> node2 = new Node<int>(3, node1);
             Node<int> node3 = new Node<int>(5, node2);
             Node<int> node4 = new Node<int>(0, node3);
             Node<int> node5 = new Node<int>(2, node4);
             Node<int> node6 = new Node<int>(4, node5);
             Node<int> node7 = new Node<int>(0, node6);
-            Node<int> node8 = new Node<int>(6, node7);
+            Node<int> node8 = new Node<int>(6, node7); // Last node (not 0)
 
             // Close the loop to make it circular
             node1.SetNext(node8);
@@ -138,5 +138,6 @@ namespace Data_Strucher_Lesson1.Classes.Lesson6
         }
     }
 }
+
 
 
