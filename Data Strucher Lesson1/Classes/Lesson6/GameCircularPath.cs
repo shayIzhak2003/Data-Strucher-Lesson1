@@ -11,7 +11,8 @@ namespace Data_Strucher_Lesson1.Classes.Lesson6
     {
         private Node<int> head;
         private Random random = new Random();
-        private List<int> landedValues = new List<int>();
+        private Node<int> landedHead = null;
+        private Node<int> landedTail = null;
 
         // Constructor to create a circular linked list
         public Game()
@@ -38,6 +39,22 @@ namespace Data_Strucher_Lesson1.Classes.Lesson6
             return random.Next(1, 7) + random.Next(1, 7);
         }
 
+        // Add value to landed list
+        private void AddLandedValue(int value)
+        {
+            Node<int> newNode = new Node<int>(value);
+            if (landedHead == null)
+            {
+                landedHead = newNode;
+                landedTail = newNode;
+            }
+            else
+            {
+                landedTail.SetNext(newNode);
+                landedTail = newNode;
+            }
+        }
+
         // Play the game and return true if the player wins
         public bool Play()
         {
@@ -57,12 +74,12 @@ namespace Data_Strucher_Lesson1.Classes.Lesson6
                 Console.WriteLine($"Landed on cell with value: {current.GetValue()}");
                 Console.ResetColor();
 
-                landedValues.Add(current.GetValue());
+                AddLandedValue(current.GetValue());
 
                 // Check if landed on a 0
                 if (current.GetValue() == 0)
                 {
-                    current = current.GetNext(); // Move one step back
+                    current = current.GetNext(); // Move one step forward
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Landed on 0, moving forward 1 step.");
                     Console.ResetColor();
@@ -86,9 +103,11 @@ namespace Data_Strucher_Lesson1.Classes.Lesson6
         public void PrintLandedValues()
         {
             Console.WriteLine("Values landed on during the game:");
-            foreach (var value in landedValues)
+            Node<int> current = landedHead;
+            while (current != null)
             {
-                Console.Write(value + " ");
+                Console.Write(current.GetValue() + " ");
+                current = current.GetNext();
             }
             Console.WriteLine();
         }
