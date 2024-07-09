@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Data_Strucher_Lesson1.Classes.Lesson6
 {
+
     public class Game
     {
         private Node<int> head;
         private Random random = new Random();
+        private List<int> landedValues = new List<int>();
 
         // Constructor to create a circular linked list
         public Game()
@@ -51,25 +53,44 @@ namespace Data_Strucher_Lesson1.Classes.Lesson6
                     current = current.GetNext();
                 }
 
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Landed on cell with value: {current.GetValue()}");
+                Console.ResetColor();
+
+                landedValues.Add(current.GetValue());
 
                 // Check if landed on a 0
                 if (current.GetValue() == 0)
                 {
                     current = current.GetNext(); // Move one step back
-                    Console.WriteLine("Landed on 0, moving back 1 step.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Landed on 0, moving forward 1 step.");
+                    Console.ResetColor();
                 }
 
                 // Check if the player wins
                 if (current.GetNext() == head)
                 {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Congratulations! You landed exactly on the last cell.");
+                    Console.ResetColor();
                     return true;
                 }
 
                 // Print current state
                 Console.WriteLine($"Current cell: {current.GetValue()}");
             }
+        }
+
+        // Print all the values landed on
+        public void PrintLandedValues()
+        {
+            Console.WriteLine("Values landed on during the game:");
+            foreach (var value in landedValues)
+            {
+                Console.Write(value + " ");
+            }
+            Console.WriteLine();
         }
     }
 
@@ -92,6 +113,11 @@ namespace Data_Strucher_Lesson1.Classes.Lesson6
             {
                 Console.WriteLine("You lost the game!");
             }
+
+            // Print all landed values
+            game.PrintLandedValues();
         }
     }
 }
+
+
