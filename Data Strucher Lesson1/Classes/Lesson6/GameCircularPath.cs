@@ -36,7 +36,11 @@ namespace Data_Strucher_Lesson1.Classes.Lesson6
         // Roll two dice and return the sum
         private int RollDice()
         {
-            return random.Next(1, 7) + random.Next(1, 7);
+            int dice1 = random.Next(1, 7);
+            int dice2 = random.Next(1, 7);
+            int sum = dice1 + dice2;
+            Console.WriteLine($"Dice rolled: {dice1} + {dice2} = {sum}");
+            return sum;
         }
 
         // Add value to landed list
@@ -55,14 +59,38 @@ namespace Data_Strucher_Lesson1.Classes.Lesson6
             }
         }
 
+        // Print the entire circular list
+        private void PrintCircularList(Node<int> current)
+        {
+            Node<int> node = head;
+            Console.Write("Circular list: ");
+            do
+            {
+                if (node == current)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(node.GetValue() + " ");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.Write(node.GetValue() + " ");
+                }
+                node = node.GetNext();
+            } while (node != head);
+            Console.WriteLine();
+        }
+
         // Play the game and return true if the player wins
         public bool Play()
         {
             Node<int> current = head;
             while (true)
             {
+                // Print the current state of the circular list
+                PrintCircularList(current);
+
                 int diceSum = RollDice();
-                Console.WriteLine($"Rolled: {diceSum}");
 
                 // Move forward by diceSum steps
                 for (int i = 0; i < diceSum; i++)
@@ -79,10 +107,20 @@ namespace Data_Strucher_Lesson1.Classes.Lesson6
                 // Check if landed on a 0
                 if (current.GetValue() == 0)
                 {
-                    current = current.GetNext(); // Move one step forward
+                    // Move one step backward
+                    Node<int> previous = head;
+                    while (previous.GetNext() != current)
+                    {
+                        previous = previous.GetNext();
+                    }
+                    current = previous;
+
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Landed on 0, moving forward 1 step.");
+                    Console.WriteLine("Landed on 0, moving backward 1 step.");
                     Console.ResetColor();
+
+                    // Print the current state of the circular list again
+                    PrintCircularList(current);
                 }
 
                 // Check if the player wins
