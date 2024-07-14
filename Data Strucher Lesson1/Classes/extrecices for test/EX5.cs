@@ -48,6 +48,66 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             Console.WriteLine();
         }
 
+        public static void PrintAllPositions(Node<int> head)
+        {
+
+            Node<int> start = head;
+            Node<int> current = head;
+            bool isFirst = true; // Flag to check the first iteration
+
+            while (current != head || isFirst)
+            {
+                isFirst = false; // Set flag to false after the first iteration
+                PrintCurrent(start);
+
+                // Move to the next node for the next rotation
+                start = start.GetNext();
+                current = start;
+            }
+        }
+
+        public static void RemoveNodeIndex(Node<int> lst, int num)
+        {
+            if (lst == null)
+            {
+                throw new ArgumentNullException(nameof(lst), "List cannot be null.");
+            }
+
+            Node<int> current = lst;
+            Node<int> previous = null;
+
+            while (true)
+            {
+                for (int i = 0; i < num; i++)
+                {
+                    previous = current;
+                    current = current.GetNext();
+                }
+
+                if(previous == current)
+                {
+                    Console.WriteLine($"Removed value: {current.GetValue()}");
+                    break;
+                }
+
+                previous.SetNext(current.GetNext());
+                Console.WriteLine($"Removed value: {current.GetValue()}");
+
+                num = current.GetValue();
+                current = current.GetNext();
+            }
+        }
+
+        public static void PrintCurrent(Node<int> lst)
+        {
+            Node<int>current = lst;
+            do
+            {
+                Console.Write(current.GetValue() + " ");
+                current = current.GetNext();
+            } while (current != lst);
+            Console.WriteLine();
+        }
     }
     public class RunEX5
     {
@@ -71,6 +131,10 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
 
             // Convert circular linked list to linear linked list and print it
             EX5.CircleToLinar(node1);
+            Console.WriteLine();
+            EX5.PrintAllPositions(node1);
+            Console.WriteLine();
+            EX5.RemoveNodeIndex(node1, 1);
         }
     }
 }

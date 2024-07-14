@@ -210,7 +210,8 @@ namespace Data_Strucher_Lesson1
             //RunEx2.DemoMain();
             //EX3.DemoMain();
             //RunEX4.DemoMain();
-            RunEX5.DemoMain();
+            //RunEX5.DemoMain();
+            RunCircleSummaryEx.DemoMain();
             //=======================
             //Lesson6
             //EX1   
