@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\BinNode.cs" />
     <Compile Include="Classes\Circle.cs" />
     <Compile Include="Classes\Expr.cs" />
     <Compile Include="Classes\extrecices for test\CircleSummaryEx.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Classes\Lesson6\CircularNumberRotations.cs" />
     <Compile Include="Classes\Lesson6\CircularToLinearList.cs" />
     <Compile Include="Classes\Lesson6\GameCircularPath.cs" />
+    <Compile Include="Classes\Lesson7\BuildRandomList.cs" />
     <Compile Include="Classes\Node.cs" />
     <Compile Include="Classes\NodeEx.cs" />
     <Compile Include="Classes\NodeTUsageForHomeWORK.cs" />

@@ -4,6 +4,7 @@ using Data_Strucher_Lesson1.Classes.Lesson3;
 using Data_Strucher_Lesson1.Classes.Lesson4HomeWork;
 using Data_Strucher_Lesson1.Classes.Lesson5;
 using Data_Strucher_Lesson1.Classes.Lesson6;
+using Data_Strucher_Lesson1.Classes.Lesson7;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -211,7 +212,7 @@ namespace Data_Strucher_Lesson1
             //EX3.DemoMain();
             //RunEX4.DemoMain();
             //RunEX5.DemoMain();
-            RunCircleSummaryEx.DemoMain();
+            //RunCircleSummaryEx.DemoMain();
             //=======================
             //Lesson6
             //EX1   
@@ -222,6 +223,10 @@ namespace Data_Strucher_Lesson1
             //RunCircularNumberRotations.DemoMain();
             //EX4
             //RunGame.DemoMain();
+
+            //==============
+            //Lesson7
+            RunBuildRandomList.DemoMain();
         }
     }
 

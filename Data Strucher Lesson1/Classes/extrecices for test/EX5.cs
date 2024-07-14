@@ -104,7 +104,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             do
             {
                 Console.Write(current.GetValue() + " ");
-                current = current.GetNext();
+                current = current.GetNext(); 
             } while (current != lst);
             Console.WriteLine();
         }
@@ -125,7 +125,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             node1.SetNext(node2);
             node2.SetNext(node3);
             node3.SetNext(node4);
-            node4.SetNext(node5);
+            node4.SetNext(node5);  
             node5.SetNext(node6);
             node6.SetNext(node1);
 
