@@ -218,7 +218,30 @@ namespace Data_Strucher_Lesson1.Classes.Lesson7
             return true;
         }
         //EX7
+        public static BinNode<int> BuildStored(int size)
+        {
+            if (size <= 0)
+                throw new ArgumentException("Size must be a positive number.", nameof(size));
 
+            Random rnd = new Random();
+            int rootValue = rnd.Next(1, 30); // Start with a random value between 1 and 30
+            BinNode<int> root = new BinNode<int>(rootValue);
+            BinNode<int> pos = root;
+
+            for (int i = 1; i < size; i++)
+            {
+                int newValue;
+                do
+                {
+                    newValue = rnd.Next(1, 30);
+                } while (newValue <= pos.GetValue()); // Ensure the new value is greater than the previous one
+
+                pos.SetRight(new BinNode<int>(newValue));
+                pos = pos.GetRight();
+            }
+
+            return root;
+        }
 
     }
 
@@ -254,14 +277,17 @@ namespace Data_Strucher_Lesson1.Classes.Lesson7
             PrintList(list);
             int num = 60;
             Console.WriteLine($"the list after deleting all the values above {num}");
-            BuildRandomList.DeleteFromList(list,num);
+            BuildRandomList.DeleteFromList(list, num);
             PrintList(list);
 
             Console.WriteLine();
             BinNode<int> lst = BuildRandomList.BuildBiList();
             PrintList(lst);
             Console.WriteLine();
+            Console.WriteLine(BuildRandomList.IsPalindrom(lst) ? "the list is philandrom!" : "the list in not a philandrom");
+            BinNode<int> newList = BuildRandomList.BuildStored(5);
             Console.WriteLine();
+            PrintList(newList);
         }
 
         public static void PrintList(BinNode<int> lst)
@@ -272,7 +298,7 @@ namespace Data_Strucher_Lesson1.Classes.Lesson7
                 Console.WriteLine(pos);
                 pos = pos.GetRight();
             }
-            Console.WriteLine(BuildRandomList.IsPalindrom(lst) ? "the list is philandrom!" : "the list in not a philandrom");
+
         }
     }
 }
