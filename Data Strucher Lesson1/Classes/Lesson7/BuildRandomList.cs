@@ -160,6 +160,65 @@ namespace Data_Strucher_Lesson1.Classes.Lesson7
 
             return lst;
         }
+        //EX6
+        public static BinNode<int> BuildBiList()
+        {
+            Console.Write("Enter the size for the list: ");
+            int size = int.Parse(Console.ReadLine());
+
+            if (size <= 0)
+            {
+                throw new ArgumentException("Size must be a positive number.");
+            }
+
+            Console.WriteLine("Enter the values for the list:");
+
+            // Create the head node with the first value
+            Console.Write("Value 1: ");
+            int firstValue = int.Parse(Console.ReadLine());
+            BinNode<int> head = new BinNode<int>(firstValue);
+            BinNode<int> current = head;
+
+            // Create the rest of the list
+            for (int i = 1; i < size; i++)
+            {
+                Console.Write($"Value {i + 1}: ");
+                int newValue = int.Parse(Console.ReadLine());
+                BinNode<int> newNode = new BinNode<int>(newValue);
+                current.SetRight(newNode);
+                newNode.SetLeft(current);
+                current = newNode;
+            }
+
+
+            return head;
+        }
+        public static bool IsPalindrom(BinNode<int> head)
+        {
+            if (head == null) return true;
+
+            // Find the end of the list
+            BinNode<int> tail = head;
+            while (tail.HasRight())
+            {
+                tail = tail.GetRight();
+            }
+
+            // Check for palindrome
+            BinNode<int> start = head;
+            while (start != null && tail != null && start != tail && start.GetLeft() != tail)
+            {
+                if (start.GetValue() != tail.GetValue())
+                    return false;
+
+                start = start.GetRight();
+                tail = tail.GetLeft();
+            }
+
+            return true;
+        }
+        //EX7
+
 
     }
 
@@ -197,6 +256,12 @@ namespace Data_Strucher_Lesson1.Classes.Lesson7
             Console.WriteLine($"the list after deleting all the values above {num}");
             BuildRandomList.DeleteFromList(list,num);
             PrintList(list);
+
+            Console.WriteLine();
+            BinNode<int> lst = BuildRandomList.BuildBiList();
+            PrintList(lst);
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         public static void PrintList(BinNode<int> lst)
@@ -207,7 +272,7 @@ namespace Data_Strucher_Lesson1.Classes.Lesson7
                 Console.WriteLine(pos);
                 pos = pos.GetRight();
             }
-            Console.WriteLine();
+            Console.WriteLine(BuildRandomList.IsPalindrom(lst) ? "the list is philandrom!" : "the list in not a philandrom");
         }
     }
 }
