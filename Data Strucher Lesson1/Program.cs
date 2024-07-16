@@ -213,7 +213,8 @@ namespace Data_Strucher_Lesson1
             //RunEX4.DemoMain();
             //RunEX5.DemoMain();
             //RunCircleSummaryEx.DemoMain();
-            RunTwoWayListEx.DemoMain();
+            //RunTwoWayListEx.DemoMain();
+            RunMainExClass.DemoMain();
             //=======================
             //Lesson6
             //EX1   
