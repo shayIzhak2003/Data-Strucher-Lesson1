@@ -183,8 +183,56 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
                 {
                     val = pos.GetValue();
                 }
+                pos = pos.GetNext();
             }
             return val;
+        }
+        //EX13
+        public static int ReturnNum(IntNode lst, int num)
+        {
+            IntNode pos = lst;
+            int count = 0;
+            while (pos != null)
+            {
+                count++;
+                if(num == pos.GetValue())
+                {
+                    return count;
+                }
+                pos = pos.GetNext();
+            }
+            return -1;
+            
+        }
+        //EX14
+        public static int Max(IntNode lst)
+        {
+            IntNode pos = lst;
+            int max = pos.GetValue();
+            while (pos != null)
+            {
+                if (pos.GetValue() > max)
+                {
+                    max = pos.GetValue();
+                }
+                pos = pos.GetNext();
+            }
+            return max;
+        }
+        //EX15
+        public static int Prev(IntNode lst, int num)
+        {
+            IntNode pos = lst;
+            int prev = 0;
+            while (pos != null)
+            {
+                if (pos.GetNext().GetValue() == num)
+                {
+                    return pos.GetValue();
+                }
+                pos = pos.GetNext();
+            }
+            return -1;
         }
     }
     public class RunMainExClass
@@ -219,7 +267,10 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             Console.WriteLine("the list after deleteing 54 :");
             //MainExClass.RemovePos(n1,5);
             //IntNode.print(n1);
-
+            Console.WriteLine($"the value in node 3 is {MainExClass.ReturnAtPos(n1,3)}");
+            Console.WriteLine($"the first place to have the value 14 is {MainExClass.ReturnNum(n1,14)}");
+            Console.WriteLine($"the node with the biggest value is  : {MainExClass.Max(n1)}");
+            //Console.WriteLine($"the value before node 2 is {MainExClass.Prev(n1,2)}");
 
         }
     }
