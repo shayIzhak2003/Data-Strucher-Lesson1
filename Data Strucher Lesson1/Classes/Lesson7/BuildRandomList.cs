@@ -224,24 +224,47 @@ namespace Data_Strucher_Lesson1.Classes.Lesson7
                 throw new ArgumentException("Size must be a positive number.", nameof(size));
 
             Random rnd = new Random();
-            int rootValue = rnd.Next(1, 30); // Start with a random value between 1 and 30
+            int rootValue = rnd.Next(1, 30);
             BinNode<int> root = new BinNode<int>(rootValue);
-            BinNode<int> pos = root;
 
             for (int i = 1; i < size; i++)
             {
-                int newValue;
-                do
-                {
-                    newValue = rnd.Next(1, 30);
-                } while (newValue <= pos.GetValue()); // Ensure the new value is greater than the previous one
+                int newValue = rnd.Next(1, 30);
+                BinNode<int> currentNode = root;
+                BinNode<int> previousNode = null;
 
-                pos.SetRight(new BinNode<int>(newValue));
-                pos = pos.GetRight();
+                // Traverse the list to find the correct position to insert the new value
+                while (currentNode != null && currentNode.GetValue() < newValue)
+                {
+                    previousNode = currentNode;
+                    currentNode = currentNode.GetRight();
+                }
+
+                BinNode<int> newNode = new BinNode<int>(newValue);
+
+                if (previousNode == null)
+                {
+                    // Insert at the beginning
+                    newNode.SetRight(root);
+                    root.SetLeft(newNode);
+                    root = newNode;
+                }
+                else
+                {
+                    // Insert between previousNode and currentNode
+                    newNode.SetRight(currentNode);
+                    newNode.SetLeft(previousNode);
+                    previousNode.SetRight(newNode);
+                    if (currentNode != null)
+                    {
+                        currentNode.SetLeft(newNode);
+                    }
+                }
             }
 
             return root;
         }
+
 
     }
 

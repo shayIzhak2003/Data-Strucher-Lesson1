@@ -234,6 +234,34 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             }
             return -1;
         }
+        // liner lists ends
+
+        //Node<T> Extracisses Start
+        public static Node<int> BuildEvenNode(Node<int> lst)
+        {
+            Node<int> pos = lst;
+            Node<int> nodeHead = null;
+            Node<int> nodeTail = null;
+            while (pos != null)
+            {
+                if(pos.GetValue() % 2 == 0)
+                {
+                    Node<int> newNode = new Node<int>(pos.GetValue());
+                    if (nodeHead != null)
+                    {
+                        nodeHead = newNode;
+                        nodeTail = newNode;
+                    }
+                    else
+                    {
+                        nodeTail.SetNext(newNode);
+                        nodeTail = newNode;
+                    }
+                }
+                pos = pos.GetNext();
+            }
+            return nodeHead;
+        }
     }
     public class RunMainExClass
     {
@@ -251,14 +279,14 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             int sum = MainExClass.Sum(n1);
             Console.WriteLine($"the sum of the list is : {sum}");
             int num = 1;
-            Console.WriteLine($"is the number {num} in the list? {MainExClass.IsExsist(n1,num)}");
+            Console.WriteLine($"is the number {num} in the list? {MainExClass.IsExsist(n1, num)}");
             Console.WriteLine("\nthe original list :");
             IntNode.print(n1);
             //Console.WriteLine("the list after entering 30 in the second place!");
             //MainExClass.EnterSecond(n1, 30);
             //IntNode.print(n1);
             Console.WriteLine($"the size of the list is : {MainExClass.Size(n1)}");
-            Console.WriteLine($"the amount of times the the number 14 is of the list is {MainExClass.HowMany(n1,14)}");
+            Console.WriteLine($"the amount of times the the number 14 is of the list is {MainExClass.HowMany(n1, 14)}");
             Console.WriteLine($"is the list in order ? {MainExClass.InOrder(n1)}");
             Console.WriteLine($"the sum in the odd indexs is {MainExClass.SumOdd(n1)}");
             //MainExClass.EnterInOrder(n1, 45);
@@ -267,11 +295,24 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             Console.WriteLine("the list after deleteing 54 :");
             //MainExClass.RemovePos(n1,5);
             //IntNode.print(n1);
-            Console.WriteLine($"the value in node 3 is {MainExClass.ReturnAtPos(n1,3)}");
-            Console.WriteLine($"the first place to have the value 14 is {MainExClass.ReturnNum(n1,14)}");
+            Console.WriteLine($"the value in node 3 is {MainExClass.ReturnAtPos(n1, 3)}");
+            Console.WriteLine($"the first place to have the value 14 is {MainExClass.ReturnNum(n1, 14)}");
             Console.WriteLine($"the node with the biggest value is  : {MainExClass.Max(n1)}");
             //Console.WriteLine($"the value before node 2 is {MainExClass.Prev(n1,2)}");
 
+            //================================================================================
+
+            //EX1
+            Console.WriteLine("Filter Even Values Maintain Order:");
+            Node<int> node1 = new Node<int>(1);
+            Node<int> node2 = new Node<int>(2, node1);
+            Node<int> node3 = new Node<int>(3, node2);
+            Node<int> node4 = new Node<int>(4, node3);
+            Node<int> node5 = new Node<int>(5, node4);
+            Node<int> node6 = new Node<int>(6, node5);
+
+            Node<int> evenNodeList = MainExClass.BuildEvenNode(node1);
+            Console.WriteLine("Even Nodes (Maintain Order): " + evenNodeList.ToPrint());
         }
     }
 }
