@@ -332,18 +332,39 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             BinNode<int> pos = lst;
             while (pos != null)
             {
-                if(pos.GetValue() > x)
+                if (pos.GetValue() > x)
                 {
                     BinNode<int> posL = pos.GetLeft();
                     BinNode<int> posR = pos.GetRight();
 
-                    if(posL== null && posR== null)
+                    if (posL == null && posR == null)
                     {
+                        // Node is a single node and matches the condition, list becomes empty
                         return null;
                     }
-
-                }   
+                    else if (posL == null)
+                    {
+                        // Node is the head of the list
+                        posR.SetLeft(null);
+                        if (pos == lst) lst = posR;
+                    }
+                    else if (posR == null)
+                    {
+                        // Node is the tail of the list
+                        posL.SetRight(null);
+                        if (pos == lst) lst = posL;
+                    }
+                    else
+                    {
+                        // Node is in the middle of the list
+                        posL.SetRight(posR);
+                        posR.SetLeft(posL);
+                        if (pos == lst) lst = posR;
+                    }
+                }
+                pos = pos.GetRight();
             }
+            return pos;
         }
 
     }
