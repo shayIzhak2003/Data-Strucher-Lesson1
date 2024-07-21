@@ -27,7 +27,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             IntNode pos = lst;
             while (pos != null)
             {
-                if(pos.GetValue() == num)
+                if (pos.GetValue() == num)
                 {
                     return true;
                 }
@@ -39,7 +39,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
         public static void EnterLast(IntNode lst, int num)
         {
             IntNode pos = lst;
-            while(pos.HasNext())
+            while (pos.HasNext())
             {
                 pos = pos.GetNext();
             }
@@ -50,10 +50,10 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
         {
             int count = 0;
             IntNode pos = lst;
-            while(pos != null)
+            while (pos != null)
             {
                 count++;
-                if(count == 2)
+                if (count == 2)
                 {
                     pos.SetValue(num);
                 }
@@ -65,7 +65,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
         {
             int count = 0;
             IntNode pos = lst;
-            while(pos != null)
+            while (pos != null)
             {
                 count++;
                 pos = pos.GetNext();
@@ -77,7 +77,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
         {
             int count = 0;
             IntNode pos = lst;
-            while(pos != null)
+            while (pos != null)
             {
                 if (pos.GetValue() == num)
                     count++;
@@ -92,7 +92,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             IntNode pos = lst;
             while (pos.HasNext())
             {
-                if(pos.GetValue() > pos.GetNext().GetValue())
+                if (pos.GetValue() > pos.GetNext().GetValue())
                     return false;
 
                 pos = pos.GetNext();
@@ -105,7 +105,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             IntNode pos = lst;
             int count = 0;
             int sum = 0;
-            while(pos != null)
+            while (pos != null)
             {
                 count++;
                 if (count % 2 != 0)
@@ -140,7 +140,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
         //EX10
         public static bool IsSerial(IntNode lst)
         {
-            if(lst == null || !lst.HasNext())
+            if (lst == null || !lst.HasNext())
                 return true;
 
             IntNode current = lst;
@@ -179,7 +179,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             while (pos != null)
             {
                 count++;
-                if(count == step)
+                if (count == step)
                 {
                     val = pos.GetValue();
                 }
@@ -195,14 +195,14 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             while (pos != null)
             {
                 count++;
-                if(num == pos.GetValue())
+                if (num == pos.GetValue())
                 {
                     return count;
                 }
                 pos = pos.GetNext();
             }
             return -1;
-            
+
         }
         //EX14
         public static int Max(IntNode lst)
@@ -244,7 +244,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             Node<int> nodeTail = null;
             while (pos != null)
             {
-                if(pos.GetValue() % 2 == 0)
+                if (pos.GetValue() % 2 == 0)
                 {
                     Node<int> newNode = new Node<int>(pos.GetValue());
                     if (nodeHead != null)
@@ -262,57 +262,150 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             }
             return nodeHead;
         }
+        //Node<T> Extracisses Start
+
+        //Two ways List Starts
+        //EX1
+        public static BinNode<int> BuildRandomList(int size, int from, int to)
+        {
+            Random random = new Random();
+            int value = random.Next(from, to);
+            BinNode<int> root = new BinNode<int>(value);
+            BinNode<int> pos = root;
+
+            for (int i = 0; i < size; i++)
+            {
+                int randomValue = random.Next(from, to);
+                pos.SetRight(new BinNode<int>(pos, randomValue, null));
+                pos =  pos.GetRight();
+            }
+            return root;
+
+        }
+        //Printing TwoList (Basic Printing)
+        public static void PrintTwoWayList(BinNode<int> lst)
+        {
+            BinNode<int> pos = lst;
+            Console.Write("[");
+            while (pos != null)
+            {
+                Console.Write(pos + ",");
+                pos = pos.GetRight();
+            }
+            Console.WriteLine("]");
+        }
+        //EX2
+        public static void PrintFromLeft(BinNode<int> lst)
+        {
+            BinNode<int> pos = lst;
+            Console.Write("[");
+            while (pos != null)
+            {
+                Console.Write(pos + ",");
+                pos = pos.GetRight();
+            }
+            Console.WriteLine("]");
+        }
+        //EX3
+        public static void PrintFromRight(BinNode<int> lst)
+        {
+            BinNode<int> pos = lst;
+            while (pos.HasRight())
+            {
+                pos = pos.GetRight();
+            }
+
+            Console.Write("[");
+            while (pos != null)
+            {
+                Console.Write(pos + ",");
+                pos = pos.GetLeft();
+            }
+            Console.WriteLine("]");
+        }
+        //EX4
+
+
+        //EX5
+        public static BinNode<int>DeleteNode(BinNode<int> lst, int x)
+        {
+            BinNode<int> pos = lst;
+            while (pos != null)
+            {
+                if(pos.GetValue() > x)
+                {
+                    BinNode<int> posL = pos.GetLeft();
+                    BinNode<int> posR = pos.GetRight();
+
+                    if(posL== null && posR== null)
+                    {
+                        return null;
+                    }
+
+                }   
+            }
+        }
+
     }
     public class RunMainExClass
     {
         public static void DemoMain()
         {
-            IntNode n1 = new IntNode(14);
-            IntNode n2 = new IntNode(24);
-            IntNode n3 = new IntNode(34);
-            IntNode n4 = new IntNode(44);
-            IntNode n5 = new IntNode(54);
-            n1.setNext(n2);
-            n2.setNext(n3);
-            n3.setNext(n4);
-            n4.setNext(n5);
-            int sum = MainExClass.Sum(n1);
-            Console.WriteLine($"the sum of the list is : {sum}");
-            int num = 1;
-            Console.WriteLine($"is the number {num} in the list? {MainExClass.IsExsist(n1, num)}");
-            Console.WriteLine("\nthe original list :");
-            IntNode.print(n1);
-            //Console.WriteLine("the list after entering 30 in the second place!");
-            //MainExClass.EnterSecond(n1, 30);
+            //IntNode n1 = new IntNode(14);
+            //IntNode n2 = new IntNode(24);
+            //IntNode n3 = new IntNode(34);
+            //IntNode n4 = new IntNode(44);
+            //IntNode n5 = new IntNode(54);
+            //n1.setNext(n2);
+            //n2.setNext(n3);
+            //n3.setNext(n4);
+            //n4.setNext(n5);
+            //int sum = MainExClass.Sum(n1);
+            //Console.WriteLine($"the sum of the list is : {sum}");
+            //int num = 1;
+            //Console.WriteLine($"is the number {num} in the list? {MainExClass.IsExsist(n1, num)}");
+            //Console.WriteLine("\nthe original list :");
             //IntNode.print(n1);
-            Console.WriteLine($"the size of the list is : {MainExClass.Size(n1)}");
-            Console.WriteLine($"the amount of times the the number 14 is of the list is {MainExClass.HowMany(n1, 14)}");
-            Console.WriteLine($"is the list in order ? {MainExClass.InOrder(n1)}");
-            Console.WriteLine($"the sum in the odd indexs is {MainExClass.SumOdd(n1)}");
-            //MainExClass.EnterInOrder(n1, 45);
-            //IntNode.print(n1);
-            Console.WriteLine($"is the list serial? {MainExClass.IsSerial(n1)}");
-            Console.WriteLine("the list after deleteing 54 :");
-            //MainExClass.RemovePos(n1,5);
-            //IntNode.print(n1);
-            Console.WriteLine($"the value in node 3 is {MainExClass.ReturnAtPos(n1, 3)}");
-            Console.WriteLine($"the first place to have the value 14 is {MainExClass.ReturnNum(n1, 14)}");
-            Console.WriteLine($"the node with the biggest value is  : {MainExClass.Max(n1)}");
+            ////Console.WriteLine("the list after entering 30 in the second place!");
+            ////MainExClass.EnterSecond(n1, 30);
+            ////IntNode.print(n1);
+            //Console.WriteLine($"the size of the list is : {MainExClass.Size(n1)}");
+            //Console.WriteLine($"the amount of times the the number 14 is of the list is {MainExClass.HowMany(n1, 14)}");
+            //Console.WriteLine($"is the list in order ? {MainExClass.InOrder(n1)}");
+            //Console.WriteLine($"the sum in the odd indexs is {MainExClass.SumOdd(n1)}");
+            ////MainExClass.EnterInOrder(n1, 45);
+            ////IntNode.print(n1);
+            //Console.WriteLine($"is the list serial? {MainExClass.IsSerial(n1)}");
+            //Console.WriteLine("the list after deleteing 54 :");
+            ////MainExClass.RemovePos(n1,5);
+            ////IntNode.print(n1);
+            //Console.WriteLine($"the value in node 3 is {MainExClass.ReturnAtPos(n1, 3)}");
+            //Console.WriteLine($"the first place to have the value 14 is {MainExClass.ReturnNum(n1, 14)}");
+            //Console.WriteLine($"the node with the biggest value is  : {MainExClass.Max(n1)}");
             //Console.WriteLine($"the value before node 2 is {MainExClass.Prev(n1,2)}");
 
             //================================================================================
 
-            //EX1
-            Console.WriteLine("Filter Even Values Maintain Order:");
-            Node<int> node1 = new Node<int>(1);
-            Node<int> node2 = new Node<int>(2, node1);
-            Node<int> node3 = new Node<int>(3, node2);
-            Node<int> node4 = new Node<int>(4, node3);
-            Node<int> node5 = new Node<int>(5, node4);
-            Node<int> node6 = new Node<int>(6, node5);
+            ////EX1
+            //Console.WriteLine("Filter Even Values Maintain Order:");
+            //Node<int> node1 = new Node<int>(1);
+            //Node<int> node2 = new Node<int>(2, node1);
+            //Node<int> node3 = new Node<int>(3, node2);
+            //Node<int> node4 = new Node<int>(4, node3);
+            //Node<int> node5 = new Node<int>(5, node4);
+            //Node<int> node6 = new Node<int>(6, node5);
 
-            Node<int> evenNodeList = MainExClass.BuildEvenNode(node1);
-            Console.WriteLine("Even Nodes (Maintain Order): " + evenNodeList.ToPrint());
+            //Node<int> evenNodeList = MainExClass.BuildEvenNode(node1);
+            //Console.WriteLine("Even Nodes (Maintain Order): " + evenNodeList.ToPrint());
+
+            //Two List Ex
+            //EX1
+            BinNode<int> randomList = MainExClass.BuildRandomList(6, 1, 100);
+            MainExClass.PrintFromLeft(randomList);
+            MainExClass.PrintFromRight(randomList);
+
+
+
         }
     }
 }

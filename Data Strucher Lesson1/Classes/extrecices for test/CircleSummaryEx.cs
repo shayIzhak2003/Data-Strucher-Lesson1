@@ -25,6 +25,19 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             int s;
             Node<int> first = lst;
             Node<int> pos = lst.GetNext();
+            while (pos != lst)
+            {
+                s = first.GetValue() + pos.GetValue();
+
+                first.SetNext(new Node<int>(s, pos));
+
+                first = pos;
+
+                pos = pos.GetNext();
+            }
+            s = first.GetValue() + pos.GetValue();
+
+            first.SetNext(new Node<int>(s, pos));
         }
     }
     public class RunCircleSummaryEx
