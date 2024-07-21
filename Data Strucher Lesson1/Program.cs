@@ -5,6 +5,7 @@ using Data_Strucher_Lesson1.Classes.Lesson4HomeWork;
 using Data_Strucher_Lesson1.Classes.Lesson5;
 using Data_Strucher_Lesson1.Classes.Lesson6;
 using Data_Strucher_Lesson1.Classes.Lesson7;
+using Data_Strucher_Lesson1.Classes.Lesson8;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -214,7 +215,7 @@ namespace Data_Strucher_Lesson1
             //RunEX5.DemoMain();
             //RunCircleSummaryEx.DemoMain();
             //RunTwoWayListEx.DemoMain();
-            RunMainExClass.DemoMain();
+            //RunMainExClass.DemoMain();
             //=======================
             //Lesson6
             //EX1   
@@ -229,6 +230,9 @@ namespace Data_Strucher_Lesson1
             //==============
             //Lesson7
             //RunBuildRandomList.DemoMain();
+            //==============
+            //lesson8
+            RunRecorsia.DemoMain();
         }
     }
 

@@ -67,6 +67,7 @@
     <Compile Include="Classes\Lesson6\CircularToLinearList.cs" />
     <Compile Include="Classes\Lesson6\GameCircularPath.cs" />
     <Compile Include="Classes\Lesson7\BuildRandomList.cs" />
+    <Compile Include="Classes\Lesson8\Recorsia.cs" />
     <Compile Include="Classes\Node.cs" />
     <Compile Include="Classes\NodeEx.cs" />
     <Compile Include="Classes\NodeTUsageForHomeWORK.cs" />
