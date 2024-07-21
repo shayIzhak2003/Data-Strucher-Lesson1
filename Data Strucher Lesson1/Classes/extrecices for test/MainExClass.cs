@@ -367,6 +367,36 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             return pos;
         }
 
+        //EX7
+        public static BinNode<int> BuildSortedRandomList(int size)
+        {
+            if (size <= 0)
+            {
+                throw new ArgumentException("The size of the list should be greater than 0!");
+            }
+
+            Random rnd = new Random();
+            int randomValue = rnd.Next(1, 31);
+            BinNode<int> firstValue = new BinNode<int>(randomValue);
+            BinNode<int> pos = firstValue;
+
+            for (int i = 1; i <=size; i++)
+            {
+                int newValue;
+                do
+                {
+                    newValue = rnd.Next(1, 31);
+                } while (newValue <= pos.GetValue());
+
+                BinNode<int> newNode = new BinNode<int>(newValue);
+                pos.SetRight(newNode);
+                newNode.SetLeft(pos);
+                pos = newNode;
+            }
+
+            return firstValue;
+        }
+
     }
     public class RunMainExClass
     {
@@ -424,6 +454,10 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             BinNode<int> randomList = MainExClass.BuildRandomList(6, 1, 100);
             MainExClass.PrintFromLeft(randomList);
             MainExClass.PrintFromRight(randomList);
+            //EX7
+            Console.WriteLine();
+            BinNode<int> randomSortedList = MainExClass.BuildSortedRandomList(10);
+            MainExClass.PrintFromLeft(randomSortedList);
 
 
 

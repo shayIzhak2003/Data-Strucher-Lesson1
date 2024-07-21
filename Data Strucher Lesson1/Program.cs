@@ -215,7 +215,7 @@ namespace Data_Strucher_Lesson1
             //RunEX5.DemoMain();
             //RunCircleSummaryEx.DemoMain();
             //RunTwoWayListEx.DemoMain();
-            //RunMainExClass.DemoMain();
+            RunMainExClass.DemoMain();
             //=======================
             //Lesson6
             //EX1   
@@ -232,7 +232,8 @@ namespace Data_Strucher_Lesson1
             //RunBuildRandomList.DemoMain();
             //==============
             //lesson8
-            RunRecorsia.DemoMain();
+            //RunRecorsia.DemoMain();
+            //RunRecorsiaEx.DemoMain();
         }
     }
 
