@@ -456,7 +456,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             MainExClass.PrintFromRight(randomList);
             //EX7
             Console.WriteLine();
-            BinNode<int> randomSortedList = MainExClass.BuildSortedRandomList(10);
+            BinNode<int> randomSortedList = MainExClass.BuildSortedRandomList(4);
             MainExClass.PrintFromLeft(randomSortedList);
 
 

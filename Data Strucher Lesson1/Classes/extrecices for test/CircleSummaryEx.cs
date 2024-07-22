@@ -39,6 +39,61 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
 
             first.SetNext(new Node<int>(s, pos));
         }
+        //adding the sum of the to nodes in the bigginning of the list (in the first node)
+        public static void AddSumInOfTheFirstNodes(Node<int> lst)
+        {
+            int s;
+            Node<int> first = lst;
+            Node<int> pos = lst;
+            while (pos.GetNext()!=lst)
+            {
+                pos = pos.GetNext();
+            }
+             s = pos.GetValue() + lst.GetValue();
+
+            Node<int> newNode = new Node<int>(s, lst.GetNext());
+            first.SetNext(newNode);
+        }
+
+        // making a function that gets a number and a list and put that number in the first place of the list (making hime the lst insted of pos)
+        public static void AddNumberToTheList(Node<int> lst, int num)
+        {
+            Node<int> first = lst;
+            Node<int> pos = lst;
+            while (pos.GetNext() != lst)
+            {
+                pos = pos.GetNext();
+            }
+
+            Node<int> newNode = new Node<int>(num, lst.GetNext());
+            first.SetNext(newNode);
+        }
+
+        public static void AddNumberToTheLast(Node<int> lst, int num)
+        {
+            if (lst == null)
+            {
+                throw new ArgumentException("The list cannot be null!");
+            }
+
+            Node<int> first = lst;
+            Node<int> pos = lst;
+
+            // Find the last node
+            while (pos.GetNext() != lst)
+            {
+                pos = pos.GetNext();
+            }
+
+            // Create the new node
+            Node<int> newNode = new Node<int>(num, first);
+
+            // Make the last node point to the new node
+            pos.SetNext(newNode);
+
+            // Optionally, update the reference of the first node if needed
+            // This is not strictly necessary for the list itself, but if you are keeping track of the first node outside this method, you might need to update it.
+        }
     }
     public class RunCircleSummaryEx
     {
@@ -60,6 +115,8 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             node5.SetNext(node6);
             node6.SetNext(node1);
 
+            CircleSummaryEx.PrintCircleList(node1);
+            CircleSummaryEx.AddNumberToTheList(node1,10);
             CircleSummaryEx.PrintCircleList(node1);
         }
     }
