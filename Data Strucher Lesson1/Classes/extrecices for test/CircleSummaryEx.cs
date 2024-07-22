@@ -45,11 +45,11 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             int s;
             Node<int> first = lst;
             Node<int> pos = lst;
-            while (pos.GetNext()!=lst)
+            while (pos.GetNext() != lst)
             {
                 pos = pos.GetNext();
             }
-             s = pos.GetValue() + lst.GetValue();
+            s = pos.GetValue() + lst.GetValue();
 
             Node<int> newNode = new Node<int>(s, lst.GetNext());
             first.SetNext(newNode);
@@ -94,6 +94,50 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             // Optionally, update the reference of the first node if needed
             // This is not strictly necessary for the list itself, but if you are keeping track of the first node outside this method, you might need to update it.
         }
+
+        // making a function thats deleting a specipic node
+        public static Node<int> DeleteNodeCircleChain(Node<int> lst, int num)
+        {
+            Node<int> prev = lst;
+
+            if (lst.GetValue() == num)
+            {
+                while (prev.GetNext() != lst)
+                {
+                    prev = prev.GetNext();
+                }
+
+                prev.SetNext(lst.GetNext());
+                lst.SetNext(null);
+                lst = prev;
+            }
+            else
+            {
+                while (prev.GetNext().GetValue() != num)
+                {
+                    prev = prev.GetNext();
+                }
+
+                prev.SetNext(prev.GetNext().GetNext());
+            }
+            return lst;
+        }
+        //Sum of circle list function
+        public static int SumOfList(Node<int> lst)
+        {
+            if (lst == null)
+            {
+                throw new ArgumentException("the list cannot be null it as to contain sunm value even 0!");
+            }
+            int sum = 0;
+            Node<int> pos = lst;
+            do
+            {
+                sum += pos.GetValue();
+                pos = pos.GetNext();
+            } while (pos != lst);
+            return sum;
+        }
     }
     public class RunCircleSummaryEx
     {
@@ -116,8 +160,11 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             node6.SetNext(node1);
 
             CircleSummaryEx.PrintCircleList(node1);
-            CircleSummaryEx.AddNumberToTheList(node1,10);
+            //CircleSummaryEx.AddNumberToTheList(node1, 10);
+            //CircleSummaryEx.DeleteNodeCircleChain(node1, 5);
             CircleSummaryEx.PrintCircleList(node1);
+            int sum = CircleSummaryEx.SumOfList(node1);
+            Console.WriteLine($"the sum of the list is {sum}");
         }
     }
 }
