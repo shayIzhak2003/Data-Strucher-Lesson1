@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -277,7 +278,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             {
                 int randomValue = random.Next(from, to);
                 pos.SetRight(new BinNode<int>(pos, randomValue, null));
-                pos =  pos.GetRight();
+                pos = pos.GetRight();
             }
             return root;
 
@@ -327,7 +328,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
 
 
         //EX5
-        public static BinNode<int>DeleteNode(BinNode<int> lst, int x)
+        public static BinNode<int> DeleteNode(BinNode<int> lst, int x)
         {
             BinNode<int> pos = lst;
             while (pos != null)
@@ -380,7 +381,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             BinNode<int> firstValue = new BinNode<int>(randomValue);
             BinNode<int> pos = firstValue;
 
-            for (int i = 1; i <=size; i++)
+            for (int i = 1; i <= size; i++)
             {
                 int newValue;
                 do
@@ -440,6 +441,33 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
                 pos = pos.GetNext();
             }
             Console.WriteLine("]");
+        }
+
+        public static void ExsecutPrintRotation(Node<int> lst)
+        {
+            bool isFirst = true;
+            Node<int> current = lst;
+            Node<int> start = lst;
+
+            while (start != lst || isFirst)
+            {
+                isFirst = false;
+                PrintRotation(start);
+                start = start.GetNext();
+                current = start;
+            }
+        }
+        public static void PrintRotation(Node<int> lst)
+        {
+            Node<int> current = lst;
+            while (true)
+            {
+                Console.Write(current.GetValue());
+                current = current.GetNext();
+                if (current == lst)
+                    break;
+            }
+            Console.WriteLine();
         }
     }
     public class RunMainExClass
@@ -520,6 +548,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             node5.SetNext(node6);
             node6.SetNext(node1);
             MainExClass.MakeCircleToLinear(node1);
+            MainExClass.ExsecutPrintRotation(node1);
 
 
 
