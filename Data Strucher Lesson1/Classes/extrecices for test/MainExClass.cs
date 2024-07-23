@@ -396,7 +396,51 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
 
             return firstValue;
         }
+        //Circle Ex Of Lesson 4
+        //EX1
 
+        //EX2
+        public static void MakeCircleToLinear(Node<int> lst)
+        {
+            if (lst == null)
+                return;
+
+            Node<int> pos = lst;
+            Node<int> headNode = null;
+            Node<int> tailNode = null;
+            bool firstNode = true;
+
+            do
+            {
+                Node<int> newNode = new Node<int>(pos.GetValue());
+                if (firstNode)
+                {
+                    headNode = newNode;
+                    tailNode = newNode;
+                    firstNode = false;
+                }
+                else
+                {
+                    tailNode.SetNext(newNode);
+                    tailNode = newNode;
+                }
+                pos = pos.GetNext();
+            } while (pos != lst);
+
+            PrintLinearList(headNode);
+        }
+
+        public static void PrintLinearList(Node<int> lst)
+        {
+            Node<int> pos = lst;
+            Console.Write("[");
+            while (pos != null)
+            {
+                Console.Write(pos.GetValue() + (pos.GetNext() != null ? ", " : ""));
+                pos = pos.GetNext();
+            }
+            Console.WriteLine("]");
+        }
     }
     public class RunMainExClass
     {
@@ -451,13 +495,31 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
 
             //Two List Ex
             //EX1
-            BinNode<int> randomList = MainExClass.BuildRandomList(6, 1, 100);
-            MainExClass.PrintFromLeft(randomList);
-            MainExClass.PrintFromRight(randomList);
-            //EX7
-            Console.WriteLine();
-            BinNode<int> randomSortedList = MainExClass.BuildSortedRandomList(4);
-            MainExClass.PrintFromLeft(randomSortedList);
+            //BinNode<int> randomList = MainExClass.BuildRandomList(6, 1, 100);
+            //MainExClass.PrintFromLeft(randomList);
+            //MainExClass.PrintFromRight(randomList);
+            ////EX7
+            //Console.WriteLine();
+            //BinNode<int> randomSortedList = MainExClass.BuildSortedRandomList(4);
+            //MainExClass.PrintFromLeft(randomSortedList);
+
+            //===========================
+            // Create circular linked list manually
+            Node<int> node1 = new Node<int>(1);
+            Node<int> node2 = new Node<int>(2);
+            Node<int> node3 = new Node<int>(3);
+            Node<int> node4 = new Node<int>(4);
+            Node<int> node5 = new Node<int>(5);
+            Node<int> node6 = new Node<int>(6);
+
+            // Circular linking
+            node1.SetNext(node2);
+            node2.SetNext(node3);
+            node3.SetNext(node4);
+            node4.SetNext(node5);
+            node5.SetNext(node6);
+            node6.SetNext(node1);
+            MainExClass.MakeCircleToLinear(node1);
 
 
 
