@@ -55,6 +55,7 @@
     <Compile Include="Classes\extrecices for test\ListsAndObjectsEx.cs" />
     <Compile Include="Classes\extrecices for test\MainExClass.cs" />
     <Compile Include="Classes\extrecices for test\TwoWayListEx.cs" />
+    <Compile Include="Classes\extrecices for test\TwoWayListEx2.cs" />
     <Compile Include="Classes\IntNode.cs" />
     <Compile Include="Classes\Lesson3\Ls3NoneEx.cs" />
     <Compile Include="Classes\Lesson4HomeWork\Exercise4.cs" />

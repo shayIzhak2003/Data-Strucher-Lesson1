@@ -218,6 +218,7 @@ namespace Data_Strucher_Lesson1
             //RunMainExClass.DemoMain();
             //RunListsAndObjectsEx.DemoMainForReal();
             //RunGarbageObjects.DemoMain();
+            RunTwoWayListEx2.DemoMain();
             //=======================
             //Lesson6
             //EX1   
@@ -235,7 +236,7 @@ namespace Data_Strucher_Lesson1
             //==============
             //lesson8
             //RunRecorsia.DemoMain();
-            RunRecorsiaEx.DemoMain();
+            //RunRecorsiaEx.DemoMain();
         }
     }
 
