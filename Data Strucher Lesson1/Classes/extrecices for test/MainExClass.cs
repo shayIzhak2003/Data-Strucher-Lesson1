@@ -399,6 +399,34 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
         }
         //Circle Ex Of Lesson 4
         //EX1
+        public static void SelectAndRemoveNodeFromList(Node<int> lst, int num)
+        {
+            Node<int> current = lst;
+            Node<int> prev = null;
+
+            while (true)
+            {
+                for (int i = 0;i < num; i++)
+                {
+                    prev = current;
+                    current = current.GetNext();
+                }
+
+                if(prev == current)
+                {
+                    Console.WriteLine($"Removed value: {current.GetValue()}");
+                    break;
+                }
+                prev.SetNext(current.GetNext());
+                Console.WriteLine($"Removed value: {current.GetValue()}");
+
+                // Use the value of the removed node as the next step count
+                num = current.GetValue();
+
+                // Update current to the next node
+                current = current.GetNext();
+            }
+        }
 
         //EX2
         public static void MakeCircleToLinear(Node<int> lst)
@@ -549,6 +577,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             node6.SetNext(node1);
             MainExClass.MakeCircleToLinear(node1);
             MainExClass.ExsecutPrintRotation(node1);
+            MainExClass.SelectAndRemoveNodeFromList(node1,3);
 
 
 

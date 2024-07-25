@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data_Strucher_Lesson1.Classes.extrecices_for_test;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,39 @@ namespace Data_Strucher_Lesson1.Classes.Lesson8
 {
     public class RecorsiaEx
     {
+        public static int sod1(Node<int> pos)
+        {
+            // If this is the last node, the length of the sequence is 1
+            if (pos.GetNext() == null)
+                return 1;
+
+            // If the next value is greater than or equal to the current value,
+            // continue to the next node and add 1 to the sequence length
+            if (pos.GetNext().GetValue() >= pos.GetValue())
+                return sod1(pos.GetNext()) + 1;
+            else
+                // Otherwise, the sequence length is 1
+                return 1;
+        }
+
+        public static int sod(int num)
+        {
+            // Base case: if the number is a single digit, return it
+            if (num < 10)
+                return num;
+
+            // Recursive case
+            int temp = sod(num / 10); // Recursively find the smallest digit in the quotient
+            int digit = num % 10;     // Get the current last digit
+
+            // Return the smaller of the last digit and the smallest digit found so far
+            if (digit < temp)
+                return digit;
+            else
+                return temp;
+        }
+
+
 
         public bool Mystery(Node<int> lst1, Node<int> lst2)
         {
@@ -81,6 +115,27 @@ namespace Data_Strucher_Lesson1.Classes.Lesson8
 
             Console.WriteLine("New Test Case:");
             Console.WriteLine(recorsiaEx.Mystery(newNode1, newNode4)); // Expected output: False
+
+
+
+            Node<int> node1 = new Node<int>(5);
+            Node<int> node2 = new Node<int>(1);
+            Node<int> node3 = new Node<int>(10);
+            Node<int> node4 = new Node<int>(11);
+            Node<int> node5 = new Node<int>(13);
+            Node<int> node6 = new Node<int>(7);
+            Node<int> node7 = new Node<int>(8);
+            Node<int> node8 = new Node<int>(12);
+
+            node1.SetNext(node2);
+            node2.SetNext(node3);
+            node3.SetNext(node4);
+            node4.SetNext(node5);
+            node5.SetNext(node6);
+            node6.SetNext(node7);
+            node7.SetNext(node8);
+            Console.WriteLine(RecorsiaEx.sod1(node1.GetNext()));
+            Console.WriteLine(RecorsiaEx.sod(19));
         }
     }
 }
