@@ -101,40 +101,68 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
         public static BinNode<int> DeletePosFromList(BinNode<int> lst, int x)
         {
             BinNode<int> pos = lst;
-            while(pos!=null)
+            while (pos != null)
             {
                 BinNode<int> posL = pos.GetLeft();
                 BinNode<int> posR = pos.GetRight();
 
                 if (pos.GetValue() > x)
                 {
-                    if(posL == null && posR == null)
+                    if (posL == null && posR == null)
+                    {
+                        // Node is a single node and matches the condition, list becomes empty
                         return null;
-
-                    if(posL == null)
-                    {
-                        pos.SetRight(null);
-                        posR.SetLeft(null);
-                        if(pos == lst) lst = posR;
                     }
-                    else if(posR == null)
+                    else if (posL == null)
                     {
-                        pos.SetLeft(null);
+                        // Node is the head of the list
+                        posR.SetLeft(null);
+                        if (pos == lst) lst = posR;
+                    }
+                    else if (posR == null)
+                    {
+                        // Node is the tail of the list
                         posL.SetRight(null);
-                        if(pos == lst) lst = posL;
+                        if (pos == lst) lst = posL;
                     }
                     else
                     {
-                        pos.SetLeft(null);
-                        pos.SetRight(null);
+                        // Node is in the middle of the list
                         posL.SetRight(posR);
                         posR.SetLeft(posL);
+                        if (pos == lst) lst = posR;
                     }
                 }
                 pos = pos.GetRight();
             }
             return lst;
         }
+        //EX6
+
+        //EX7
+        public static BinNode<int> GenarateRandomSortedList(int size)
+        {
+            Random random = new Random();
+            int rootValue = random.Next(1, 31);
+            BinNode<int> root = new BinNode<int>(rootValue);
+            BinNode<int> pos = root;
+
+            for (int i = 0; i <=size; i++)
+            {
+                int newValue;
+                do
+                {
+                    newValue = random.Next(1, 31);
+                } while (newValue <= pos.GetValue());
+
+                BinNode<int> newNode = new BinNode<int>(newValue);
+                pos.SetRight(newNode);
+                newNode.SetLeft(pos);
+                pos = newNode;
+            }
+            return root;
+        }
+
     }
     public class RunTwoWayListEx2
     {
@@ -146,10 +174,12 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             BinNode<int> Rndlst = TwoWayListEx2.GenarateRandomList(10, 1, 100);
             TwoWayListEx2.PrintPosToRight(Rndlst);
             TwoWayListEx2.PrintPosToLeft(Rndlst);
-            TwoWayListEx2.AddThreeRandomNumbers(Rndlst, 1, 50);
+            //TwoWayListEx2.AddThreeRandomNumbers(Rndlst, 1, 50);
+            //TwoWayListEx2.PrintPosToRight(Rndlst);
+            TwoWayListEx2.DeletePosFromList(Rndlst, 80);
             TwoWayListEx2.PrintPosToRight(Rndlst);
-            TwoWayListEx2.DeletePosFromList(Rndlst,80);
-            TwoWayListEx2.PrintPosToRight(Rndlst);
+            BinNode<int> sortedList = TwoWayListEx2.GenarateRandomSortedList(4);
+            TwoWayListEx2.PrintPosToRight(sortedList);
 
 
         }
