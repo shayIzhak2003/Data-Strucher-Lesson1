@@ -497,6 +497,10 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             }
             Console.WriteLine();
         }
+
+        ////
+        
+         
     }
     public class RunMainExClass
     {

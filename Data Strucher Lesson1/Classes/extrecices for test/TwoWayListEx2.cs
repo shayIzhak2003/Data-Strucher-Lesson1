@@ -138,6 +138,58 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             return lst;
         }
         //EX6
+        public static BinNode<int> BuildPos()
+        {
+            Console.Write("Enter the size for the list: ");
+            int size = int.Parse(Console.ReadLine());
+
+            if (size <= 0)
+            {
+                throw new ArgumentException("Size must be a positive number.");
+            }
+
+            Console.WriteLine("Enter the values for the list:");
+
+            // Create the head node with the first value
+            Console.Write("Value 1: ");
+            int firstValue = int.Parse(Console.ReadLine());
+            BinNode<int> head = new BinNode<int>(firstValue);
+            BinNode<int> current = head;
+
+            // Create the rest of the list
+            for (int i = 1; i < size; i++)
+            {
+                Console.Write($"Value {i + 1}: ");
+                int newValue = int.Parse(Console.ReadLine());
+                BinNode<int> newNode = new BinNode<int>(newValue);
+                current.SetRight(newNode);
+                newNode.SetLeft(current);
+                current = newNode;
+            }
+
+
+            return head;
+        }
+        public static bool IsPosPhilandron(BinNode<int> lst)
+        {
+            if (lst == null) return true;
+            BinNode<int> tail = lst;
+            while (tail.HasRight())
+            {
+                tail = tail.GetRight();
+            }
+            BinNode<int> start = lst;
+            while (start != null && tail != null)
+            {
+                if (start.GetValue() != tail.GetValue())
+                {
+                    return false;
+                }
+                start = start.GetLeft();
+                tail = tail.GetRight();
+            }
+            return true;
+        }
 
         //EX7
         public static BinNode<int> GenarateRandomSortedList(int size)
@@ -147,7 +199,7 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             BinNode<int> root = new BinNode<int>(rootValue);
             BinNode<int> pos = root;
 
-            for (int i = 0; i <=size; i++)
+            for (int i = 0; i <= size; i++)
             {
                 int newValue;
                 do
@@ -178,9 +230,10 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             //TwoWayListEx2.PrintPosToRight(Rndlst);
             TwoWayListEx2.DeletePosFromList(Rndlst, 80);
             TwoWayListEx2.PrintPosToRight(Rndlst);
-            BinNode<int> sortedList = TwoWayListEx2.GenarateRandomSortedList(4);
-            TwoWayListEx2.PrintPosToRight(sortedList);
-
+            //BinNode<int> sortedList = TwoWayListEx2.GenarateRandomSortedList(4);
+            //TwoWayListEx2.PrintPosToRight(sortedList);
+            BinNode<int> list =  TwoWayListEx2.BuildPos();
+            Console.WriteLine($"is the list philandrom? {TwoWayListEx2.IsPosPhilandron(list)}");
 
         }
     }
