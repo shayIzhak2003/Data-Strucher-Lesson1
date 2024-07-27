@@ -406,13 +406,13 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
 
             while (true)
             {
-                for (int i = 0;i < num; i++)
+                for (int i = 0; i < num; i++)
                 {
                     prev = current;
                     current = current.GetNext();
                 }
 
-                if(prev == current)
+                if (prev == current)
                 {
                     Console.WriteLine($"Removed value: {current.GetValue()}");
                     break;
@@ -499,8 +499,53 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
         }
 
         ////
-        
-         
+
+        public static void PrintNode(Node<int> lst)
+        {
+            Node<int> pos = lst;
+            Console.Write("[");
+            while (pos != null)
+            {
+                Console.Write(pos.GetValue() + ",");
+                pos = pos.GetNext();
+            }
+            Console.WriteLine("]");
+        }
+        public static Node<int> CheckForSquerdValueInList(Node<int> lst1, Node<int> lst2)
+        {
+            Node<int> dummyHead = new Node<int>(0); // Dummy head node for the result list
+            Node<int> current = dummyHead;
+
+            while (lst1 != null)
+            {
+                int value = lst1.GetValue();
+                int squareValue = value * value;
+
+                if (IsSqrValueContained(squareValue, lst2))
+                {
+                    current.SetNext(new Node<int>(value));
+                    current = current.GetNext();
+                }
+
+                lst1 = lst1.GetNext();
+            }
+
+            return dummyHead.GetNext(); // Return the head of the resulting list (lst3)
+        }
+        public static bool IsSqrValueContained(int value, Node<int> node)
+        {
+            Node<int> pos = node;
+            while (pos != null)
+            {
+                if (pos.GetValue() == value)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
     }
     public class RunMainExClass
     {
@@ -581,8 +626,21 @@ namespace Data_Strucher_Lesson1.Classes.extrecices_for_test
             node6.SetNext(node1);
             MainExClass.MakeCircleToLinear(node1);
             MainExClass.ExsecutPrintRotation(node1);
-            MainExClass.SelectAndRemoveNodeFromList(node1,3);
+            MainExClass.SelectAndRemoveNodeFromList(node1, 3);
 
+            // Example lists initialization
+            Node<int> lst1 = new Node<int>(1);
+            lst1.SetNext(new Node<int>(2));
+            lst1.GetNext().SetNext(new Node<int>(3));
+            lst1.GetNext().GetNext().SetNext(new Node<int>(4));
+
+            Node<int> lst2 = new Node<int>(1);
+            lst2.SetNext(new Node<int>(4));
+            lst2.GetNext().SetNext(new Node<int>(9));
+            lst2.GetNext().GetNext().SetNext(new Node<int>(16));
+
+            Node<int> lst3 = MainExClass.CheckForSquerdValueInList(lst1, lst2);
+            MainExClass.PrintNode(lst3);
 
 
         }
