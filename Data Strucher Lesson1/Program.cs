@@ -239,7 +239,8 @@ namespace Data_Strucher_Lesson1
             //RunRecorsia.DemoMain();
             //RunRecorsiaEx.DemoMain();
             // summer Ex
-            RunMainSummerClass.DemoMain();
+            //RunMainSummerClass.DemoMain();
+            RunTwoWayListExMain.DemoMain();
         }
     }
 
