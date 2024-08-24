@@ -1,4 +1,5 @@
 ﻿using Data_Strucher_Lesson1.Classes;
+using Data_Strucher_Lesson1.Classes.exrisice_for_summer_smaster;
 using Data_Strucher_Lesson1.Classes.extrecices_for_test;
 using Data_Strucher_Lesson1.Classes.Lesson3;
 using Data_Strucher_Lesson1.Classes.Lesson4HomeWork;
@@ -215,7 +216,7 @@ namespace Data_Strucher_Lesson1
             //RunEX5.DemoMain();
             //RunCircleSummaryEx.DemoMain();
             //RunTwoWayListEx.DemoMain();
-            RunMainExClass.DemoMain();
+            //RunMainExClass.DemoMain();
             //RunListsAndObjectsEx.DemoMainForReal();
             //RunGarbageObjects.DemoMain();
             //RunTwoWayListEx2.DemoMain();
@@ -237,6 +238,8 @@ namespace Data_Strucher_Lesson1
             //lesson8
             //RunRecorsia.DemoMain();
             //RunRecorsiaEx.DemoMain();
+            // summer Ex
+            RunMainSummerClass.DemoMain();
         }
     }
 
