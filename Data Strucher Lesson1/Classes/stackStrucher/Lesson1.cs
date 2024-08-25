@@ -118,6 +118,36 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
         }
 
         //EX6
+        public static int find_place(Stack<char> stkc, char ch)
+        {
+            Stack<char> tempStack = new Stack<char>(); // Use Stack<char> instead of Stack<int>
+            int count = 0;
+
+            while (!stkc.IsEmpty()) // Corrected the condition to !stkc.IsEmpty()
+            {
+                count++;
+                if (stkc.Top() == ch)
+                {
+                    // Restore the original stack before returning
+                    while (!tempStack.IsEmpty())
+                    {
+                        stkc.Push(tempStack.Pop());
+                    }
+                    return count;
+                }
+                tempStack.Push(stkc.Pop());
+            }
+
+            // Restore the original stack if the element is not found
+            while (!tempStack.IsEmpty())
+            {
+                stkc.Push(tempStack.Pop());
+            }
+
+            return -1; // Return -1 if the character is not found
+        }
+        //EX7
+
 
     }
     public class RunLesson1
@@ -137,6 +167,26 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
 
             //Console.WriteLine($"the sum of the stack is : {Lesson1.Sum_stack(stack)}");
             //Console.WriteLine($"the max value is {Lesson1.Max(stack)}");
+
+            // char stack section
+
+            Stack<char> stack2 = new Stack<char>();
+            stack2.Push('a');
+            stack2.Push('b');
+            stack2.Push('c');
+            stack2.Push('d');
+
+            char searchChar = 'c';
+            int position = Lesson1.find_place(stack2, searchChar);
+
+            Console.WriteLine($"Position of '{searchChar}' in the stack: {position}");
+
+            // Verify the stack remains unchanged
+            Console.WriteLine("Stack after search:");
+            while (!stack2.IsEmpty())
+            {
+                Console.WriteLine(stack2.Pop());
+            }
 
 
         }
