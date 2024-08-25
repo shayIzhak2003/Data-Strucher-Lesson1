@@ -7,6 +7,7 @@ using Data_Strucher_Lesson1.Classes.Lesson5;
 using Data_Strucher_Lesson1.Classes.Lesson6;
 using Data_Strucher_Lesson1.Classes.Lesson7;
 using Data_Strucher_Lesson1.Classes.Lesson8;
+using Data_Strucher_Lesson1.Classes.stackStrucher;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -240,7 +241,8 @@ namespace Data_Strucher_Lesson1
             //RunRecorsiaEx.DemoMain();
             // summer Ex
             //RunMainSummerClass.DemoMain();
-            RunTwoWayListExMain.DemoMain();
+            //RunTwoWayListExMain.DemoMain();
+            RunLesson1.DemoMain();
         }
     }
 
