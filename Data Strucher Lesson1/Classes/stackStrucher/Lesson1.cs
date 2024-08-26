@@ -219,6 +219,37 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
             return stkc;
         }
         //EX9
+        public static Stack<T> Merge_2_Stacks<T>(Stack<T> stack1, Stack<T> stack2)
+        {
+            Stack<T> mergedStack = new Stack<T>();
+
+            while (!stack1.IsEmpty() && !stack2.IsEmpty())
+            {
+                mergedStack.Push(stack1.Pop());
+                mergedStack.Push(stack2.Pop());
+            }
+
+            // אם נותרו אלמנטים במחסנית הראשונה
+            while (!stack1.IsEmpty())
+            {
+                mergedStack.Push(stack1.Pop());
+            }
+
+            // אם נותרו אלמנטים במחסנית השנייה
+            while (!stack2.IsEmpty())
+            {
+                mergedStack.Push(stack2.Pop());
+            }
+
+            // הופכים את המחסנית הממוזגת כדי לשמור על הסדר הנכון
+            Stack<T> finalStack = new Stack<T>();
+            while (!mergedStack.IsEmpty())
+            {
+                finalStack.Push(mergedStack.Pop());
+            }
+
+            return finalStack;
+        }
 
 
     }
@@ -226,27 +257,27 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
     {
         public static void DemoMain()
         {
-            Stack<int> stack = new Stack<int>();
-            stack.Push(1);
-            stack.Push(2);
-            stack.Push(3);
+            //Stack<int> stack = new Stack<int>();
+            //stack.Push(1);
+            //stack.Push(2);
+            //stack.Push(3);
 
-            int count = Lesson1.count_stack(stack);
-            Console.WriteLine($"Number of elements in the stack: {count}");
-            Console.WriteLine(Lesson1.greater_avrg(stack));
-            //Console.WriteLine("Original stack: " + stack.ToString());
-            //Console.WriteLine("Revarsed stack:" + Lesson1.reverse_stack(stack));
+            //int count = Lesson1.count_stack(stack);
+            //Console.WriteLine($"Number of elements in the stack: {count}");
+            //Console.WriteLine(Lesson1.greater_avrg(stack));
+            ////Console.WriteLine("Original stack: " + stack.ToString());
+            ////Console.WriteLine("Revarsed stack:" + Lesson1.reverse_stack(stack));
 
-            //Console.WriteLine($"the sum of the stack is : {Lesson1.Sum_stack(stack)}");
-            //Console.WriteLine($"the max value is {Lesson1.Max(stack)}");
+            ////Console.WriteLine($"the sum of the stack is : {Lesson1.Sum_stack(stack)}");
+            ////Console.WriteLine($"the max value is {Lesson1.Max(stack)}");
 
-            // char stack section
+            //// char stack section
 
-            Stack<char> stack2 = new Stack<char>();
-            stack2.Push('a');
-            stack2.Push('b');
-            stack2.Push('c');
-            stack2.Push('d');
+            //Stack<char> stack2 = new Stack<char>();
+            //stack2.Push('a');
+            //stack2.Push('b');
+            //stack2.Push('c');
+            //stack2.Push('d');
 
             //char searchChar = 'c';
             //int position = Lesson1.find_place(stack2, searchChar);
@@ -266,9 +297,30 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
             //Lesson1.PrintStack(stack2);
             //Lesson1.AddChar(stack2);
 
-            Console.WriteLine(Lesson1.delete_item(stack2, 'c'));
-            
+            //Console.WriteLine(Lesson1.delete_item(stack2, 'c'));
 
+
+
+            // last quastion 
+            // Create the first stack
+            Stack<int> stack1 = new Stack<int>();
+            stack1.Push(1);
+            stack1.Push(2);
+            stack1.Push(3);
+            stack1.Push(4);
+            stack1.Push(5);
+
+            // Create the second stack
+            Stack<int> stack2 = new Stack<int>();
+            stack2.Push(10);
+            stack2.Push(20);
+            stack2.Push(30);
+
+            // Merge the two stacks
+            Stack<int> mergedStack = Lesson1.Merge_2_Stacks(stack1, stack2);
+
+            // Print the merged stack
+            Console.WriteLine("Merged Stack: " + mergedStack.ToString());
 
         }
     }
