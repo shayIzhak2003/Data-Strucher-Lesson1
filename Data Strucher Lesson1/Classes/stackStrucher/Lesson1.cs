@@ -147,6 +147,78 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
             return -1; // Return -1 if the character is not found
         }
         //EX7
+        public static void AddChar(Stack<char> stkc)
+        {
+            Console.WriteLine("Enter a character to insert at the end of the stack:");
+            char ch = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+
+            Stack<char> tempStack = new Stack<char>();
+
+            // Move all elements to the temporary stack
+            while (!stkc.IsEmpty())
+            {
+                tempStack.Push(stkc.Pop());
+            }
+
+            // Push the new character at the bottom
+            stkc.Push(ch);
+
+            // Restore the original stack on top of the new character
+            while (!tempStack.IsEmpty())
+            {
+                stkc.Push(tempStack.Pop());
+            }
+
+            Console.WriteLine("Stack after adding a character:");
+            // Print the stack contents
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintStack(stkc); // Use PrintStack method to display the stack contents
+            Console.ResetColor();
+        }
+
+        // Method to print the stack contents
+        public static void PrintStack(Stack<char> stack)
+        {
+            Stack<char> tempStack = new Stack<char>();
+
+            while (!stack.IsEmpty())
+            {
+                char ch = stack.Pop();
+                Console.WriteLine(ch);
+                tempStack.Push(ch);
+            }
+
+            // Restore the original stack
+            while (!tempStack.IsEmpty())
+            {
+                stack.Push(tempStack.Pop());
+            }
+        }
+
+        //EX8
+        public static Stack<char> delete_item(Stack<char> stkc, char ch)
+        {
+            Stack<char> tempStack = new Stack<char>();
+
+            // Move elements to the temporary stack, excluding the character to delete
+            while (!stkc.IsEmpty())
+            {
+                char current = stkc.Pop();
+                if (current != ch)
+                {
+                    tempStack.Push(current);
+                }
+            }
+
+            while (!tempStack.IsEmpty())
+            {
+                stkc.Push(tempStack.Pop());
+            }
+
+            return stkc;
+        }
+        //EX9
 
 
     }
@@ -176,17 +248,26 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
             stack2.Push('c');
             stack2.Push('d');
 
-            char searchChar = 'c';
-            int position = Lesson1.find_place(stack2, searchChar);
+            //char searchChar = 'c';
+            //int position = Lesson1.find_place(stack2, searchChar);
 
-            Console.WriteLine($"Position of '{searchChar}' in the stack: {position}");
+            //Console.WriteLine($"Position of '{searchChar}' in the stack: {position}");
 
-            // Verify the stack remains unchanged
-            Console.WriteLine("Stack after search:");
-            while (!stack2.IsEmpty())
-            {
-                Console.WriteLine(stack2.Pop());
-            }
+            //// Verify the stack remains unchanged
+            //Console.WriteLine("Stack after search:");
+            //while (!stack2.IsEmpty())
+            //{
+            //    Console.WriteLine(stack2.Pop());
+            //}
+            //Console.WriteLine("Original stack:");
+            //Lesson1.PrintStack(stack2);
+
+            //Console.WriteLine("Stack befure a character entered:");
+            //Lesson1.PrintStack(stack2);
+            //Lesson1.AddChar(stack2);
+
+            Console.WriteLine(Lesson1.delete_item(stack2, 'c'));
+            
 
 
         }
