@@ -242,7 +242,8 @@ namespace Data_Strucher_Lesson1
             // summer Ex
             //RunMainSummerClass.DemoMain();
             //RunTwoWayListExMain.DemoMain();
-            RunLesson1.DemoMain();
+            //RunLesson1.DemoMain();
+            RunStackEX.DemoMain();
         }
     }
 
