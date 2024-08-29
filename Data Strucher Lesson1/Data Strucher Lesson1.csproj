@@ -79,6 +79,7 @@
     <Compile Include="Classes\NodeTUsageForHomeWORK.cs" />
     <Compile Include="Classes\Stack.cs" />
     <Compile Include="Classes\stackStrucher\Lesson1.cs" />
+    <Compile Include="Classes\stackStrucher\Lesson2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

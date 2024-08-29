@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Data_Strucher_Lesson1.Classes.stackStrucher.Lesson2;
 
 namespace Data_Strucher_Lesson1
 {
@@ -243,7 +244,8 @@ namespace Data_Strucher_Lesson1
             //RunMainSummerClass.DemoMain();
             //RunTwoWayListExMain.DemoMain();
             //RunLesson1.DemoMain();
-            RunStackEX.DemoMain();
+            //RunStackEX.DemoMain();
+            RunLesson2.DemoMain();
         }
     }
 
