@@ -146,6 +146,115 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
             return result;
         }
 
+        // זוהי תוכנה שבודקת האם ספרת היחידות של איצ מספרות במחסנית שווה למספר המתקבל כפרמטר
+        public static bool IsExist(Stack<int> stk, int num)
+        {
+            Stack<int>tempStack = new Stack<int>();
+            int currentValue = 0;
+            if(num < 0 && num > 9)
+            {
+                throw new ArgumentException("the number should be between 0-9!");
+            }
+            while (!stk.IsEmpty())
+            {
+                currentValue = stk.Pop();
+                tempStack.Push(currentValue);
+                if(currentValue % 10 == num)
+                    return true;
+            }
+
+            while (!tempStack.IsEmpty())
+            {
+                int value = tempStack.Pop();
+                stk.Push(value);
+            }
+
+            return false;
+        }
+
+        public static Stack<int> Clone(Stack<int> st)
+        {
+            Stack<int> tempStack = new Stack<int>();
+            Stack<int> resultStack = new Stack<int>();
+
+            while (!st.IsEmpty())
+            {
+                int value = st.Pop();
+                tempStack.Push(value);
+            }
+            while (!tempStack.IsEmpty())
+            {
+                int value = tempStack.Pop();
+                st.Push(value);
+                resultStack.Push(value);
+            }
+            return resultStack;
+        }
+        // פעולת עזר המחזירה את הספרה המשמעותית במספר
+        public static int GetMostSignificantDigit(int num)
+        {
+            while (num > 0)
+                num = num / 10;
+            return num;
+        }
+        public static bool AllExist(Stack<int> stk)
+        {
+
+            bool isAllExist = true;
+            Stack<int> tmp = new Stack<int>();
+            Stack<int> cloneStk = Clone(stk);
+
+            while (!stk.IsEmpty() && isAllExist)
+            {
+                isAllExist = isAllExist &&
+                             IsExist(cloneStk, GetMostSignificantDigit(stk.Top()));
+
+                tmp.Push(stk.Pop());
+            }
+
+            while (!tmp.IsEmpty())
+                stk.Push(tmp.Pop());
+
+            return isAllExist;
+
+        }
+
+        //public static void Secret()
+        //{
+        //    Queue<char> q = new Queue<char>(); // Use built-in Queue with Enqueue method
+        //    Stack<char> stk = new Stack<char>(); // Use built-in Stack with Push method
+
+        //    bool isReverse = false;
+
+        //    Console.Write("Please enter a character or 'f' to stop: ");
+        //    char ch = char.Parse(Console.ReadLine());
+        //    while (ch != 'f')
+        //    {
+        //        if (ch == '@')
+        //        {
+        //            if (isReverse)  // Empty the stack into the queue
+        //            {
+        //                while (stk.Count > 0)
+        //                    q.Enqueue(stk.Pop()); // Replaced Insert with Enqueue
+        //            }
+        //            isReverse = !isReverse;
+        //        }
+        //        else
+        //        {
+        //            if (isReverse)
+        //                stk.Push(ch);
+        //            else
+        //                q.Enqueue(ch); // Replaced Insert with Enqueue
+        //        }
+
+        //        Console.Write("Please enter a character or 'f' to stop: ");
+        //        ch = char.Parse(Console.ReadLine());
+        //    }
+
+        //    while (q.Count > 0) // Replaced IsEmpty with Count > 0
+        //        Console.Write(q.Dequeue());
+        //    Console.WriteLine();
+        //}
 
 
         public class RunLesson2
@@ -184,17 +293,25 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
                 stack.Push(3);
                 stack.Push(4);
                 stack.Push(4);
-                stack.Push(5);
+                stack.Push(555);
 
-                Console.WriteLine("Original Stack: " + stack.ToString());
+                //Console.WriteLine("Original Stack: " + stack.ToString());
 
-                // Get non-block objects
-                Stack<int> result = GetNoneBlockObjects(stack);
+                //// Get non-block objects
+                //Stack<int> result = GetNoneBlockObjects(stack);
 
-                // Print the resulting stack after removing blocked objects
-                Console.WriteLine("Non-block objects: " + result.ToString());
+                //// Print the resulting stack after removing blocked objects
+                //Console.WriteLine("Non-block objects: " + result.ToString());
 
-                Console.WriteLine();
+                //Console.WriteLine();
+
+                bool checkStackFirstValue = Lesson2.IsExist(stack, 5);
+                Console.WriteLine(checkStackFirstValue);
+
+                Console.WriteLine($"the result stack is {Lesson2.Clone(sortedStack)}");
+                Console.WriteLine(Lesson2.AllExist(stack));
+
+
             }
         }
     }
