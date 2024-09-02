@@ -197,6 +197,7 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
                 num = num / 10;
             return num;
         }
+        // 
         public static bool AllExist(Stack<int> stk)
         {
 
@@ -217,6 +218,48 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
 
             return isAllExist;
 
+        }
+        public static int GetMaxOfStack1(Stack<int> stk)
+        {
+            int max = 0;
+            int temp;
+            int currrentValue = stk.Pop();
+            while (!stk.IsEmpty())
+            {
+                temp = currrentValue + stk.Top();
+                if(currrentValue > max)
+                {
+                    max = currrentValue;
+                }
+                currrentValue = stk.Pop();
+            }
+            return max;
+        }
+        public static int MaxCuple(Stack<int> st1, Stack<int> st2)
+        {
+            int max2 = GetMaxOfStack1(st2);
+            int temp = 0;
+            int sum = 0;
+            bool isBigger = false;
+            int currentValue = st1.Pop();
+            while (!st1.IsEmpty() && !isBigger)
+            {
+                sum = currentValue + st1.Top();
+                if(sum > max2)
+                {
+                    isBigger = true;
+                }
+                else
+                {
+                    currentValue = st1.Pop();
+                }
+               
+            }
+            if (!isBigger)
+            {
+                sum = 0;
+            }
+            return sum;
         }
 
         //public static void Secret()
@@ -305,11 +348,12 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
 
                 //Console.WriteLine();
 
-                bool checkStackFirstValue = Lesson2.IsExist(stack, 5);
-                Console.WriteLine(checkStackFirstValue);
+                //bool checkStackFirstValue = Lesson2.IsExist(stack, 5);
+                //Console.WriteLine(checkStackFirstValue);
 
-                Console.WriteLine($"the result stack is {Lesson2.Clone(sortedStack)}");
-                Console.WriteLine(Lesson2.AllExist(stack));
+                //Console.WriteLine($"the result stack is {Lesson2.Clone(sortedStack)}");
+                //Console.WriteLine(Lesson2.AllExist(stack));
+                Console.WriteLine(Lesson2.MaxCuple(stack,sortedStack));
 
 
             }
