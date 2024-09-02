@@ -298,7 +298,28 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
         //        Console.Write(q.Dequeue());
         //    Console.WriteLine();
         //}
+        // איבר מחליף כיוון
+        public static void ChangeDirectionNum(Stack<int> s)
+        {
+            int temp, prev, top;
+            Stack<int> st = new Stack<int>();
+            while (!s.IsEmpty())
+                st.Push(s.Pop());
 
+            prev = st.Pop();
+            s.Push(prev);
+            s.Push(st.Pop());
+            while (!st.IsEmpty())
+            {
+                temp = st.Pop();
+                top = s.Top();
+                if ((top > prev && temp < top) ||
+                    (top < prev && temp > top))
+                    s.Push(top);
+                prev = top;
+                s.Push(temp);
+            }
+        }
 
         public class RunLesson2
         {
