@@ -85,6 +85,8 @@
     <Compile Include="Classes\stackStrucher\stack Objects\Card Game\Game.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Card Game\RunGame.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Lesson3.cs" />
+    <Compile Include="Classes\stackStrucher\stack Objects\Ring App\Pole.cs" />
+    <Compile Include="Classes\stackStrucher\stack Objects\Ring App\Ring.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\TwoItems.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
