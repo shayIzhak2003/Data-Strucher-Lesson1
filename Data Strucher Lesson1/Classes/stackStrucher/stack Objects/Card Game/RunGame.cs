@@ -43,7 +43,12 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Card_Game
         }
         public static void DemoMain()
         {
-            Console.WriteLine("hello world");
+            Game game = new Game();
+
+            // Run the FiveWins function and get the number of games played to achieve 5 wins
+            int gamesToWinFiveTimes = RunGame2.FiveWins(game);
+
+            Console.WriteLine($"It took {gamesToWinFiveTimes} games to achieve 5 wins.");
         }
     }
 }
