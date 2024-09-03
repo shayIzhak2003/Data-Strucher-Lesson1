@@ -10,6 +10,7 @@ using Data_Strucher_Lesson1.Classes.Lesson8;
 using Data_Strucher_Lesson1.Classes.stackStrucher;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Card_Game;
+using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Ring_App;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -250,7 +251,8 @@ namespace Data_Strucher_Lesson1
             //RunLesson2.DemoMain();
             //RunLesson3.DemoMain();
             //RunTwoItems.DemoMain();
-            RunGame2.DemoMain();
+            //RunGame2.DemoMain();
+            RunRingApp.DemoMain();
         }
     }
 
