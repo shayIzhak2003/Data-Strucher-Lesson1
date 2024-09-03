@@ -375,6 +375,8 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher
                 //Console.WriteLine($"the result stack is {Lesson2.Clone(sortedStack)}");
                 //Console.WriteLine(Lesson2.AllExist(stack));
                 Console.WriteLine(Lesson2.MaxCuple(stack,sortedStack));
+                Console.WriteLine(Math.Pow(-16,2));
+                Console.WriteLine(Math.Pow(-30,2));
 
 
             }

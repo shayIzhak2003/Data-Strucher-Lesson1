@@ -8,6 +8,7 @@ using Data_Strucher_Lesson1.Classes.Lesson6;
 using Data_Strucher_Lesson1.Classes.Lesson7;
 using Data_Strucher_Lesson1.Classes.Lesson8;
 using Data_Strucher_Lesson1.Classes.stackStrucher;
+using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -245,7 +246,9 @@ namespace Data_Strucher_Lesson1
             //RunTwoWayListExMain.DemoMain();
             //RunLesson1.DemoMain();
             //RunStackEX.DemoMain();
-            RunLesson2.DemoMain();
+            //RunLesson2.DemoMain();
+            //RunLesson3.DemoMain();
+            RunTwoItems.DemoMain();
         }
     }
 
