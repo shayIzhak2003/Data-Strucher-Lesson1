@@ -88,6 +88,9 @@
     <Compile Include="Classes\stackStrucher\stack Objects\Ring App\Pole.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Ring App\Ring.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Ring App\RunRingApp.cs" />
+    <Compile Include="Classes\stackStrucher\stack Objects\Task Manneger App\RunTaskMannegerApp.cs" />
+    <Compile Include="Classes\stackStrucher\stack Objects\Task Manneger App\Task.cs" />
+    <Compile Include="Classes\stackStrucher\stack Objects\Task Manneger App\TaskManagement.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\TwoItems.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
