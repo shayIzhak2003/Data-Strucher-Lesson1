@@ -80,6 +80,7 @@
     <Compile Include="Classes\Stack.cs" />
     <Compile Include="Classes\stackStrucher\Lesson1.cs" />
     <Compile Include="Classes\stackStrucher\Lesson2.cs" />
+    <Compile Include="Classes\stackStrucher\Ricorsia\RecorsiaEx.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Card Game\Card.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Card Game\Deck.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Card Game\Game.cs" />
