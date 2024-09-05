@@ -68,6 +68,7 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.Ricorsia
             stack1.Push(6);
             Console.WriteLine(stack1.ToString());
             RecorsiaEx2.RemoveValueRec(stack1, 5);
+            Console.WriteLine(531 % 2 == 1 % 2);
         }
     }
 }
