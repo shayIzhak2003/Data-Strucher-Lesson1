@@ -59,32 +59,48 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Lesson2
             {
                 Carriage currentCarriage = carriages.Pop();
 
-                while (!tempStack.IsEmpty() && currentCarriage.GetNumberOfPassengers() > 0)
+                // Distribute passengers from currentCarriage to newTrain
+                while (currentCarriage.GetNumberOfPassengers() > 0)
                 {
-                    Carriage nextCarriage = tempStack.Pop();
+                    Carriage nextCarriage;
+
+                    if (tempStack.IsEmpty() || tempStack.Top().GetNumberOfPassengers() == Carriage.GetMaxPassengers())
+                    {
+                        // Create a new carriage with the same serial number as currentCarriage
+                        nextCarriage = new Carriage(currentCarriage.GetSerialNumber(), 0);
+                        tempStack.Push(nextCarriage);
+
+                        // Only set the serial number if tempStack is empty
+                        if (!tempStack.IsEmpty())
+                        {
+                            nextCarriage.SetSerialNumber(tempStack.Top().GetSerialNumber() + 1);
+                        }
+                    }
+                    else
+                    {
+                        nextCarriage = tempStack.Top();
+                    }
+
                     int availableSpace = Carriage.GetMaxPassengers() - nextCarriage.GetNumberOfPassengers();
                     int passengersToMove = Math.Min(availableSpace, currentCarriage.GetNumberOfPassengers());
                     nextCarriage.SetNumberOfPassengers(nextCarriage.GetNumberOfPassengers() + passengersToMove);
                     currentCarriage.SetNumberOfPassengers(currentCarriage.GetNumberOfPassengers() - passengersToMove);
 
-                    
-                    if (nextCarriage.GetNumberOfPassengers() == Carriage.GetMaxPassengers() || currentCarriage.GetNumberOfPassengers() == 0)
+                    // If the carriage is full, move it to the new train
+                    if (nextCarriage.GetNumberOfPassengers() == Carriage.GetMaxPassengers())
                     {
-                        newTrain.AttachCarriage(nextCarriage);
-                    }
-                    else
-                    {
-                        tempStack.Push(nextCarriage);
+                        newTrain.AttachCarriage(tempStack.Pop());
                     }
                 }
 
-               
+                // If currentCarriage still has passengers, push it to tempStack
                 if (currentCarriage.GetNumberOfPassengers() > 0)
                 {
-                    newTrain.AttachCarriage(currentCarriage);
+                    tempStack.Push(currentCarriage);
                 }
             }
 
+            // Attach any remaining carriages
             while (!tempStack.IsEmpty())
             {
                 newTrain.AttachCarriage(tempStack.Pop());
