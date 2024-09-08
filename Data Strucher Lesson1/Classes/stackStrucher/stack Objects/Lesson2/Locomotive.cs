@@ -19,7 +19,7 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Lesson2
 
         public int GetLocomotiveNumber()
         {
-            return locomotiveNumber;
+            return this.locomotiveNumber;
         }
 
         public void SetLocomotiveNumber(int locomotiveNumber)
@@ -29,7 +29,7 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Lesson2
 
         public int GetYearOfManufacture()
         {
-            return yearOfManufacture;
+            return this.yearOfManufacture;
         }
 
         public void SetYearOfManufacture(int yearOfManufacture)

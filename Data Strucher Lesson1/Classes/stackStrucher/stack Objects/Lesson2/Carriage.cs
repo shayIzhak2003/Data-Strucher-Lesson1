@@ -8,7 +8,8 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Lesson2
 {
     public class Carriage
     {
-        private static readonly int MaxPassengers = 50;
+
+        private const int MaxPassengers = 50;
         private int serialNumber;
         private int numberOfPassengers;
 
@@ -20,7 +21,7 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Lesson2
 
         public int GetSerialNumber()
         {
-            return serialNumber;
+            return this.serialNumber;
         }
 
         public void SetSerialNumber(int serialNumber)
@@ -30,7 +31,7 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Lesson2
 
         public int GetNumberOfPassengers()
         {
-            return numberOfPassengers;
+            return this.numberOfPassengers;
         }
 
         public void SetNumberOfPassengers(int numberOfPassengers)

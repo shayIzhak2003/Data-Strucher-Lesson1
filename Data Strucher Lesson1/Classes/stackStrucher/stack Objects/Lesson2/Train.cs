@@ -59,18 +59,18 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Lesson2
             {
                 Carriage currentCarriage = carriages.Pop();
 
-                // Distribute passengers from currentCarriage to newTrain
+                
                 while (currentCarriage.GetNumberOfPassengers() > 0)
                 {
                     Carriage nextCarriage;
 
                     if (tempStack.IsEmpty() || tempStack.Top().GetNumberOfPassengers() == Carriage.GetMaxPassengers())
                     {
-                        // Create a new carriage with the same serial number as currentCarriage
+                        
                         nextCarriage = new Carriage(currentCarriage.GetSerialNumber(), 0);
                         tempStack.Push(nextCarriage);
 
-                        // Only set the serial number if tempStack is empty
+                       
                         if (!tempStack.IsEmpty())
                         {
                             nextCarriage.SetSerialNumber(tempStack.Top().GetSerialNumber() + 1);
@@ -86,21 +86,21 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Lesson2
                     nextCarriage.SetNumberOfPassengers(nextCarriage.GetNumberOfPassengers() + passengersToMove);
                     currentCarriage.SetNumberOfPassengers(currentCarriage.GetNumberOfPassengers() - passengersToMove);
 
-                    // If the carriage is full, move it to the new train
+                    
                     if (nextCarriage.GetNumberOfPassengers() == Carriage.GetMaxPassengers())
                     {
                         newTrain.AttachCarriage(tempStack.Pop());
                     }
                 }
 
-                // If currentCarriage still has passengers, push it to tempStack
+               
                 if (currentCarriage.GetNumberOfPassengers() > 0)
                 {
                     tempStack.Push(currentCarriage);
                 }
             }
 
-            // Attach any remaining carriages
+           
             while (!tempStack.IsEmpty())
             {
                 newTrain.AttachCarriage(tempStack.Pop());
@@ -122,10 +122,10 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Lesson2
             {
                 Carriage carriage = carriages.Pop();
                 trainInfo += carriage.ToString() + "\n";
-                tempStack.Push(carriage);  // Preserve the original stack
+                tempStack.Push(carriage);  
             }
 
-            // Restore the original stack
+           
             while (!tempStack.IsEmpty())
             {
                 carriages.Push(tempStack.Pop());
