@@ -85,6 +85,11 @@
     <Compile Include="Classes\stackStrucher\stack Objects\Card Game\Deck.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Card Game\Game.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Card Game\RunGame.cs" />
+    <Compile Include="Classes\stackStrucher\stack Objects\EX\EX1.cs" />
+    <Compile Include="Classes\stackStrucher\stack Objects\Lesson2\Carriage.cs" />
+    <Compile Include="Classes\stackStrucher\stack Objects\Lesson2\Locomotive.cs" />
+    <Compile Include="Classes\stackStrucher\stack Objects\Lesson2\Ls2.cs" />
+    <Compile Include="Classes\stackStrucher\stack Objects\Lesson2\Train.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Lesson3.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Ring App\Pole.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Ring App\Ring.cs" />

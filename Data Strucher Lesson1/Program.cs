@@ -11,6 +11,8 @@ using Data_Strucher_Lesson1.Classes.stackStrucher;
 using Data_Strucher_Lesson1.Classes.stackStrucher.Ricorsia;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Card_Game;
+using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX;
+using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Lesson2;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Ring_App;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Task_Manneger_App;
 using System;
@@ -256,7 +258,9 @@ namespace Data_Strucher_Lesson1
             //RunGame2.DemoMain();
             //RunRingApp.DemoMain();
             //RunTaskMannegerApp.DemoMain();
-            RunRecorsiaEx2.DemoMain();
+            //RunRecorsiaEx2.DemoMain();
+            //RunExOfSummer1.DemoMain1();
+            RunLs2.DemoMain();
         }
     }
 
