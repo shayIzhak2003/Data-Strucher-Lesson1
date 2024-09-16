@@ -54,12 +54,35 @@ namespace Data_Strucher_Lesson1.Classes
         }
         //-------------------------------------
         // ToString
+        //public override string ToString()
+        //{
+        //    if (this.IsEmpty())
+        //        return "[]";
+        //    string temp = this.first.ToString();
+        //    return "QueueHead[" + temp.Substring(0, temp.Length - 1) + "]";
+        //}
         public override string ToString()
         {
             if (this.IsEmpty())
                 return "[]";
-            string temp = this.first.ToString();
-            return "QueueHead[" + temp.Substring(0, temp.Length - 1) + "]";
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("QueueHead[ ");
+
+            Node<T> current = this.first;
+            while (current != null)
+            {
+                sb.Append(current.GetValue().ToString());
+                if (current.GetNext() != null)
+                {
+                    sb.Append(", ");
+                }
+                current = current.GetNext();
+            }
+
+            sb.Append(" ]");
+            return sb.ToString();
         }
+
     }
 }

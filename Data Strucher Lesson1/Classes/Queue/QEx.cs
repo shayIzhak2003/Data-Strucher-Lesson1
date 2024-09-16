@@ -156,6 +156,54 @@ namespace Data_Strucher_Lesson1.Classes.Queue
         }
 
         //EX6
+        public static Queue<T> IsExist<T>(Queue<T> line, T objectToCheck)
+        {
+            Queue<T> tempLine = new Queue<T>();
+            bool flag = false;
+            T foundObject = default(T);
+
+            // Check each element in the queue and move to tempLine
+            while (!line.IsEmpty())
+            {
+                T value = line.Remove();
+                if (value.Equals(objectToCheck))
+                {
+                    flag = true; // Mark that the object is found
+                    foundObject = value; // Save the found object
+                }
+                else
+                {
+                    tempLine.Insert(value); // Move the other elements to the temporary queue
+                }
+            }
+
+            // If the object was found, insert it at the head of the original queue
+            if (flag)
+            {
+                line.Insert(foundObject);
+            }
+
+            // Restore the original queue from tempLine
+            while (!tempLine.IsEmpty())
+            {
+                T value = tempLine.Remove();
+                line.Insert(value); // Insert all remaining elements back into the original queue
+            }
+
+            // Output result based on whether the object was found
+            if (flag)
+            {
+                Console.WriteLine($"{objectToCheck} was found and moved to the head of the queue.");
+            }
+            else
+            {
+                Console.WriteLine($"{objectToCheck} does not exist in the queue.");
+            }
+
+            return line; // Return the modified queue
+        }
+
+
 
     }
     public class RunQEx
@@ -185,6 +233,7 @@ namespace Data_Strucher_Lesson1.Classes.Queue
             Console.WriteLine($"is the number in ? {QEx.IsNumberIn(intQueue, 4)}");
             Console.WriteLine($"is the Queue in order? {QEx.IsInOrder(intQueue)}");
             Console.WriteLine($"are the lines Identical ? {QEx.IsLinesIdentical(intQueue, intQueue2)}");
+            Console.WriteLine(QEx.IsExist(intQueue,3));
         }
     }
 }
