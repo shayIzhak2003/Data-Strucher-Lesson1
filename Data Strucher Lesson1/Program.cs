@@ -267,7 +267,8 @@ namespace Data_Strucher_Lesson1
             //RunQEx.DemoMain();
             //RunQEx2.DemoMain();
             //RunChep1.DemoMain();
-            RunQueueObjects.DemoMain();
+            //RunQueueObjects.DemoMain();
+            RunQEx3.DemoMain();
 
         }
     }

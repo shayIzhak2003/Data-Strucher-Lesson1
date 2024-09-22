@@ -51,6 +51,52 @@ namespace Data_Strucher_Lesson1.Classes.Queue.campusIL_Course.Queue_Objects.Cini
                 this.halls[standPoint - 1].Insert(id);
             }
         }
-        
+        public string Remove(int standPoint)
+        {
+            if (standPoint <= 0 && standPoint > 10)  // אם מספר העמדה לא תקין -> נחזיר מחרוזת שגיאה
+                return "Error standPoint";
+
+            //   הוא 1-10, אבל המספר של האולם במערך הוא  0-9 standPoint מספר האולם
+            Queue<string> q = this.halls[standPoint - 1];
+            // הנחה: העמדה איננה ריקה
+            return q.Remove();
+
+
+        }
+        public string Head(int standPoint)
+        {
+            if (standPoint <= 0 && standPoint > 10)  // אם מספר העמדה לא תקין -> נחזיר מחרוזת שגיאה
+                return "Error standPoint";
+
+            // מספר האולם  standPoint הוא 1-10,   אבל המספר של האולם במערך הוא 0-9
+            Queue<string> q = this.halls[standPoint - 1];
+            // הנחה: העמדה איננה ריקה
+            return q.Head();
+
+        }
+        public override string ToString()
+        {
+
+            string strCinema = "";
+            Queue<string> tmp = new Queue<string>();
+
+            for (int i = 0; i < this.halls.Length; i++)
+            {
+                // נשרשר למחרוזת תיאור הקולנוע את התור הנוכחי עם כל העומדים בתור
+                Queue<string> q = this.halls[i];
+                strCinema += "Stand point #" + (i + 1) + " <- ";
+                while (!q.IsEmpty())
+                {
+                    strCinema += q.Head() + " , ";
+                    tmp.Insert(q.Remove());
+                }
+                strCinema += " <- \n";
+                // נחזיר את התור הנוכחי למצבו הקודם
+                while (!tmp.IsEmpty())
+                    q.Insert(tmp.Remove());
+            }
+
+            return strCinema;
+        }
     }
 }
