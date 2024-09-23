@@ -94,7 +94,61 @@ namespace Data_Strucher_Lesson1.Classes.Queue
             return expectOperator;
         }
         //EX3
+        public static Queue<int> GetMaxQueue(Queue<int> queue)
+        {
+            Queue<int> cloneQ = Chep1.CloneQueue(queue);
+            Queue<int> resultQueue = new Queue<int>();
+            int maxValue = 0;
+            bool firstValue = true;  // To handle the first element correctly
 
+            while (!cloneQ.IsEmpty())
+            {
+                int currentValue = cloneQ.Remove();
+                if (currentValue != -1)
+                {
+                    // Initialize maxValue with the first value of the sequence
+                    if (firstValue)
+                    {
+                        maxValue = currentValue;
+                        firstValue = false;
+                    }
+                    else if (currentValue > maxValue)
+                    {
+                        maxValue = currentValue;
+                    }
+                }
+                else
+                {
+                    resultQueue.Insert(maxValue);
+                    resultQueue.Insert(currentValue);
+                    maxValue = 0;
+                    firstValue = true;  // Reset for the next sequence
+                }
+            }
+
+            // If the queue does not end with -1, we need to add the last maxValue
+            if (!firstValue)  // This means there was a sequence after the last -1
+            {
+                resultQueue.Insert(maxValue);
+            }
+
+            return resultQueue;
+        }
+        //EX4
+        public static Queue<int>UnknowenLengthQueue(Queue<int> queue)
+        {
+            Queue<int> cloneQ = Chep1.CloneQueue(queue);
+            Queue<int>resultQueue = new Queue<int>();
+            while (!cloneQ.IsEmpty())
+            {
+                int currentValue = cloneQ.Remove();
+                for(int i = 0; i < currentValue; i++)
+                {
+                    resultQueue.Insert(currentValue);
+                }
+            }
+            return resultQueue;
+        }
 
     }
 
@@ -105,8 +159,9 @@ namespace Data_Strucher_Lesson1.Classes.Queue
             Queue<int> intQueue = new Queue<int>();
             intQueue.Insert(1);
             intQueue.Insert(2);
-            intQueue.Insert(2);
+            intQueue.Insert(3);
             intQueue.Insert(4);
+
 
             Queue<int> intQueue2 = new Queue<int>();
             intQueue2.Insert(1);
@@ -136,6 +191,19 @@ namespace Data_Strucher_Lesson1.Classes.Queue
             Queue<int> duplicateQueue = QEx3.DuplicateLines(intQueue, intQueue2);
 
             Console.WriteLine($"Duplicate values: {duplicateQueue}");
+
+            Queue<int> inputQueue = new Queue<int>();
+            inputQueue.Insert(34);
+            inputQueue.Insert(65);
+            inputQueue.Insert(3); 
+            inputQueue.Insert(-1);
+            inputQueue.Insert(100);
+            inputQueue.Insert(-1);
+            inputQueue.Insert(678);
+            inputQueue.Insert(89);
+            inputQueue.Insert(5);
+            Console.WriteLine(QEx3.GetMaxQueue(inputQueue));
+            Console.WriteLine(QEx3.UnknowenLengthQueue(intQueue));
 
 
         }
