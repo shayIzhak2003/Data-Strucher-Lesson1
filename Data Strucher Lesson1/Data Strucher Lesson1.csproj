@@ -83,6 +83,7 @@
     <Compile Include="Classes\Queue\campusIL Course\Queue Objects\Cookie.cs" />
     <Compile Include="Classes\Queue\campusIL Course\Queue Objects\RunQueueObjects.cs" />
     <Compile Include="Classes\Queue\campusIL Course\Queue Objects\Student.cs" />
+    <Compile Include="Classes\Queue\EX\LastLessonEX.cs" />
     <Compile Include="Classes\Queue\QEx.cs" />
     <Compile Include="Classes\Queue\QEx2.cs" />
     <Compile Include="Classes\Queue\QEx3.cs" />
