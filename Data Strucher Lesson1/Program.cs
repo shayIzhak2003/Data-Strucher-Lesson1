@@ -270,7 +270,9 @@ namespace Data_Strucher_Lesson1
             //RunChep1.DemoMain();
             //RunQueueObjects.DemoMain();
             //RunQEx3.DemoMain();
-            RunLastLessonEX.DemoMain();
+            //RunLastLessonEX.DemoMain();
+            RunStackExForSummer.DemoMain();
+
         }
     }
 
