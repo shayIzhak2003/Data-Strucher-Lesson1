@@ -221,19 +221,24 @@ namespace Data_Strucher_Lesson1.Classes.Queue
             intQueue2.Insert(2);
             intQueue2.Insert(3);
             intQueue2.Insert(4);
+            Console.WriteLine(intQueue2);
+            int temp = intQueue2.Remove();
+            Console.WriteLine(temp);
+            intQueue2.Insert(temp);
+            Console.WriteLine(intQueue2);
 
 
-            // string queue
-            Queue<string> stringQueue = new Queue<string>();
-            stringQueue.Insert("hello");
-            stringQueue.Insert("world");
-            int count = QEx.CountQueue(stringQueue);
-            QEx.CloneQueue(stringQueue);
-            Console.WriteLine($"the counter = {count}");
-            Console.WriteLine($"is the number in ? {QEx.IsNumberIn(intQueue, 4)}");
-            Console.WriteLine($"is the Queue in order? {QEx.IsInOrder(intQueue)}");
-            Console.WriteLine($"are the lines Identical ? {QEx.IsLinesIdentical(intQueue, intQueue2)}");
-            Console.WriteLine(QEx.IsExist(intQueue,3));
+            //// string queue
+            //Queue<string> stringQueue = new Queue<string>();
+            //stringQueue.Insert("hello");
+            //stringQueue.Insert("world");
+            //int count = QEx.CountQueue(stringQueue);
+            //QEx.CloneQueue(stringQueue);
+            //Console.WriteLine($"the counter = {count}");
+            //Console.WriteLine($"is the number in ? {QEx.IsNumberIn(intQueue, 4)}");
+            //Console.WriteLine($"is the Queue in order? {QEx.IsInOrder(intQueue)}");
+            //Console.WriteLine($"are the lines Identical ? {QEx.IsLinesIdentical(intQueue, intQueue2)}");
+            //Console.WriteLine(QEx.IsExist(intQueue,3));
         }
     }
 }

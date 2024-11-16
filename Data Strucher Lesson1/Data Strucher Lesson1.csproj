@@ -44,10 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BinNode.cs" />
+    <Compile Include="Classes\Binray-tree\campusIL\BinEx1.cs" />
     <Compile Include="Classes\Circle.cs" />
     <Compile Include="Classes\Expr.cs" />
     <Compile Include="Classes\exrisice for summer smaster\MainSummerClass.cs" />
+    <Compile Include="Classes\exrisice for summer smaster\NodesEx.cs" />
     <Compile Include="Classes\exrisice for summer smaster\StackEx.cs" />
+    <Compile Include="Classes\exrisice for summer smaster\Test.cs" />
     <Compile Include="Classes\exrisice for summer smaster\TwoWayListExMain.cs" />
     <Compile Include="Classes\extrecices for test\CircleSummaryEx.cs" />
     <Compile Include="Classes\extrecices for test\Ex1.cs" />
