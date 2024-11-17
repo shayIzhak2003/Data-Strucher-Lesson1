@@ -46,6 +46,54 @@ namespace Data_Strucher_Lesson1.Classes.exrisice_for_summer_smaster
             }
             pos.SetValue(num);
         }
+        //EX4
+        public static void EnterSecond(IntNode lst, int num)
+        {
+            IntNode pos = lst;
+            int count = 0;
+            while (pos != null)
+            {
+                count++;
+                if (count == 2)
+                {
+                    pos.SetValue(num);
+                }
+
+                pos = pos.GetNext();
+            }
+        }
+        //EX5
+        public static int Size(IntNode lst)
+        {
+            IntNode pos = lst;
+            int count = 0;
+            while (pos != null)
+            {
+                while (pos != null)
+                {
+                    pos = pos.GetNext();
+                    count++;
+                }
+            }
+            return count;
+        }
+        //EX6
+        public static int HowMany(IntNode lst, int num)
+        {
+            IntNode pos = lst;
+            int count = 0;
+            while (pos != null)
+            {
+                int currentValue = pos.GetValue();
+                if(currentValue == num)
+                {
+                    count++;
+                }
+                pos = pos.GetNext();
+            }
+            return count;
+        }
+        //EX7
 
     }
     public class RunNodesEx
@@ -66,12 +114,23 @@ namespace Data_Strucher_Lesson1.Classes.exrisice_for_summer_smaster
             node4.setNext(node5);
             node5.setNext(node6);
 
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Original linked list:");
             IntNode.print(node1);
+            Console.ResetColor();
             Console.WriteLine($"the sum of the list is = {NodesEx.Sum(node1)}");
             Console.WriteLine($"is the value 4 in the list? : {NodesEx.IsExist(node1, 4)}");
             NodesEx.EnterLast(node1, 10);
             IntNode.print(node1);
+            NodesEx.EnterSecond(node1, 100);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("the list after 100 was enterd in the second node :");
+            IntNode.print(node1);
+            Console.ResetColor();
+            int count = NodesEx.Size(node1);
+            int countNumAppernce = NodesEx.HowMany(node1, 100);
+            Console.WriteLine($"the list length = {count}");
+            Console.WriteLine($"the amount of ");
         }
     }
 }
