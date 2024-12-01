@@ -91,6 +91,8 @@
     <Compile Include="Classes\Queue\QEx.cs" />
     <Compile Include="Classes\Queue\QEx2.cs" />
     <Compile Include="Classes\Queue\QEx3.cs" />
+    <Compile Include="Classes\Recorsia\RecEx1.cs" />
+    <Compile Include="Classes\Recorsia\RecEx2.cs" />
     <Compile Include="Classes\Stack.cs" />
     <Compile Include="Classes\stackStrucher\Lesson1.cs" />
     <Compile Include="Classes\stackStrucher\Lesson2.cs" />

@@ -12,6 +12,7 @@ using Data_Strucher_Lesson1.Classes.Queue;
 using Data_Strucher_Lesson1.Classes.Queue.campusIL_Course;
 using Data_Strucher_Lesson1.Classes.Queue.campusIL_Course.Queue_Objects;
 using Data_Strucher_Lesson1.Classes.Queue.EX;
+using Data_Strucher_Lesson1.Classes.Recorsia;
 using Data_Strucher_Lesson1.Classes.stackStrucher;
 using Data_Strucher_Lesson1.Classes.stackStrucher.Ricorsia;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects;
@@ -275,7 +276,9 @@ namespace Data_Strucher_Lesson1
             //RunStackExForSummer.DemoMain();
             //RunTest.DemoMain();
             //RunBinEx1.DemoMain();
-            RunNodesEx.DemoMain();
+            //RunNodesEx.DemoMain();
+            //RunRecEx1.DemoMain();
+            RunRecEx2.DemoMain();
 
         }
     }
