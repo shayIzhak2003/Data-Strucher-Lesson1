@@ -84,18 +84,19 @@ namespace Data_Strucher_Lesson1.Classes.Recorsia
         //EX3
         public static int MinValueInStack(Stack<int> stack)
         {
-            if (stack.IsEmpty())
-            {
-                return int.MaxValue; 
-            }
+           
 
            
             int current = stack.Pop();
 
-            
+            if (stack.IsEmpty())
+            {
+                return current;
+            }
+
+
             int minInRest = MinValueInStack(stack);
 
-            int max = Math.Max(minInRest, current);
             int min = Math.Min(current, minInRest);
 
             stack.Push(current);
