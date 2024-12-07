@@ -104,6 +104,24 @@ namespace Data_Strucher_Lesson1.Classes.Recorsia
             return min;
         }
 
+        public static int Schum(Node<int> lst, Node<int> p)
+        {
+            // Get the next node
+            Node<int> p1 = p.GetNext();
+
+            // If the next node is null, return 0
+            if (p1 == null)
+                return 0;
+
+            // If the value of the next node is greater than the current node's value, return 0
+            if (p1.GetValue() > p.GetValue())
+                return 0;
+
+            // Recursive call: sum the current node's value with the result of the next nodes
+            return Schum(lst, p1) + p.GetValue();
+        }
+
+
     }
     public class RunRecEx2
     {
@@ -124,12 +142,33 @@ namespace Data_Strucher_Lesson1.Classes.Recorsia
             stack.Push(30);
             stack.Push(50);
 
-            // functions usage
-            //Console.WriteLine(RecEx2.IsInside(queue, 40));
-            //Console.WriteLine(RecEx2.CountEven(queue));
-            //Console.WriteLine(RecEx2.IsNumInsideStack(stack, 10));
-            //Console.WriteLine(RecEx2.CountEvenInStack(stack));
+            Node<int> node1 = new Node<int>(3);
+            Node<int> node2 = new Node<int>(4);
+            Node<int> node3 = new Node<int>(5);
+            Node<int> node4 = new Node<int>(6);
+            Node<int> node5 = new Node<int>(7);
+            Node<int> node6 = new Node<int>(5);
+            Node<int> node7 = new Node<int>(7);
+            Node<int> node8 = new Node<int>(1);
+            Node<int> node9 = new Node<int>(6);
+
+            // Build the linked list
+            node1.SetNext(node2);
+            node2.SetNext(node3);
+            node3.SetNext(node4);
+            node4.SetNext(node5);
+            node5.SetNext(node6);
+            node6.SetNext(node7);
+            node7.SetNext(node8);
+            node8.SetNext(node9);
+
+            Console.WriteLine(RecEx2.IsInside(queue, 40));
+            Console.WriteLine(RecEx2.CountEven(queue));
+            Console.WriteLine(RecEx2.IsNumInsideStack(stack, 10));
+            Console.WriteLine(RecEx2.CountEvenInStack(stack));
             Console.WriteLine(RecEx2.MinValueInStack(stack));
+
+            Console.WriteLine(RecEx2.Schum(node1, node1));
 
         }
     }
