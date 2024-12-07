@@ -151,14 +151,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             Console.ResetColor();
         }
         //EX3
-        public static bool IsMiracle(Node<int> list)
-        {
-            Node<int> node = 
-            int listLength = 0;
-            int min = int.MinValue;
-            int count = 0;
-
-        }
+    
 
     }
 
