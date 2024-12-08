@@ -214,7 +214,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             // Clone the stacks to preserve their original content
             Stack<T> firstStackClone = CloneStack(firstStack);
             Stack<T> secondStackClone = CloneStack(secondStack);
-
+                                                                                                
             // Stack to store common elements
             Stack<T> stackToReturn = new Stack<T>();
 
@@ -234,7 +234,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
                 }
             }
 
-            return stackToReturn; // Result contains common elements from the top
+            return stackToReturn;
         }
 
 

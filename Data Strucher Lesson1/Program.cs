@@ -1,5 +1,6 @@
 ﻿using Data_Strucher_Lesson1.Classes;
 using Data_Strucher_Lesson1.Classes.Binray_tree.campusIL;
+using Data_Strucher_Lesson1.Classes.Binray_tree.Lessons;
 using Data_Strucher_Lesson1.Classes.exrisice_for_summer_smaster;
 using Data_Strucher_Lesson1.Classes.extrecices_for_test;
 using Data_Strucher_Lesson1.Classes.Lesson3;
@@ -280,7 +281,8 @@ namespace Data_Strucher_Lesson1
             //RunNodesEx.DemoMain();
             //RunRecEx1.DemoMain();
             //RunRecEx2.DemoMain();
-            RunMtEx1.DemoMain();
+            //RunMtEx1.DemoMain();
+            RunTreeLs1.DemoMain();
         }
     }
 
