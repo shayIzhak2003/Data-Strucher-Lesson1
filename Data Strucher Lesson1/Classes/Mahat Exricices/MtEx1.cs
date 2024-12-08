@@ -151,7 +151,46 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             Console.ResetColor();
         }
         //EX3
-    
+        public static int NodeLength<T>(Node<T> lst)
+        {
+            Node<T> tempNode = lst;
+            int count = 0;
+            while (tempNode != null)
+            {
+                tempNode = tempNode.GetNext();
+                count++;
+            }
+            return count;
+        }
+        public static bool IsMiracle(Node<int> lst)
+        {
+            Node<int> tempNode = lst;
+            int minValue = tempNode.GetValue();
+            int index = 0;
+            int count = 0;
+            int nodeLength = NodeLength(tempNode);
+            int middle = nodeLength / 2;
+            int startValue = tempNode.GetValue();
+            int endValue = 0;
+            while (tempNode != null)
+            {
+                int currentValue = tempNode.GetValue();
+                if (currentValue < minValue)
+                {
+                    minValue = currentValue;
+                    index = count;
+                }
+                if (!tempNode.HasNext())
+                {
+                    endValue = tempNode.GetValue();
+                }
+                tempNode = tempNode.GetNext();
+                count++;
+              
+            }
+            Console.WriteLine($"in place {index}");
+            return (endValue == startValue && index == middle && nodeLength % 2 != 0);
+        }
 
     }
 
@@ -174,6 +213,13 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             intQueue.Insert(3);
             intQueue.Insert(4);
 
+            // Node section
+            Node<int> node5 = new Node<int>(10);
+            Node<int> node4 = new Node<int>(13, node5);
+            Node<int> node3 = new Node<int>(1, node4);
+            Node<int> node2 = new Node<int>(11, node3);
+            Node<int> node1 = new Node<int>(10, node2);
+
 
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -184,6 +230,8 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
 
             Console.WriteLine("Is stack ordered? " + MtEx1.IsOrderd(stack1));
             MtEx1.CheckQueue(intQueue);
+
+            Console.WriteLine(MtEx1.IsMiracle(node1));
         }
     }
 }
