@@ -191,6 +191,53 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             Console.WriteLine($"in place {index}");
             return (endValue == startValue && index == middle && nodeLength % 2 != 0);
         }
+        //EX6 pt.1
+        public static bool CheckTwoStacks<T>(Stack<T>firstStack, Stack<T> secondStack)
+        {
+            Stack<T> cloneFisrtStack = MtEx1.CloneStack(firstStack);
+            Stack<T> cloneSecondStack = MtEx1.CloneStack(secondStack);
+            while(!cloneFisrtStack.IsEmpty() && !cloneSecondStack.IsEmpty())
+            {
+                T currentValueStack1 = cloneFisrtStack.Pop();
+                T currentValueStack2 = cloneSecondStack.Pop();
+
+                if (!(currentValueStack1.Equals(currentValueStack2)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        //EX6 pt.2
+        public static Stack<T> CommunBottoms<T>(Stack<T> firstStack, Stack<T> secondStack)
+        {
+            // Clone the stacks to preserve their original content
+            Stack<T> firstStackClone = CloneStack(firstStack);
+            Stack<T> secondStackClone = CloneStack(secondStack);
+
+            // Stack to store common elements
+            Stack<T> stackToReturn = new Stack<T>();
+
+            // Compare the stacks element by element from the top
+            while (!firstStackClone.IsEmpty() && !secondStackClone.IsEmpty())
+            {
+                T currentFirst = firstStackClone.Pop();
+                T currentSecond = secondStackClone.Pop();
+
+                if (currentFirst.Equals(currentSecond))
+                {
+                    stackToReturn.Push(currentFirst); // Add the common element
+                }
+                else
+                {
+                    break; // Stop comparison on the first mismatch
+                }
+            }
+
+            return stackToReturn; // Result contains common elements from the top
+        }
+
+
 
     }
 
@@ -202,9 +249,17 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             Stack<int> stack1 = new Stack<int>();
             stack1.Push(9);
             stack1.Push(7);
-            stack1.Push(5);
+            stack1.Push(15);
             stack1.Push(2);
             stack1.Push(4);
+
+            Stack<int> stack2 = new Stack<int>();
+            stack2.Push(9);
+            stack2.Push(7);
+            stack2.Push(5);
+            stack2.Push(2);
+            stack2.Push(4);
+
 
             //queue section
             Queue<int> intQueue = new Queue<int>();
@@ -232,6 +287,9 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             MtEx1.CheckQueue(intQueue);
 
             Console.WriteLine(MtEx1.IsMiracle(node1));
+            Console.WriteLine(MtEx1.CheckTwoStacks(stack1, stack2));
+            Console.WriteLine(MtEx1.CommunBottoms(stack1,stack2));
+
         }
     }
 }
