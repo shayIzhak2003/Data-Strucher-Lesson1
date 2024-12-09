@@ -262,21 +262,34 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             return true;
         }
         // EX7 pt.2
-        public static int GetNodeInIndex(Node<int> lst, int num)
+        public static Node<int> ReturnFibonacciSeries(int num)
         {
-            Node<int> pos = lst;
-            int index = 0;
-            int valueToReturnRef = 0;
-            while (pos != null)
+            if (num <= 0) return null; // Handle edge case: no Fibonacci series for non-positive numbers.
+
+            // Create the head of the linked list with the first Fibonacci number.
+            Node<int> fibunachiList = new Node<int>(0);
+            if (num == 1) return fibunachiList; // Return the list with only one element if num is 1.
+
+            // Add the second Fibonacci number.
+            Node<int> current = new Node<int>(1);
+            fibunachiList.SetNext(current);
+
+            int a = 0, b = 1; // First two Fibonacci numbers
+
+            // Generate the rest of the Fibonacci numbers.
+            for (int i = 2; i < num; i++)
             {
-                if (index == num)
-                {
-                    valueToReturnRef = pos.GetValue();
-                }
-                index++;
-                pos = pos.GetNext();
+                int nextValue = a + b;
+                a = b;
+                b = nextValue;
+
+                // Create a new node and attach it to the list.
+                Node<int> newNode = new Node<int>(nextValue);
+                current.SetNext(newNode);
+                current = newNode; // Move to the new node.
             }
-            return valueToReturnRef;
+
+            return fibunachiList;
         }
 
 
@@ -332,7 +345,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             Console.WriteLine(MtEx1.CommunBottoms(stack1, stack2));
             Console.WriteLine($"is the list fibunachi? {MtEx1.IsFibunachi(node1)}");
 
-            Console.WriteLine($"the node in index: {MtEx1.GetNodeInIndex(node1, 4)}");
+            Console.WriteLine(MtEx1.ReturnFibonacciSeries(4));
 
         }
     }
