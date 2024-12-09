@@ -236,7 +236,32 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
 
             return stackToReturn;
         }
+        //EX7 pt.1
+        public static bool IsFibunachi(Node<int> lst)
+        {
+            if (lst == null || !lst.HasNext())
+            {
+                // A Fibonacci sequence must have at least 3 numbers
+                return false;
+            }
 
+            Node<int> first = lst;
+            Node<int> second = lst.GetNext();
+            Node<int> current = second.GetNext();
+            while (current != null)
+            {
+                if(current.GetValue() != second.GetValue() + first.GetValue())
+                {
+                    return false;
+                }
+                first = second;
+                second = current;
+                current = current.GetNext();           
+            }
+            return true;
+        }
+        // EX7 pt.2
+        //public static 
 
 
     }
@@ -269,11 +294,11 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             intQueue.Insert(4);
 
             // Node section
-            Node<int> node5 = new Node<int>(10);
-            Node<int> node4 = new Node<int>(13, node5);
-            Node<int> node3 = new Node<int>(1, node4);
-            Node<int> node2 = new Node<int>(11, node3);
-            Node<int> node1 = new Node<int>(10, node2);
+            Node<int> node5 = new Node<int>(8);
+            Node<int> node4 = new Node<int>(5, node5);
+            Node<int> node3 = new Node<int>(3, node4);
+            Node<int> node2 = new Node<int>(2, node3);
+            Node<int> node1 = new Node<int>(1, node2);
 
 
 
@@ -289,6 +314,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             Console.WriteLine(MtEx1.IsMiracle(node1));
             Console.WriteLine(MtEx1.CheckTwoStacks(stack1, stack2));
             Console.WriteLine(MtEx1.CommunBottoms(stack1,stack2));
+            Console.WriteLine($"is the list fibunachi? {MtEx1.IsFibunachi(node1)}");
 
         }
     }
