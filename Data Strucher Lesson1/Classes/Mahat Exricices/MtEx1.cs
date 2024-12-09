@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -186,17 +187,17 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
                 }
                 tempNode = tempNode.GetNext();
                 count++;
-              
+
             }
             Console.WriteLine($"in place {index}");
             return (endValue == startValue && index == middle && nodeLength % 2 != 0);
         }
         //EX6 pt.1
-        public static bool CheckTwoStacks<T>(Stack<T>firstStack, Stack<T> secondStack)
+        public static bool CheckTwoStacks<T>(Stack<T> firstStack, Stack<T> secondStack)
         {
             Stack<T> cloneFisrtStack = MtEx1.CloneStack(firstStack);
             Stack<T> cloneSecondStack = MtEx1.CloneStack(secondStack);
-            while(!cloneFisrtStack.IsEmpty() && !cloneSecondStack.IsEmpty())
+            while (!cloneFisrtStack.IsEmpty() && !cloneSecondStack.IsEmpty())
             {
                 T currentValueStack1 = cloneFisrtStack.Pop();
                 T currentValueStack2 = cloneSecondStack.Pop();
@@ -214,7 +215,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             // Clone the stacks to preserve their original content
             Stack<T> firstStackClone = CloneStack(firstStack);
             Stack<T> secondStackClone = CloneStack(secondStack);
-                                                                                                
+
             // Stack to store common elements
             Stack<T> stackToReturn = new Stack<T>();
 
@@ -250,18 +251,33 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             Node<int> current = second.GetNext();
             while (current != null)
             {
-                if(current.GetValue() != second.GetValue() + first.GetValue())
+                if (current.GetValue() != second.GetValue() + first.GetValue())
                 {
                     return false;
                 }
                 first = second;
                 second = current;
-                current = current.GetNext();           
+                current = current.GetNext();
             }
             return true;
         }
         // EX7 pt.2
-        //public static 
+        public static int GetNodeInIndex(Node<int> lst, int num)
+        {
+            Node<int> pos = lst;
+            int index = 0;
+            int valueToReturnRef = 0;
+            while (pos != null)
+            {
+                if (index == num)
+                {
+                    valueToReturnRef = pos.GetValue();
+                }
+                index++;
+                pos = pos.GetNext();
+            }
+            return valueToReturnRef;
+        }
 
 
     }
@@ -313,8 +329,10 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
 
             Console.WriteLine(MtEx1.IsMiracle(node1));
             Console.WriteLine(MtEx1.CheckTwoStacks(stack1, stack2));
-            Console.WriteLine(MtEx1.CommunBottoms(stack1,stack2));
+            Console.WriteLine(MtEx1.CommunBottoms(stack1, stack2));
             Console.WriteLine($"is the list fibunachi? {MtEx1.IsFibunachi(node1)}");
+
+            Console.WriteLine($"the node in index: {MtEx1.GetNodeInIndex(node1, 4)}");
 
         }
     }
