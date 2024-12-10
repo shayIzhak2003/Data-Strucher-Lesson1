@@ -291,6 +291,38 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
 
             return fibunachiList; // Return the head of the linked list.
         }
+        //EX8 (this is a bunary tree function i will do it later)
+
+        //EX9
+        public static int MaxDiff(Queue<int> originalQueue)
+        {
+            Queue<int> cloneQueue = CloneQueue(originalQueue); // Assuming CloneQueue creates a deep copy
+            int maxDiff = int.MinValue; // Set to smallest possible value to track maximum difference
+
+            // Ensure there are at least two elements to process
+            while (!cloneQueue.IsEmpty())
+            {
+                // Remove the first element
+                int currentValue = cloneQueue.Remove();
+
+                // Check if there is another element to form a pair
+                if (!cloneQueue.IsEmpty())
+                {
+                    int nextValue = cloneQueue.Remove();
+
+                    int currentDiff = Math.Abs(currentValue - nextValue); // Use absolute difference
+
+                    if (currentDiff > maxDiff)
+                    {
+                        maxDiff = currentDiff; // Update maxDiff
+                    }
+                }
+            }
+
+            return maxDiff == int.MinValue ? 0 : maxDiff; // Return 0 if no difference was calculated
+        }
+
+
 
 
 
@@ -347,6 +379,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             Console.WriteLine($"is the list fibunachi? {MtEx1.IsFibunachi(node1)}");
 
             Console.WriteLine(MtEx1.ReturnFibonacciSeries(4));
+            Console.WriteLine(MtEx1.MaxDiff(intQueue));
 
         }
     }
