@@ -267,30 +267,31 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             if (num <= 0) return null; // Handle edge case: no Fibonacci series for non-positive numbers.
 
             // Create the head of the linked list with the first Fibonacci number.
-            Node<int> fibunachiList = new Node<int>(0);
-            if (num == 1) return fibunachiList; // Return the list with only one element if num is 1.
+            Node<int> fibunachiList = new Node<int>(0); // First Fibonacci number (0)
+            if (num == 1) return fibunachiList; // If only 1 Fibonacci number is needed.
 
-            // Add the second Fibonacci number.
-            Node<int> current = new Node<int>(1);
+            // Add the second Fibonacci number (1).
+            Node<int> current = new Node<int>(1); // Second Fibonacci number (1)
             fibunachiList.SetNext(current);
 
             int a = 0, b = 1; // First two Fibonacci numbers
 
-            // Generate the rest of the Fibonacci numbers.
-            for (int i = 2; i < num; i++)
+            // Generate the rest of the Fibonacci sequence.
+            for (int i = 2; i < num; i++) // Start from the third Fibonacci number.
             {
-                int nextValue = a + b;
+                int nextValue = a + b; // Calculate the next Fibonacci number.
                 a = b;
                 b = nextValue;
 
-                // Create a new node and attach it to the list.
+                // Create a new node with the next Fibonacci number and link it.
                 Node<int> newNode = new Node<int>(nextValue);
                 current.SetNext(newNode);
-                current = newNode; // Move to the new node.
+                current = newNode; // Move to the newly created node.
             }
 
-            return fibunachiList;
+            return fibunachiList; // Return the head of the linked list.
         }
+
 
 
     }
