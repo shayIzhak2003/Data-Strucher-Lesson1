@@ -17,14 +17,14 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
             if (root == null)
                 return;
 
+          
+            // סרוק את תת-העץ השמאלי
+            PrintLeftChildren(root.GetLeft());
             // אם לצומת הנוכחי יש בן שמאלי, הדפס את ערך הבן השמאלי
             if (root.GetLeft() != null)
             {
                 Console.WriteLine(root.GetLeft().GetValue());
             }
-
-            // סרוק את תת-העץ השמאלי
-            PrintLeftChildren(root.GetLeft());
 
             // סרוק את תת-העץ הימני
             PrintLeftChildren(root.GetRight());
