@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data_Structure_Lesson1.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
             if (root == null)
                 return;
 
-          
+
             // סרוק את תת-העץ השמאלי
             PrintLeftChildren(root.GetLeft());
             // אם לצומת הנוכחי יש בן שמאלי, הדפס את ערך הבן השמאלי
@@ -80,7 +81,7 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
         {
             int count = 0;
 
-            if(root == null)
+            if (root == null)
             {
                 return count;
             }
@@ -101,8 +102,8 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
             {
                 return 0;
             }
-         
-            if(root.GetValue() % 2 == 0)
+
+            if (root.GetValue() % 2 == 0)
             {
                 return SumOfEvenValuesOfTheTree(root.GetLeft()) + SumOfEvenValuesOfTheTree(root.GetRight()) + root.GetValue();
             }
@@ -135,15 +136,54 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
             // אם לצומת יש שני בנים, הגדל את המונה
             if (root.HasLeft() && root.HasRight())
             {
-               return 1 + CountNodesWithTwoChildren(root.GetRight()) + CountNodesWithTwoChildren(root.GetLeft());
+                return 1 + CountNodesWithTwoChildren(root.GetRight()) + CountNodesWithTwoChildren(root.GetLeft());
             }
             else
             {
                 return CountNodesWithTwoChildren(root.GetRight()) + CountNodesWithTwoChildren(root.GetLeft());
             }
-          
+
         }
         //EX5
+        public static int GetBiggerThenChildrenNode(BinNode<int> root)
+        {
+            // Base case: if the node is null, return 0
+            if (root == null)
+            {
+                return 0;
+            }
+
+            // Variable to track if the current node satisfies the condition
+            int count = 0;
+
+            // Check both children if they exist
+            if (root.HasLeft() && root.HasRight())
+            {
+                if (root.GetValue() > root.GetLeft().GetValue() && root.GetValue() > root.GetRight().GetValue())
+                {
+                    count = 1; // This node satisfies the condition
+                }
+            }
+            else if (root.HasLeft())
+            {
+                if (root.GetValue() > root.GetLeft().GetValue())
+                {
+                    count = 1; // This node satisfies the condition
+                }
+            }
+            else if (root.HasRight())
+            {
+                if (root.GetValue() > root.GetRight().GetValue())
+                {
+                    count = 1; // This node satisfies the condition
+                }
+            }
+
+            // Recursive call to left and right children
+            return count + GetBiggerThenChildrenNode(root.GetLeft()) + GetBiggerThenChildrenNode(root.GetRight());
+        }
+
+
 
 
     }
@@ -203,14 +243,16 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
             TreeLs1.PrintTree(root2);
             Console.ResetColor();
 
-            Console.WriteLine("the tree count is :");
-            Console.WriteLine(BasicFunctioms.CountBinTree(root));
-            Console.WriteLine("the tree even sum is :");
-            Console.WriteLine(BasicFunctioms.SumOfEvenValuesOfTheTree(root));
-            Console.WriteLine("the sum of the tree is :");
-            Console.WriteLine(BasicFunctioms.SumOfValuesOfTheTree(root));
-            Console.WriteLine("nodes with 2 children:");
-            Console.WriteLine(BasicFunctioms.CountNodesWithTwoChildren(root));
+            //Console.WriteLine("the tree count is :");
+            //Console.WriteLine(BasicFunctioms.CountBinTree(root));
+            //Console.WriteLine("the tree even sum is :");
+            //Console.WriteLine(BasicFunctioms.SumOfEvenValuesOfTheTree(root));
+            //Console.WriteLine("the sum of the tree is :");
+            //Console.WriteLine(BasicFunctioms.SumOfValuesOfTheTree(root));
+            //Console.WriteLine("nodes with 2 children:");
+            //Console.WriteLine(BasicFunctioms.CountNodesWithTwoChildren(root));
+            Console.WriteLine("nodes count that are bigger then the children is :");
+            Console.WriteLine(BasicFunctioms.GetBiggerThenChildrenNode(root));
         }
     }
 
