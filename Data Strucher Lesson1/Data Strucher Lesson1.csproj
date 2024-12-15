@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Classes\BinNode.cs" />
     <Compile Include="Classes\Binray-tree\campusIL\BinEx1.cs" />
+    <Compile Include="Classes\Binray-tree\Lessons\BasicFunctioms.cs" />
     <Compile Include="Classes\Binray-tree\Lessons\TreeLs1.cs" />
     <Compile Include="Classes\Circle.cs" />
     <Compile Include="Classes\Expr.cs" />
