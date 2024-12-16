@@ -264,8 +264,76 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
 
         // boolean functions on tree
         //EX1
+        public static bool checkForPositiveTree(BinNode<int> root)
+        {
+            if (root == null)
+            {
+                return true;
+            }
 
+            if (root.GetValue() < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return checkForPositiveTree(root.GetLeft()) && checkForPositiveTree(root.GetRight());
+            }
+        }
 
+        //EX2
+        public static bool NoSingleChildren<T>(BinNode<T> root)
+        {
+            if (root == null)
+            {
+                return true;
+            }
+            if (root.HasLeft() && !root.HasRight() || !root.HasLeft() && root.HasRight())
+            {
+                return false;
+            }
+
+            else
+            {
+                return NoSingleChildren(root.GetLeft()) && NoSingleChildren(root.GetRight());
+            }
+        }
+
+        //EX3
+        public static bool IsValueInsideTheTree<T>(BinNode<T> root, T value)
+        {
+            if (root == null)
+            {
+                return false; // Base case: tree is empty
+            }
+            else if (root.GetValue().Equals(value))
+            {
+                return true; // Value found at the current node
+            }
+            else
+            {
+                // Check if the value exists in either the left or right subtree
+                return IsValueInsideTheTree(root.GetLeft(), value) || IsValueInsideTheTree(root.GetRight(), value);
+            }
+        }
+
+        //EX4
+        public static bool IsDescendant(BinNode<int> root, int x, int y)
+        {
+            if (root == null)
+            {
+                return false; // Base case: tree is empty
+            }
+
+            // If the current node's value is Y, check if X exists in the subtree rooted at this node
+            if (root.GetValue() == y)
+            {
+                return IsValueInsideTheTree(root, x);
+            }
+
+            // Otherwise, search in the left and right subtrees
+            return IsDescendant(root.GetLeft(), x, y) || IsDescendant(root.GetRight(), x, y);
+        }
 
     }
     public class RunBasicFunctioms
@@ -347,6 +415,13 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
             Console.WriteLine($"the amount of times that 3 is on the tree is : => {BasicFunctioms.GetNumCountInTheTree(root, 3)}");
             Console.WriteLine($"the amount of the same level node is : => {BasicFunctioms.CountNodesAtLevel(root, 2)}");
             Console.WriteLine($"and the sum od the level is : => {BasicFunctioms.SumNodesAtLevel(root, 2)}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine($"is all the tree fill with positive values? {BasicFunctioms.checkForPositiveTree(root)}");
+            Console.WriteLine($"is the tree not single children tree ? {BasicFunctioms.NoSingleChildren(root)}");
+            Console.WriteLine($"is the value (M) is in the tree? {BasicFunctioms.IsValueInsideTheTree(root2, 'M')}");
+            Console.WriteLine($"is the value 3 a long child of 10? {BasicFunctioms.IsDescendant(root, 3, 10)}");
             Console.ResetColor();
         }
     }
