@@ -178,10 +178,92 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
             }
             else
             {
-               return GetSingleBrothersCount(root.GetLeft()) + GetSingleBrothersCount(root.GetRight());
+                return GetSingleBrothersCount(root.GetLeft()) + GetSingleBrothersCount(root.GetRight());
+            }
+        }
+        //EX7
+        public static bool IsLeaf<T>(BinNode<T> root)
+        {
+            // צומת נחשב עלה אם אין לו ילדים משמאל או מימין
+            return root != null && !root.HasLeft() && !root.HasRight();
+        }
+        //EX8
+        public static int GetLeafCount<T>(BinNode<T> root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+
+            if (IsLeaf(root))
+            {
+                return 1 + GetLeafCount(root.GetLeft()) + GetLeafCount(root.GetRight());
+            }
+            else
+            {
+                return GetLeafCount(root.GetLeft()) + GetLeafCount(root.GetRight());
+            }
+        }
+        //EX9
+        public static int GetNumCountInTheTree<T>(BinNode<T> root, T value)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+
+            if (root.GetValue().Equals(value))
+            {
+                return 1 + GetNumCountInTheTree(root.GetLeft(), value) + GetNumCountInTheTree(root.GetRight(), value);
+            }
+            else
+            {
+                return GetNumCountInTheTree(root.GetLeft(), value) + GetNumCountInTheTree(root.GetRight(), value);
+            }
+        }
+        //EX10
+        public static int CountNodesAtLevel<T>(BinNode<T> root, int level)
+        {
+            // Base case: if the tree is empty, return 0
+            if (root == null)
+            {
+                return 0;
+            }
+
+            // If the current level is 0, we are at the desired level
+            if (level == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                // Recursively count nodes at the level in the left and right subtrees
+                return CountNodesAtLevel(root.GetLeft(), level - 1) + CountNodesAtLevel(root.GetRight(), level - 1);
+            }
+        }
+        //EX11
+        public static int SumNodesAtLevel(BinNode<int> root, int level)
+        {
+            // Base case: if the tree is empty, return 0
+            if (root == null)
+            {
+                return 0;
+            }
+
+            // If the current level is 0, we are at the desired level, return the value of the node
+            if (level == 0)
+            {
+                return root.GetValue();
+            }
+            else
+            {
+                // Recursively calculate the sum of nodes at the desired level in the left and right subtrees
+                return SumNodesAtLevel(root.GetLeft(), level - 1) + SumNodesAtLevel(root.GetRight(), level - 1);
             }
         }
 
+        // boolean functions on tree
+        //EX1
 
 
 
@@ -256,6 +338,15 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("the single brother count of the integer binary tree is:");
             Console.WriteLine(BasicFunctioms.GetSingleBrothersCount(root));
+            Console.WriteLine($"is 3 a leaf ? {BasicFunctioms.IsLeaf(leftChild.GetLeft())}");
+            Console.WriteLine(leftChild.GetLeft().GetValue());
+            Console.WriteLine($"the leaf count in the integer binary tree is: =>  {BasicFunctioms.GetLeafCount(root)}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"the amount of times that 3 is on the tree is : => {BasicFunctioms.GetNumCountInTheTree(root, 3)}");
+            Console.WriteLine($"the amount of the same level node is : => {BasicFunctioms.CountNodesAtLevel(root, 2)}");
+            Console.WriteLine($"and the sum od the level is : => {BasicFunctioms.SumNodesAtLevel(root, 2)}");
             Console.ResetColor();
         }
     }
