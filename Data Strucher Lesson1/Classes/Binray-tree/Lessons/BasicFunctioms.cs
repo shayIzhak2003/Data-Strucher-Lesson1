@@ -152,35 +152,34 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
             {
                 return 0;
             }
-
-            // Variable to track if the current node satisfies the condition
-            int count = 0;
-
-            // Check both children if they exist
-            if (root.HasLeft() && root.HasRight())
+            if ((root.HasLeft() && root.HasRight() && root.GetValue() > root.GetLeft().GetValue() && root.GetValue() >
+                root.GetRight().GetValue()) || (root.HasLeft() && root.GetValue() > root.GetLeft().GetValue()) ||
+                (root.HasRight() && root.GetValue() > root.GetRight().GetValue()))
             {
-                if (root.GetValue() > root.GetLeft().GetValue() && root.GetValue() > root.GetRight().GetValue())
-                {
-                    count = 1; // This node satisfies the condition
-                }
+                return 1 + GetBiggerThenChildrenNode(root.GetLeft()) + GetBiggerThenChildrenNode(root.GetRight());
             }
-            else if (root.HasLeft())
+            else
             {
-                if (root.GetValue() > root.GetLeft().GetValue())
-                {
-                    count = 1; // This node satisfies the condition
-                }
-            }
-            else if (root.HasRight())
-            {
-                if (root.GetValue() > root.GetRight().GetValue())
-                {
-                    count = 1; // This node satisfies the condition
-                }
+                return GetBiggerThenChildrenNode(root.GetLeft()) + GetBiggerThenChildrenNode(root.GetRight());
             }
 
-            // Recursive call to left and right children
-            return count + GetBiggerThenChildrenNode(root.GetLeft()) + GetBiggerThenChildrenNode(root.GetRight());
+        }
+        //EX6
+        public static int GetSingleBrothersCount<T>(BinNode<T> root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+
+            if (root.HasLeft() && !root.HasRight() || root.HasRight() && !root.HasLeft())
+            {
+                return 1 + GetSingleBrothersCount(root.GetLeft()) + GetSingleBrothersCount(root.GetRight());
+            }
+            else
+            {
+               return GetSingleBrothersCount(root.GetLeft()) + GetSingleBrothersCount(root.GetRight());
+            }
         }
 
 
@@ -253,6 +252,11 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
             //Console.WriteLine(BasicFunctioms.CountNodesWithTwoChildren(root));
             Console.WriteLine("nodes count that are bigger then the children is :");
             Console.WriteLine(BasicFunctioms.GetBiggerThenChildrenNode(root));
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("the single brother count of the integer binary tree is:");
+            Console.WriteLine(BasicFunctioms.GetSingleBrothersCount(root));
+            Console.ResetColor();
         }
     }
 
