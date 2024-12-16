@@ -335,6 +335,57 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
             return IsDescendant(root.GetLeft(), x, y) || IsDescendant(root.GetRight(), x, y);
         }
 
+        //more exercise
+        //EX1
+        public static int GetTreeHeight<T>(BinNode<T> root)
+        {
+            if (root == null)
+            {
+                return -1; // Returning -1 for an empty tree to indicate height correctly for non-empty trees.
+            }
+
+            int leftHeight = GetTreeHeight(root.GetLeft());
+            int rightHeight = GetTreeHeight(root.GetRight());
+
+            return Math.Max(leftHeight, rightHeight) + 1;
+        }
+        //EX2
+        public static int GetMaxValue(BinNode<int> root)
+        {
+            if (root == null)
+            {
+                return 0; 
+            }
+
+            else
+            {
+                return Math.Max(GetMaxValue(root.GetRight()), Math.Max(GetMaxValue(root.GetLeft()), root.GetValue()));
+            }
+        }
+        //EX3
+        public static bool IsBalanced(BinNode<int> root)
+        {
+            if (root == null)
+            {
+                return true; // A null tree is considered balanced.
+            }
+
+            // Get the height of the left subtree.
+            int leftHeight = GetTreeHeight(root.GetLeft());
+
+            // Get the height of the right subtree.
+            int rightHeight = GetTreeHeight(root.GetRight());
+
+            // If the height difference between left and right subtrees is greater than 1, return false (unbalanced).
+            if (Math.Abs(leftHeight - rightHeight) > 1)
+            {
+                return false;
+            }
+
+            // Recursively check the balance of the left and right subtrees.
+            return IsBalanced(root.GetLeft()) && IsBalanced(root.GetRight());
+        }
+
     }
     public class RunBasicFunctioms
     {
@@ -350,6 +401,7 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
             leftChild.SetRight(new BinNode<int>(7));
             rightChild.SetLeft(new BinNode<int>(12));
             rightChild.SetRight(new BinNode<int>(18));
+
 
             // char tree
             var root2 = new BinNode<char>('M');
@@ -422,6 +474,12 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
             Console.WriteLine($"is the tree not single children tree ? {BasicFunctioms.NoSingleChildren(root)}");
             Console.WriteLine($"is the value (M) is in the tree? {BasicFunctioms.IsValueInsideTheTree(root2, 'M')}");
             Console.WriteLine($"is the value 3 a long child of 10? {BasicFunctioms.IsDescendant(root, 3, 10)}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"the intager tree height is : => {BasicFunctioms.GetTreeHeight(root)}");
+            Console.WriteLine($"the max value in the integer bonary tree is : => {BasicFunctioms.GetMaxValue(root)}");
+            Console.WriteLine($"is the integer tree balanced? {BasicFunctioms.IsBalanced(root)}");
             Console.ResetColor();
         }
     }
