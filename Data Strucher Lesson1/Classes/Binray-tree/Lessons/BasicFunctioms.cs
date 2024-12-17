@@ -367,7 +367,7 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
         {
             if (root == null)
             {
-                return true; // A null tree is considered balanced.
+                return true; 
             }
 
             // Get the height of the left subtree.
@@ -384,6 +384,50 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
 
             // Recursively check the balance of the left and right subtrees.
             return IsBalanced(root.GetLeft()) && IsBalanced(root.GetRight());
+        }
+
+        //EX4
+        public static void AddSiblingToSingleNodes<T>(BinNode<T> root)
+        {
+            if(root == null)
+            {
+                return;
+            }
+            
+            if(root.HasLeft() && !root.HasRight())
+            {
+                root.SetRight(new BinNode<T>(root.GetLeft().GetValue()));
+            }
+
+            else if (root.HasRight() && !root.HasLeft())
+            {
+                root.SetLeft(new BinNode<T>(root.GetRight().GetValue()));
+            }
+
+            // Recursively process the left and right subtrees.
+            AddSiblingToSingleNodes(root.GetLeft());
+            AddSiblingToSingleNodes(root.GetRight());
+        }
+        //EX5
+        public static BinNode<T> FindParent<T>(BinNode<T> root, T value)
+        {
+            // Base case: if the tree is empty or if the root is the node containing the value, return null.
+            if (root == null ||
+                (root.HasLeft() && root.GetLeft().GetValue().Equals(value)) ||
+                (root.HasRight() && root.GetRight().GetValue().Equals(value)))
+            {
+                return root;
+            }
+
+            // Search in the left subtree.
+            BinNode<T> leftResult = FindParent(root.GetLeft(), value);
+            if (leftResult != null)
+            {
+                return leftResult;
+            }
+
+            // Search in the right subtree.
+            return FindParent(root.GetRight(), value);
         }
 
     }
