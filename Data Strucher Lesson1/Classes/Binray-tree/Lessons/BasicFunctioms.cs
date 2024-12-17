@@ -57,17 +57,17 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
                 return;
 
             // Update the left child if it exists
-            if (root.GetLeft() != null)
+            if (root.HasLeft())
             {
                 // Set the left child's value to the previous character in the ASCII sequence
-                root.GetLeft().SetValue((char)(root.GetValue() - 1));
+                root.GetLeft().SetValue((char)(root.GetLeft().GetValue() - 1));
             }
 
             // Update the right child if it exists
-            if (root.GetRight() != null)
+            if (root.HasRight())
             {
                 // Set the right child's value to the next character in the ASCII sequence
-                root.GetRight().SetValue((char)(root.GetValue() + 1));
+                root.GetRight().SetValue((char)(root.GetRight().GetValue() + 1));
             }
 
             // Recursively update the left and right children
