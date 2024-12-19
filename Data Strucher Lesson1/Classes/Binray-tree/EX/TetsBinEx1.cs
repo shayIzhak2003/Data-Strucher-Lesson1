@@ -113,30 +113,52 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             }
         }
         //EX5
-        public static int NumOfFatherThatBiggerThenChildren<T>(BinNode<T> root) where T : IComparable<T>
+        public static int NumOfFatherThatBiggerThenChildren(BinNode<int> root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            if (root.HasLeft() && root.HasRight() && root.GetValue() > root.GetLeft().GetValue() &&
+                root.GetValue() > root.GetRight().GetValue())
+            {
+                return 1 + NumOfFatherThatBiggerThenChildren(root.GetLeft())
+                      + NumOfFatherThatBiggerThenChildren(root.GetRight());
+            }
+            return NumOfFatherThatBiggerThenChildren(root.GetLeft()) + NumOfFatherThatBiggerThenChildren(root.GetRight());
+        }
+       
+        // EX6
+        public static int SumOfSingleChildren(BinNode<int> root)
         {
             if (root == null)
             {
                 return 0;
             }
 
-            // Check if the root has both left and right children.
-            bool isBigger = true;
-            if (root.HasLeft() && root.GetValue().CompareTo(root.GetLeft().GetValue()) <= 0)
+            // Case: Node has only a left child
+            if (root.HasLeft() && !root.HasRight())
             {
-                isBigger = false;
+                return root.GetLeft().GetValue()
+                       + SumOfSingleChildren(root.GetLeft())
+                       + SumOfSingleChildren(root.GetRight());
             }
-            if (root.HasRight() && root.GetValue().CompareTo(root.GetRight().GetValue()) <= 0)
+            // Case: Node has only a right child
+            else if (!root.HasLeft() && root.HasRight())
             {
-                isBigger = false;
+                return root.GetRight().GetValue()
+                       + SumOfSingleChildren(root.GetLeft())
+                       + SumOfSingleChildren(root.GetRight());
             }
 
-            // Add 1 if the current root is greater than both its children.
-            int count = isBigger ? 1 : 0;
-
-            // Recursive calls for left and right subtrees.
-            return count + NumOfFatherThatBiggerThenChildren(root.GetLeft())
-                         + NumOfFatherThatBiggerThenChildren(root.GetRight());
+            // Case: Node has no single children
+            return SumOfSingleChildren(root.GetLeft()) + SumOfSingleChildren(root.GetRight());
+        }
+        //EX7
+        public static bool IsLeaf<T>(BinNode<T> root)
+        {
+            // צומת נחשב עלה אם אין לו ילדים משמאל או מימין
+            return root != null && !root.HasLeft() && !root.HasRight();
         }
 
 
@@ -184,6 +206,7 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             Console.WriteLine($"the tree leaf sum is : => {TetsBinEx1.TreeLeafSum(root)}");
             Console.WriteLine($"the father count is : => {TetsBinEx1.TreeFatherCount(root)}");
             Console.WriteLine($"the num of fathers the bigger then children: {TetsBinEx1.NumOfFatherThatBiggerThenChildren(root)}");
+            Console.WriteLine($"the the sum of the of the single children is: => {TetsBinEx1.SumOfSingleChildren(root)}");
 
 
         }
