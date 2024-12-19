@@ -1,9 +1,6 @@
 ﻿using Data_Strucher_Lesson1.Classes.Binray_tree.Lessons;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
 {
@@ -18,7 +15,7 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
                 return;
             PrintLeftChildrenByInnerPrint(root.GetLeft());
 
-            if(root.GetLeft() != null)
+            if (root.GetLeft() != null)
             {
                 Console.WriteLine(root.GetLeft().GetValue());
             }
@@ -39,7 +36,7 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
         //EX3
         public static void UpdateTreeWithPreviousAndNextChars(BinNode<char> root)
         {
-            if(root == null)
+            if (root == null)
             {
                 return;
             }
@@ -49,7 +46,7 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
                 root.GetRight().SetValue((char)(root.GetRight().GetValue() + 1));
             }
 
-            if(root.HasLeft())
+            if (root.HasLeft())
             {
                 root.GetLeft().SetValue((char)(root.GetLeft().GetValue() + 1));
             }
@@ -57,6 +54,92 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             UpdateTreeWithPreviousAndNextChars(root.GetLeft());
             UpdateTreeWithPreviousAndNextChars(root.GetRight());
         }
+
+        // trees counter functions
+        //EX1
+        public static int TreeNodeCount<T>(BinNode<T> root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+
+            else
+            {
+                return 1 + TreeNodeCount(root.GetLeft()) + TreeNodeCount(root.GetRight());
+            }
+        }
+
+        //EX2
+        public static int SumEvenNodeValues(BinNode<int> root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            if (root.GetValue() % 2 == 0)
+            {
+                return root.GetValue() + SumEvenNodeValues(root.GetRight()) + SumEvenNodeValues(root.GetLeft());
+            }
+            return SumEvenNodeValues(root.GetRight()) + SumEvenNodeValues(root.GetLeft());
+        }
+        //EX3
+        public static int TreeLeafSum(BinNode<int> root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            if (!root.HasRight() && !root.HasLeft())
+            {
+                return root.GetValue() + TreeLeafSum(root.GetRight()) + TreeLeafSum(root.GetLeft());
+            }
+            return TreeLeafSum(root.GetRight()) + TreeLeafSum(root.GetLeft());
+        }
+        //EX4
+        public static int TreeFatherCount<T>(BinNode<T> root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            if (root.HasLeft() && root.HasRight())
+            {
+                return 1 + TreeFatherCount(root.GetLeft()) + TreeFatherCount(root.GetRight());
+            }
+            else
+            {
+                return TreeFatherCount(root.GetLeft()) + TreeFatherCount(root.GetRight());
+            }
+        }
+        //EX5
+        public static int NumOfFatherThatBiggerThenChildren<T>(BinNode<T> root) where T : IComparable<T>
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+
+            // Check if the root has both left and right children.
+            bool isBigger = true;
+            if (root.HasLeft() && root.GetValue().CompareTo(root.GetLeft().GetValue()) <= 0)
+            {
+                isBigger = false;
+            }
+            if (root.HasRight() && root.GetValue().CompareTo(root.GetRight().GetValue()) <= 0)
+            {
+                isBigger = false;
+            }
+
+            // Add 1 if the current root is greater than both its children.
+            int count = isBigger ? 1 : 0;
+
+            // Recursive calls for left and right subtrees.
+            return count + NumOfFatherThatBiggerThenChildren(root.GetLeft())
+                         + NumOfFatherThatBiggerThenChildren(root.GetRight());
+        }
+
+
     }
     public class RunTetsBinEx1
     {
@@ -96,6 +179,13 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             Console.WriteLine("the tree after the update:");
             TetsBinEx1.UpdateFatherWithSumOfChildern(root);
             TreeLs1.PrintTree(root);
+            Console.WriteLine($"the tree count is: => {TetsBinEx1.TreeNodeCount(root)}");
+            Console.WriteLine($"the sum of the even nodes in the tree is : => {TetsBinEx1.SumEvenNodeValues(root)}");
+            Console.WriteLine($"the tree leaf sum is : => {TetsBinEx1.TreeLeafSum(root)}");
+            Console.WriteLine($"the father count is : => {TetsBinEx1.TreeFatherCount(root)}");
+            Console.WriteLine($"the num of fathers the bigger then children: {TetsBinEx1.NumOfFatherThatBiggerThenChildren(root)}");
+
+
         }
     }
 
