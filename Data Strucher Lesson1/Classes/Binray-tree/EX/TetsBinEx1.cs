@@ -127,7 +127,7 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             }
             return NumOfFatherThatBiggerThenChildren(root.GetLeft()) + NumOfFatherThatBiggerThenChildren(root.GetRight());
         }
-       
+
         // EX6
         public static int SumOfSingleChildren(BinNode<int> root)
         {
@@ -157,10 +157,67 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
         //EX7
         public static bool IsLeaf<T>(BinNode<T> root)
         {
-            // צומת נחשב עלה אם אין לו ילדים משמאל או מימין
             return root != null && !root.HasLeft() && !root.HasRight();
         }
+        //EX8
+        public static int TreeLeafCount<T>(BinNode<T> root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
 
+            if (IsLeaf(root))
+            {
+                return 1 + TreeLeafCount(root.GetLeft()) + TreeLeafCount(root.GetRight());
+            }
+            return TreeLeafCount(root.GetLeft()) + TreeLeafCount(root.GetRight());
+        }
+        //EX9
+        public static int CountXInTree<T>(BinNode<T> root, T value)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            if (root.GetValue().Equals(value))
+            {
+                return 1 + CountXInTree(root.GetLeft(), value) + CountXInTree(root.GetRight(), value);
+            }
+            return CountXInTree(root.GetLeft(), value) + CountXInTree(root.GetRight(), value);
+        }
+        //EX10
+        public static int CountNodesInTheSameLevel<T>(BinNode<T> root, int level)
+        {
+            // Base case: if the tree is empty, return 0
+            if (root == null)
+            {
+                return 0;
+            }
+
+            // If the current level is 0, we are at the desired level
+            if (level == 0)
+            {
+                return 1;
+            }
+
+            return CountNodesInTheSameLevel(root.GetLeft(), level - 1)
+                + CountNodesInTheSameLevel(root.GetRight(), level - 1);
+        }
+        //EX11
+        public static int SumOfNodesInTheSameLevel(BinNode<int> root, int level)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            if (level == 0)
+            {
+                return root.GetValue();
+            }
+            return SumOfNodesInTheSameLevel(root.GetLeft(), level - 1)
+                + SumOfNodesInTheSameLevel(root.GetRight(), level - 1);
+        }
 
     }
     public class RunTetsBinEx1
@@ -205,10 +262,12 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             Console.WriteLine($"the sum of the even nodes in the tree is : => {TetsBinEx1.SumEvenNodeValues(root)}");
             Console.WriteLine($"the tree leaf sum is : => {TetsBinEx1.TreeLeafSum(root)}");
             Console.WriteLine($"the father count is : => {TetsBinEx1.TreeFatherCount(root)}");
-            Console.WriteLine($"the num of fathers the bigger then children: {TetsBinEx1.NumOfFatherThatBiggerThenChildren(root)}");
-            Console.WriteLine($"the the sum of the of the single children is: => {TetsBinEx1.SumOfSingleChildren(root)}");
-
-
+            Console.WriteLine($"the num of fathers the bigger then children : {TetsBinEx1.NumOfFatherThatBiggerThenChildren(root)}");
+            Console.WriteLine($"the the sum of the of the single children is : => {TetsBinEx1.SumOfSingleChildren(root)}");
+            Console.WriteLine($"the tree leaf count is : => {TetsBinEx1.TreeLeafCount(root)}");
+            Console.WriteLine($"the amount of times that M appers in the Tree is : => {TetsBinEx1.CountXInTree(root2, 'M')}");
+            Console.WriteLine($"the amount of nodes that are in the same level (2) is : => {TetsBinEx1.CountNodesInTheSameLevel(root, 1)}");
+            Console.WriteLine($"the sum of the nodes in the same level : => {TetsBinEx1.SumOfNodesInTheSameLevel(root, 1)}");
         }
     }
 
