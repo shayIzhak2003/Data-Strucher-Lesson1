@@ -218,7 +218,35 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             return SumOfNodesInTheSameLevel(root.GetLeft(), level - 1)
                 + SumOfNodesInTheSameLevel(root.GetRight(), level - 1);
         }
+        // boolean function on trees 
+        //EX1
+        public static bool IsAllTreeValuesPositive(BinNode<int> root)
+        {
+            if (root == null)
+            {
+                return true;
+            }
+            if (root.GetValue() < 0)
+            {
+                return false;
+            }
+            return IsAllTreeValuesPositive(root.GetLeft()) && IsAllTreeValuesPositive(root.GetRight());
 
+        }
+        //EX2
+        public static bool NoSingleChildren<T>(BinNode<T> root)
+        {
+            if (root == null)
+            {
+                return true;
+            }
+            if (!root.HasRight() && root.HasLeft() || !root.HasLeft() && root.HasRight())
+            {
+                return false;
+            }
+
+            return NoSingleChildren(root.GetLeft()) && NoSingleChildren(root.GetRight());
+        }
     }
     public class RunTetsBinEx1
     {
@@ -268,6 +296,7 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             Console.WriteLine($"the amount of times that M appers in the Tree is : => {TetsBinEx1.CountXInTree(root2, 'M')}");
             Console.WriteLine($"the amount of nodes that are in the same level (2) is : => {TetsBinEx1.CountNodesInTheSameLevel(root, 1)}");
             Console.WriteLine($"the sum of the nodes in the same level : => {TetsBinEx1.SumOfNodesInTheSameLevel(root, 1)}");
+            Console.WriteLine($"is all the tree valus are positive? {TetsBinEx1.IsAllTreeValuesPositive(root)}");
         }
     }
 
