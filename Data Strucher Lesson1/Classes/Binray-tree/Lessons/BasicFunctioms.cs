@@ -344,10 +344,7 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.Lessons
                 return -1; // Returning -1 for an empty tree to indicate height correctly for non-empty trees.
             }
 
-            int leftHeight = GetTreeHeight(root.GetLeft());
-            int rightHeight = GetTreeHeight(root.GetRight());
-
-            return Math.Max(leftHeight, rightHeight) + 1;
+          return  Math.Max(GetTreeHeight(root.GetLeft()), GetTreeHeight(root.GetRight())) + 1;
         }
         //EX2
         public static int GetMaxValue(BinNode<int> root)
