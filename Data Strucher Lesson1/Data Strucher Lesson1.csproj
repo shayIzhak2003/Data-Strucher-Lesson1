@@ -48,6 +48,7 @@
     <Compile Include="Classes\Binray-tree\EX\TetsBinEx1.cs" />
     <Compile Include="Classes\Binray-tree\Lessons\BasicFunctioms.cs" />
     <Compile Include="Classes\Binray-tree\Lessons\TreeLs1.cs" />
+    <Compile Include="Classes\Binray-tree\Lessons\TreeLs2.cs" />
     <Compile Include="Classes\Circle.cs" />
     <Compile Include="Classes\Expr.cs" />
     <Compile Include="Classes\exrisice for summer smaster\MainSummerClass.cs" />
