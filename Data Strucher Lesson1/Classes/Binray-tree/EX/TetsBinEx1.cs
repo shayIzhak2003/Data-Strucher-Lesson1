@@ -1,6 +1,7 @@
 ﻿using Data_Strucher_Lesson1.Classes.Binray_tree.Lessons;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Channels;
 
 namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
 {
@@ -247,56 +248,83 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
 
             return NoSingleChildren(root.GetLeft()) && NoSingleChildren(root.GetRight());
         }
-    }
-    public class RunTetsBinEx1
-    {
-        public static void DemoMain()
+        //EX3
+        public static bool IsValueXInTheTree<T>(BinNode<T> root, T value)
         {
-            Console.WriteLine("Hello,World!");
+            if (root == null)
+            {
+                return false;
+            }
+            if (root.GetValue().Equals(value))
+            {
+                return true;
+            }
+            return IsValueXInTheTree(root.GetLeft(), value) || IsValueXInTheTree(root.GetRight(), value);
+        }
+        //EX4
+        public static bool IsDescendant(BinNode<int> root, int x, int y)
+        {
+            if (root == null)
+            {
+                return false;
+            }
+            if (root.GetValue() == y)
+            {
+                return IsValueXInTheTree(root, x);
+            }
+            return IsDescendant(root, x, y) || IsDescendant(root, x, y);
+        }
+        public class RunTetsBinEx1
+        {
+            public static void DemoMain()
+            {
+                Console.WriteLine("Hello,World!");
 
-            // int tree
-            var root = new BinNode<int>(10);
-            var leftChild = new BinNode<int>(5);
-            var rightChild = new BinNode<int>(15);
-            root.SetLeft(leftChild);
-            root.SetRight(rightChild);
-            leftChild.SetLeft(new BinNode<int>(3));
-            leftChild.SetRight(new BinNode<int>(7));
-            rightChild.SetLeft(new BinNode<int>(12));
-            rightChild.SetRight(new BinNode<int>(18));
+                // int tree
+                var root = new BinNode<int>(10);
+                var leftChild = new BinNode<int>(5);
+                var rightChild = new BinNode<int>(15);
+                root.SetLeft(leftChild);
+                root.SetRight(rightChild);
+                leftChild.SetLeft(new BinNode<int>(3));
+                leftChild.SetRight(new BinNode<int>(7));
+                rightChild.SetLeft(new BinNode<int>(12));
+                rightChild.SetRight(new BinNode<int>(18));
 
 
-            // char tree
-            var root2 = new BinNode<char>('M');
-            var leftChild2 = new BinNode<char>('L');
-            var rightChild2 = new BinNode<char>('N');
-            root2.SetLeft(leftChild2);
-            root2.SetRight(rightChild2);
+                // char tree
+                var root2 = new BinNode<char>('M');
+                var leftChild2 = new BinNode<char>('L');
+                var rightChild2 = new BinNode<char>('N');
+                root2.SetLeft(leftChild2);
+                root2.SetRight(rightChild2);
 
-            leftChild2.SetLeft(new BinNode<char>('K'));
-            leftChild2.SetRight(new BinNode<char>('O'));
-            rightChild2.SetLeft(new BinNode<char>('Q'));
-            rightChild2.SetRight(new BinNode<char>('R'));
+                leftChild2.SetLeft(new BinNode<char>('K'));
+                leftChild2.SetRight(new BinNode<char>('O'));
+                rightChild2.SetLeft(new BinNode<char>('Q'));
+                rightChild2.SetRight(new BinNode<char>('R'));
 
-            Console.WriteLine("the main Tree:");
-            TreeLs1.PrintTree(root);
-            Console.WriteLine("the left side values");
-            TetsBinEx1.PrintLeftChildrenByInnerPrint(root);
+                Console.WriteLine("the main Tree:");
+                TreeLs1.PrintTree(root);
+                Console.WriteLine("the left side values");
+                TetsBinEx1.PrintLeftChildrenByInnerPrint(root);
 
-            Console.WriteLine("the tree after the update:");
-            TetsBinEx1.UpdateFatherWithSumOfChildern(root);
-            TreeLs1.PrintTree(root);
-            Console.WriteLine($"the tree count is: => {TetsBinEx1.TreeNodeCount(root)}");
-            Console.WriteLine($"the sum of the even nodes in the tree is : => {TetsBinEx1.SumEvenNodeValues(root)}");
-            Console.WriteLine($"the tree leaf sum is : => {TetsBinEx1.TreeLeafSum(root)}");
-            Console.WriteLine($"the father count is : => {TetsBinEx1.TreeFatherCount(root)}");
-            Console.WriteLine($"the num of fathers the bigger then children : {TetsBinEx1.NumOfFatherThatBiggerThenChildren(root)}");
-            Console.WriteLine($"the the sum of the of the single children is : => {TetsBinEx1.SumOfSingleChildren(root)}");
-            Console.WriteLine($"the tree leaf count is : => {TetsBinEx1.TreeLeafCount(root)}");
-            Console.WriteLine($"the amount of times that M appers in the Tree is : => {TetsBinEx1.CountXInTree(root2, 'M')}");
-            Console.WriteLine($"the amount of nodes that are in the same level (2) is : => {TetsBinEx1.CountNodesInTheSameLevel(root, 1)}");
-            Console.WriteLine($"the sum of the nodes in the same level : => {TetsBinEx1.SumOfNodesInTheSameLevel(root, 1)}");
-            Console.WriteLine($"is all the tree valus are positive? {TetsBinEx1.IsAllTreeValuesPositive(root)}");
+                Console.WriteLine("the tree after the update:");
+                TetsBinEx1.UpdateFatherWithSumOfChildern(root);
+                TreeLs1.PrintTree(root);
+                Console.WriteLine($"the tree count is: => {TetsBinEx1.TreeNodeCount(root)}");
+                Console.WriteLine($"the sum of the even nodes in the tree is : => {TetsBinEx1.SumEvenNodeValues(root)}");
+                Console.WriteLine($"the tree leaf sum is : => {TetsBinEx1.TreeLeafSum(root)}");
+                Console.WriteLine($"the father count is : => {TetsBinEx1.TreeFatherCount(root)}");
+                Console.WriteLine($"the num of fathers the bigger then children : {TetsBinEx1.NumOfFatherThatBiggerThenChildren(root)}");
+                Console.WriteLine($"the the sum of the of the single children is : => {TetsBinEx1.SumOfSingleChildren(root)}");
+                Console.WriteLine($"the tree leaf count is : => {TetsBinEx1.TreeLeafCount(root)}");
+                Console.WriteLine($"the amount of times that M appers in the Tree is : => {TetsBinEx1.CountXInTree(root2, 'M')}");
+                Console.WriteLine($"the amount of nodes that are in the same level (2) is : => {TetsBinEx1.CountNodesInTheSameLevel(root, 1)}");
+                Console.WriteLine($"the sum of the nodes in the same level : => {TetsBinEx1.SumOfNodesInTheSameLevel(root, 1)}");
+                Console.WriteLine($"is all the tree valus are positive? {TetsBinEx1.IsAllTreeValuesPositive(root)}");
+                Console.WriteLine($"is the value 3 is in the tree? => {TetsBinEx1.IsValueXInTheTree(root, 3)}");
+            }
         }
     }
 
