@@ -1,8 +1,10 @@
 ﻿using Data_Strucher_Lesson1.Classes;
+using Data_Strucher_Lesson1.Classes.Binray_tree.Lessons;
 using System;
 
 public class TreeLs2
 {
+    //EX1 pt.1
     // Decode the given Morse code starting from the root of the tree.
     public static char DecodeMorse(BinNode<char> root, string morseCode)
     {
@@ -43,6 +45,24 @@ public class TreeLs2
         // Return the value stored at the leaf node
         return currentNode.GetValue();
     }
+
+    //EX2
+    public static bool IsFlatTree<T>(BinNode<T> root)
+    {
+        // אם השורש ריק, זה לא עץ שטוח
+        if (root == null)
+        {
+            return false;
+        }
+
+        // סופרים את מספר הצמתים והעלים
+        int treeCount = BasicFunctioms.CountBinTree(root);
+        int leafCount = BasicFunctioms.GetLeafCount(root);
+
+        // עץ שטוח אם מספר העלים הוא לפחות חצי ממספר הצמתים
+        return leafCount >= (treeCount / 2);
+    }
+
 }
 
 public class RunTreeLs2
@@ -108,5 +128,20 @@ public class RunTreeLs2
             // Handle exceptions during decoding.
             Console.WriteLine($"Error: {ex.Message}");
         }
+
+        var root = new BinNode<int>(10);
+        var leftChild = new BinNode<int>(5);
+        var rightChild = new BinNode<int>(15);
+        root.SetLeft(leftChild);
+        root.SetRight(rightChild);
+        leftChild.SetLeft(new BinNode<int>(3));
+        leftChild.SetRight(new BinNode<int>(7));
+        rightChild.SetLeft(new BinNode<int>(12));
+        rightChild.SetRight(new BinNode<int>(18));
+
+
+        TreeLs1.PrintTree(root);
+
+        Console.WriteLine($"is the tree flat? :=> {TreeLs2.IsFlatTree(root)}");
     }
 }
