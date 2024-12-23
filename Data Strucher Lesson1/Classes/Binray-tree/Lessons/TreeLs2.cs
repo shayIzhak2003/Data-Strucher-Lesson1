@@ -123,6 +123,8 @@ public class RunTreeLs2
         Root.GetLeft().SetRight(new BinNode<char>('N'));
         Root.GetLeft().GetLeft().SetLeft(new BinNode<char>('O'));
         Root.GetLeft().GetLeft().SetRight(new BinNode<char>('G'));
+        Root.GetLeft().GetLeft().GetLeft().SetLeft(new BinNode<char>('2'));
+        Root.GetLeft().GetLeft().GetLeft().SetRight(new BinNode<char>('3'));
         Root.GetLeft().GetLeft().GetRight().SetLeft(new BinNode<char>('Q'));
         Root.GetLeft().GetLeft().GetRight().SetRight(new BinNode<char>('Z'));
         Root.GetLeft().GetRight().SetLeft(new BinNode<char>('K'));
@@ -139,17 +141,24 @@ public class RunTreeLs2
         Root.GetRight().GetLeft().SetRight(new BinNode<char>('R'));
         Root.GetRight().GetLeft().GetLeft().SetLeft(new BinNode<char>('J'));
         Root.GetRight().GetLeft().GetLeft().SetRight(new BinNode<char>('P'));
-        Root.GetRight().GetLeft().GetRight().SetLeft(new BinNode<char>('L'));
-        Root.GetRight().GetLeft().GetRight().SetRight(new BinNode<char>('8'));
+        Root.GetRight().GetLeft().GetLeft().GetRight().SetLeft(new BinNode<char>('9'));
+        Root.GetRight().GetLeft().GetRight().SetLeft(new BinNode<char>('1'));
+        Root.GetRight().GetLeft().GetRight().SetRight(new BinNode<char>('L'));
+        Root.GetRight().GetLeft().GetRight().GetRight().SetLeft(new BinNode<char>('8'));
+        Root.GetRight().GetLeft().GetRight().GetRight().SetRight(new BinNode<char>('7'));
         Root.GetRight().GetRight().SetLeft(new BinNode<char>('U'));
         Root.GetRight().GetRight().SetRight(new BinNode<char>('S'));
         Root.GetRight().GetRight().GetLeft().SetLeft(new BinNode<char>('V'));
         Root.GetRight().GetRight().GetLeft().SetRight(new BinNode<char>('F'));
+        Root.GetRight().GetRight().GetLeft().GetRight().SetLeft(new BinNode<char>('6'));
+        Root.GetRight().GetRight().GetLeft().GetRight().SetRight(new BinNode<char>('5'));
         Root.GetRight().GetRight().GetRight().SetLeft(new BinNode<char>('0'));
         Root.GetRight().GetRight().GetRight().SetRight(new BinNode<char>('H'));
+        Root.GetRight().GetRight().GetRight().GetRight().SetLeft(new BinNode<char>('4'));
 
         return Root;
     }
+
 
 
     // Demo main function to run and test the decoding.
@@ -166,6 +175,7 @@ public class RunTreeLs2
             Console.WriteLine(TreeLs2.DecodeMorse(morseTree, "---"));   // Expected: 'O'
             Console.WriteLine(TreeLs2.DecodeMorse(morseTree, ".--"));   // Expected: 'W'
             Console.WriteLine(TreeLs2.DecodeMorse(morseTree, "-.-."));  // Expected: 'C'
+            Console.WriteLine(TreeLs2.DecodeMorse(morseTree, "---.")); // Expected: '3'
         }
         catch (ArgumentException ex)
         {
