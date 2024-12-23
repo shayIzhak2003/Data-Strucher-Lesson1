@@ -74,7 +74,8 @@ public class TreeLs2
             return true;
         }
         // בדיקה האם השורש קטן משני תתי-העצים
-        if (root.GetValue() >= root.GetLeft().GetValue() || root.GetValue() >= root.GetRight().GetValue())
+        if (root.GetValue() >= root.GetLeft().GetValue() ||
+            root.GetValue() >= root.GetRight().GetValue())
         {
             return false;
         }
@@ -87,23 +88,41 @@ public class TreeLs2
         return IsYoungTree(root.GetLeft()) && IsYoungTree(root.GetRight());
     }
     //EX4
-    //public static bool IsSigmaTree(BinNode<int> root)
-    //{
-    //    if (root == null)
-    //    {
-    //        return true;
-    //    }
+    public static bool IsSigmaTree(BinNode<int> root)
+    {
+        if (root == null)
+        {
+            return true; // עץ ריק נחשב כעץ סיגמה
+        }
 
-    //    if (BasicFunctioms.IsLeaf(root))
-    //    {
-    //        return true; // עלה נחשב כעץ סיגמה
-    //    }
+        if (BasicFunctioms.IsLeaf(root))
+        {
+            return true; // עלה נחשב כעץ סיגמה
+        }
 
-    //    if (!root.HasLeft() || !root.HasRight())
-    //    {
-    //        return false; // אם חסר בן אחד, זה לא עץ סיגמה
-    //    }
-    //}
+        // אם יש בן אחד בלבד, זה לא עץ סיגמה
+        if (!root.HasLeft() || !root.HasRight())
+        {
+            return false;
+        }
+
+        // בדיקה ששני תתי-העצים הם עצי סיגמה
+        bool isLeftSigma = IsSigmaTree(root.GetLeft());
+        bool isRightSigma = IsSigmaTree(root.GetRight());
+
+        if (!isLeftSigma || !isRightSigma)
+        {
+            return false; // אם אחד מהתתי עצים אינו עץ סיגמה, נחזיר false
+        }
+
+        // חישוב סכום הערכים של תתי-העצים
+        int leftSum = BasicFunctioms.SumOfValuesOfTheTree(root.GetLeft());
+        int rightSum = BasicFunctioms.SumOfValuesOfTheTree(root.GetRight());
+
+        // בדיקה אם הערך של השורש גדול או שווה לסכום תתי-העצים
+        return root.GetValue() >= (leftSum + rightSum);
+    }
+
 }
 
 public class RunTreeLs2
@@ -183,12 +202,14 @@ public class RunTreeLs2
             Console.WriteLine($"Error: {ex.Message}");
         }
 
-        BinNode<int> root = new BinNode<int>(1);
-        root.SetLeft(new BinNode<int>(2));
-        root.SetRight(new BinNode<int>(3));
-        root.GetLeft().SetLeft(new BinNode<int>(4));
-        root.GetLeft().SetRight(new BinNode<int>(5));
-        root.GetRight().SetLeft(new BinNode<int>(6));
+        BinNode<int> root = new BinNode<int>(28);
+        root.SetLeft(new BinNode<int>(11));
+        root.SetRight(new BinNode<int>(16));
+
+        root.GetLeft().SetLeft(new BinNode<int>(2));
+        root.GetLeft().SetRight(new BinNode<int>(7));
+
+        root.GetRight().SetLeft(new BinNode<int>(8));
         root.GetRight().SetRight(new BinNode<int>(7));
 
 
@@ -197,5 +218,6 @@ public class RunTreeLs2
 
         Console.WriteLine($"is the tree flat? :=> {TreeLs2.IsFlatTree(root)}");
         Console.WriteLine($"is the tree young? :=> {TreeLs2.IsYoungTree(root)}");
+        Console.WriteLine($"is the tree a sigma tree? :=> {TreeLs2.IsSigmaTree(root)}");
     }
 }
