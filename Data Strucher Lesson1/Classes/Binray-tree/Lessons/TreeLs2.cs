@@ -100,7 +100,7 @@ public class TreeLs2
             return true; // עלה נחשב כעץ סיגמה
         }
 
-        // אם יש בן אחד בלבד, זה לא עץ סיגמה
+        // אם חסר בן אחד, זה לא עץ סיגמה
         if (!root.HasLeft() || !root.HasRight())
         {
             return false;
@@ -115,13 +115,13 @@ public class TreeLs2
             return false; // אם אחד מהתתי עצים אינו עץ סיגמה, נחזיר false
         }
 
-        // חישוב סכום הערכים של תתי-העצים
-        int leftSum = BasicFunctioms.SumOfValuesOfTheTree(root.GetLeft());
-        int rightSum = BasicFunctioms.SumOfValuesOfTheTree(root.GetRight());
+        // בדיקה אם סכום שני תתי-העצים שווה לערך השורש
+        int leftValue = root.GetLeft().GetValue();
+        int rightValue = root.GetRight().GetValue();
 
-        // בדיקה אם הערך של השורש גדול או שווה לסכום תתי-העצים
-        return root.GetValue() >= (leftSum + rightSum);
+        return root.GetValue() >= (leftValue + rightValue);
     }
+
 
 }
 
@@ -202,15 +202,14 @@ public class RunTreeLs2
             Console.WriteLine($"Error: {ex.Message}");
         }
 
-        BinNode<int> root = new BinNode<int>(28);
-        root.SetLeft(new BinNode<int>(11));
-        root.SetRight(new BinNode<int>(16));
-
+        BinNode<int> root = new BinNode<int>(10);
+        root.SetLeft(new BinNode<int>(4));
+        root.SetRight(new BinNode<int>(6));
         root.GetLeft().SetLeft(new BinNode<int>(2));
-        root.GetLeft().SetRight(new BinNode<int>(7));
+        root.GetLeft().SetRight(new BinNode<int>(2));
+        root.GetRight().SetLeft(new BinNode<int>(3));
+        root.GetRight().SetRight(new BinNode<int>(3));
 
-        root.GetRight().SetLeft(new BinNode<int>(8));
-        root.GetRight().SetRight(new BinNode<int>(7));
 
 
 
@@ -219,5 +218,6 @@ public class RunTreeLs2
         Console.WriteLine($"is the tree flat? :=> {TreeLs2.IsFlatTree(root)}");
         Console.WriteLine($"is the tree young? :=> {TreeLs2.IsYoungTree(root)}");
         Console.WriteLine($"is the tree a sigma tree? :=> {TreeLs2.IsSigmaTree(root)}");
+        Console.WriteLine($"the tree sum is :=> {BasicFunctioms.SumOfValuesOfTheTree(root.GetLeft())}");
     }
 }
