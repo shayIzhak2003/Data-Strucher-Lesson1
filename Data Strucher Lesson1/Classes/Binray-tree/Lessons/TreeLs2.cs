@@ -121,7 +121,28 @@ public class TreeLs2
 
         return root.GetValue() >= (leftValue + rightValue);
     }
+    //EX5
+    public static bool IsSimmetricalTree<T>(BinNode<T> root)
+    {
+        if (root == null)
+        {
+            return true;
+        }
+        if (!root.HasLeft() && !root.HasRight())
+        {
+            return true; // צומת עלה נחשב סימטרי
+        }
+        if ((root.HasLeft() && !root.HasRight()) || (!root.HasLeft() && root.HasRight()))
+        {
+            return false; // אם יש בן אחד בלבד, זה לא סימטרי
+        }
 
+        if (!root.GetLeft().GetValue().Equals(root.GetRight().GetValue()))
+        {
+            return false; // אם הערכים של הבנים לא שווים, זה לא סימטרי
+        }
+        return IsSimmetricalTree(root.GetLeft()) && IsSimmetricalTree(root.GetRight());
+    }
 
 }
 
@@ -204,12 +225,11 @@ public class RunTreeLs2
 
         BinNode<int> root = new BinNode<int>(10);
         root.SetLeft(new BinNode<int>(4));
-        root.SetRight(new BinNode<int>(6));
+        root.SetRight(new BinNode<int>(4));
         root.GetLeft().SetLeft(new BinNode<int>(2));
         root.GetLeft().SetRight(new BinNode<int>(2));
         root.GetRight().SetLeft(new BinNode<int>(3));
         root.GetRight().SetRight(new BinNode<int>(3));
-
 
 
 
@@ -219,5 +239,6 @@ public class RunTreeLs2
         Console.WriteLine($"is the tree young? :=> {TreeLs2.IsYoungTree(root)}");
         Console.WriteLine($"is the tree a sigma tree? :=> {TreeLs2.IsSigmaTree(root)}");
         Console.WriteLine($"the tree sum is :=> {BasicFunctioms.SumOfValuesOfTheTree(root.GetLeft())}");
+        Console.WriteLine($"is the tree simmetrical? :=> {TreeLs2.IsSimmetricalTree(root)}");
     }
 }
