@@ -143,6 +143,27 @@ public class TreeLs2
         }
         return IsSimmetricalTree(root.GetLeft()) && IsSimmetricalTree(root.GetRight());
     }
+    //EX6
+    public static bool IsTwinTree(BinNode<int> root)
+    {
+        if (root == null)
+        {
+            return true; // עץ ריק נחשב כעץ תאומים
+        }
+        if (!root.HasLeft() && !root.HasRight())
+        {
+            return true; // עלה נחשב כעץ תאומים
+        }
+
+        // בדיקה אם מספר התאומים בתת-העץ השמאלי קטן או שווה לתת-העץ הימני
+        if (BasicFunctioms.CountBinTree(root.GetLeft()) > BasicFunctioms.CountBinTree(root.GetRight()))
+        {
+            return false;
+        }
+
+        // בדיקה רקורסיבית על שני תתי-העצים
+        return IsTwinTree(root.GetLeft()) && IsTwinTree(root.GetRight());
+    }
 
 }
 
@@ -240,5 +261,6 @@ public class RunTreeLs2
         Console.WriteLine($"is the tree a sigma tree? :=> {TreeLs2.IsSigmaTree(root)}");
         Console.WriteLine($"the tree sum is :=> {BasicFunctioms.SumOfValuesOfTheTree(root.GetLeft())}");
         Console.WriteLine($"is the tree simmetrical? :=> {TreeLs2.IsSimmetricalTree(root)}");
+        Console.WriteLine($"is the tree twin tree? :=> {TreeLs2.IsTwinTree(root)}");
     }
 }
