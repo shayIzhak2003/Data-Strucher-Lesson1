@@ -272,8 +272,46 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             {
                 return IsValueXInTheTree(root, x);
             }
-            return IsDescendant(root, x, y) || IsDescendant(root, x, y);
+            return IsDescendant(root.GetLeft(), x, y) || IsDescendant(root.GetRight(), x, y);
         }
+        // other functions 
+        //EX1
+        public static int GetTreeHeight<T>(BinNode<T> root)
+        {
+            if(root == null)
+            {
+                return -1;
+            }
+            return Math.Max(GetTreeHeight(root.GetLeft()), GetTreeHeight(root.GetRight())) + 1;
+        }
+        //EX2
+        public static int GetMaxValueInATree(BinNode<int> root)
+        {
+            if(root == null)
+            {
+                return 0;
+            }
+            return Math.Max(GetMaxValueInATree(root.GetRight()), Math.Max(GetMaxValueInATree(root.GetLeft()), root.GetValue()));
+        }
+
+        //EX3
+        public static bool IsBalancedTree<T>(BinNode<T> root)
+        {
+            if (root == null)
+            {
+                return true;
+            }
+            int RightSubTreeHeight = GetTreeHeight(root.GetRight());
+            int leftSubTreeHeight = GetTreeHeight(root.GetLeft());
+
+            if(Math.Abs(RightSubTreeHeight - leftSubTreeHeight) > 1)
+            {
+                return false;
+            }
+            return IsBalancedTree(root.GetLeft()) && IsBalancedTree(root.GetRight());
+        }
+        //EX4
+
         public class RunTetsBinEx1
         {
             public static void DemoMain()
@@ -324,6 +362,11 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
                 Console.WriteLine($"the sum of the nodes in the same level : => {TetsBinEx1.SumOfNodesInTheSameLevel(root, 1)}");
                 Console.WriteLine($"is all the tree valus are positive? {TetsBinEx1.IsAllTreeValuesPositive(root)}");
                 Console.WriteLine($"is the value 3 is in the tree? => {TetsBinEx1.IsValueXInTheTree(root, 3)}");
+                Console.WriteLine($"is 3 a long child of 10? :=> {TetsBinEx1.IsDescendant(root, 3, 10)}");
+                Console.WriteLine($"the tree height is :=> {TetsBinEx1.GetTreeHeight(root)}");
+                Console.WriteLine($"the max value in the tree is :=> {TetsBinEx1.GetMaxValueInATree(root)}");
+                Console.WriteLine($"is the tree balanced: => {TetsBinEx1.IsBalancedTree(root)}");
+
             }
         }
     }

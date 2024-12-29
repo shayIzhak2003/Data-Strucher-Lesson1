@@ -286,9 +286,9 @@ namespace Data_Strucher_Lesson1
             //RunMtEx1.DemoMain();
             //RunTreeLs1.DemoMain();
             //RunBasicFunctioms.DemoMain();
-            //RunTetsBinEx1.DemoMain();
+            RunTetsBinEx1.DemoMain();
             //RunMtEx2.DemoMain();
-            RunTreeLs2.DemoMain();
+            //RunTreeLs2.DemoMain();
         }
     }
 
