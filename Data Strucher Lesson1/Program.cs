@@ -31,6 +31,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Data_Strucher_Lesson1.Classes.Binray_tree.EX.TetsBinEx1;
 using static Data_Strucher_Lesson1.Classes.stackStrucher.Lesson2;
+using static Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX.StackEx1;
 
 namespace Data_Strucher_Lesson1
 {
@@ -286,9 +287,10 @@ namespace Data_Strucher_Lesson1
             //RunMtEx1.DemoMain();
             //RunTreeLs1.DemoMain();
             //RunBasicFunctioms.DemoMain();
-            RunTetsBinEx1.DemoMain();
+            //RunTetsBinEx1.DemoMain();
             //RunMtEx2.DemoMain();
             //RunTreeLs2.DemoMain();
+            RunStackEx1.DemoMain();
         }
     }
 

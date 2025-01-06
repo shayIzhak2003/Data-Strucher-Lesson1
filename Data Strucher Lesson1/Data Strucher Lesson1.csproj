@@ -107,7 +107,10 @@
     <Compile Include="Classes\stackStrucher\stack Objects\Card Game\Deck.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Card Game\Game.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Card Game\RunGame.cs" />
+    <Compile Include="Classes\stackStrucher\stack Objects\EX\classes\House.cs" />
+    <Compile Include="Classes\stackStrucher\stack Objects\EX\classes\Maagar.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\EX\EX1.cs" />
+    <Compile Include="Classes\stackStrucher\stack Objects\EX\StackEx1.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Lesson2\Carriage.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Lesson2\Locomotive.cs" />
     <Compile Include="Classes\stackStrucher\stack Objects\Lesson2\Ls2.cs" />
