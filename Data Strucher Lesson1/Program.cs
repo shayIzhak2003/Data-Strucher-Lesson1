@@ -21,6 +21,7 @@ using Data_Strucher_Lesson1.Classes.stackStrucher.Ricorsia;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Card_Game;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX;
+using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX.classes;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Lesson2;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Ring_App;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Task_Manneger_App;
@@ -290,7 +291,8 @@ namespace Data_Strucher_Lesson1
             //RunTetsBinEx1.DemoMain();
             //RunMtEx2.DemoMain();
             //RunTreeLs2.DemoMain();
-            RunStackEx1.DemoMain();
+            //RunStackEx1.DemoMain();
+            RunMaagar.DemoMain();
         }
     }
 

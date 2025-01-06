@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -82,9 +83,32 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX.classes
             houseArr[currentApartmentsCount - 1] = null;
             currentApartmentsCount--;
         }
+
+        // Check if a house is for rent by address
         public bool CheckIfForRent(string address)
         {
+            for (int i = 0; i < currentApartmentsCount; i++)
+            {
+                if (houseArr[i] != null && houseArr[i].address == address && houseArr[i].isForRent)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
+        // Get count of 5+ room apartments available for rent
+        public int GetFiveRoomsApartmentForRent()
+        {
+            int count5RoomsForRent = 0;
+            for (int i = 0; i <=currentApartmentsCount; i++)
+            {
+                if (houseArr[i] != null && CheckIfForRent(houseArr[i].address) && houseArr[i].roomsCount >= 5)
+                {
+                    count5RoomsForRent++;
+                }
+            }
+            return count5RoomsForRent;
         }
 
         // Display all Houses
@@ -95,6 +119,40 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX.classes
             {
                 Console.WriteLine(houseArr[i]?.ToString());
             }
+        }
+    }
+
+    public class RunMaagar
+    {
+        public static void DemoMain()
+        {
+            // Create an instance of Maagar
+            Maagar maagar = new Maagar();
+
+            // Add some houses
+            maagar.AddHouse(new House(5, 70, "123 Main St", true));
+            maagar.AddHouse(new House(5, 40, "456 Elm St", false));
+            maagar.AddHouse(new House(4, 80, "789 Oak St", true));
+
+            // Display all houses
+            Console.WriteLine("All houses in Maagar:");
+            maagar.DisplayHouses();
+
+            // Check if a specific address is for rent
+            string addressToCheck = "123 Main St";
+            bool isForRent = maagar.CheckIfForRent(addressToCheck);
+            Console.WriteLine($"\nIs the house at '{addressToCheck}' for rent? {isForRent}");
+
+            // Get count of 5+ room apartments available for rent
+            int countFiveRoomForRent = maagar.GetFiveRoomsApartmentForRent();
+            Console.WriteLine($"\nNumber of apartments with 5+ rooms available for rent: {countFiveRoomForRent}");
+
+            // Remove a house and display updated list
+            maagar.RemoveHouse(1);
+            Console.WriteLine("\nAfter removing the second house:");
+            maagar.DisplayHouses();
+
+            Console.ReadLine();
         }
     }
 }

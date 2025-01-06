@@ -37,5 +37,9 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX.classes
             }
             return address;
         }
+        public override string ToString()
+        {
+            return $"Address: {this.address}, Rooms: {this.roomsCount}, Size: {this.properti} sqm, For Rent: {(this.isForRent ? "Yes" : "No")}";
+        }
     }
 }
