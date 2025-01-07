@@ -291,8 +291,8 @@ namespace Data_Strucher_Lesson1
             //RunTetsBinEx1.DemoMain();
             //RunMtEx2.DemoMain();
             //RunTreeLs2.DemoMain();
-            //RunStackEx1.DemoMain();
-            RunMaagar.DemoMain();
+            RunStackEx1.DemoMain();
+            //RunMaagar.DemoMain();
         }
     }
 

@@ -8,6 +8,7 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX
 {
     public class StackEx1
     {
+        //EX1
         public static bool CheckForValidStack(Stack<char> stack)
         {
             char prev = 'O';
@@ -24,6 +25,65 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX
             }
             return true;
         }
+        public static void UpdatS1ToBeThedifference<T>(Stack<T> stack1, Stack<T> stack2)
+        {
+            Stack<T> tempStack1 = new Stack<T>(); // Temporary stack for filtered s1 elements
+            Stack<T> tempStack2 = new Stack<T>(); // Temporary stack for s2 elements
+
+            // Copy s2 into tempStack2 (to preserve s2)
+            while (!stack2.IsEmpty())
+            {
+                T currentStack2Value = stack2.Pop();
+                tempStack2.Push(currentStack2Value);
+            }
+
+            // Process s1
+            while (!stack1.IsEmpty())
+            {
+                T currentStack1Value = stack1.Pop();
+                bool found = false;
+
+                // Check if currentStack1Value exists in tempStack2
+                Stack<T> tempCheckStack = new Stack<T>();
+                while (!tempStack2.IsEmpty())
+                {
+                    T currentStack2Value = tempStack2.Pop();
+                    tempCheckStack.Push(currentStack2Value);
+
+                    if (currentStack1Value.Equals(currentStack2Value))
+                    {
+                        found = true;
+                    }
+                }
+
+                // Restore tempStack2
+                while (!tempCheckStack.IsEmpty())
+                {
+                    tempStack2.Push(tempCheckStack.Pop());
+                }
+
+                // Add to tempStack1 if not found in stack2
+                if (!found)
+                {
+                    tempStack1.Push(currentStack1Value);
+                }
+            }
+
+            // Restore filtered elements back to stack1
+            while (!tempStack1.IsEmpty())
+            {
+                stack1.Push(tempStack1.Pop());
+            }
+
+            // Restore stack2 to its original state
+            while (!tempStack2.IsEmpty())
+            {
+                stack2.Push(tempStack2.Pop());
+            }
+
+            Console.WriteLine(stack1.ToString());
+        }
+
 
         public class RunStackEx1
         {
@@ -36,7 +96,27 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX
                 stack.Push('A');
                 stack.Push('T');
                 Console.WriteLine($"is the stack valid? {StackEx1.CheckForValidStack(stack)}");
+
+                Stack<int> s1 = new Stack<int>();
+                s1.Push(165);
+                s1.Push(6);
+                s1.Push(77);
+                s1.Push(52);
+                s1.Push(40);
+                s1.Push(12);
+                s1.Push(8); // Top of s1
+
+                Stack<int> s2 = new Stack<int>();
+                s2.Push(500);
+                s2.Push(52);
+                s2.Push(165);
+                s2.Push(12);
+                s2.Push(77);
+                s2.Push(10);
+                s2.Push(1); // Top of s2
+
+                StackEx1.UpdatS1ToBeThedifference(s1, s2);
             }
         }
     }
-    }
+}
