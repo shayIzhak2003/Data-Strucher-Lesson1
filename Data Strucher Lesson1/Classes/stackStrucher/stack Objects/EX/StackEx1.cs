@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data_Strucher_Lesson1.Classes.Binray_tree.Lessons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -81,9 +82,26 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX
                 stack2.Push(tempStack2.Pop());
             }
 
-            Console.WriteLine(stack1.ToString());
         }
 
+        //EX2
+        public static void UpdateTreeStacks<T>(BinNode<Stack<T>> root)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            // בדיקה אם לצומת יש שני בנים
+            if (root.HasLeft() && root.HasRight())
+            {
+                UpdatS1ToBeThedifference(root.GetLeft().GetValue(), root.GetRight().GetValue());
+            }
+
+            // קריאה רקורסיבית לשני תתי-העצים
+            UpdateTreeStacks(root.GetLeft());
+            UpdateTreeStacks(root.GetRight());
+        }
 
         public class RunStackEx1
         {
@@ -116,6 +134,28 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX
                 s2.Push(1); // Top of s2
 
                 StackEx1.UpdatS1ToBeThedifference(s1, s2);
+
+                //EX2
+                // בניית עץ של מחסניות
+                BinNode<Stack<int>> root = new BinNode<Stack<int>>(new Stack<int>());
+                root.GetValue().Push(1);
+                root.GetValue().Push(2);
+
+                root.SetLeft(new BinNode<Stack<int>>(new Stack<int>()));
+                root.GetLeft().GetValue().Push(3);
+                root.GetLeft().GetValue().Push(4);
+
+                root.SetRight(new BinNode<Stack<int>>(new Stack<int>()));
+                root.GetRight().GetValue().Push(2);
+                root.GetRight().GetValue().Push(4);
+                Console.WriteLine("the tree before the update:");
+                TreeLs1.PrintTree(root);
+                // קריאה לפונקציה
+                UpdateTreeStacks(root);
+
+                Console.WriteLine("the tree after the update:");
+                // הדפסת המחסניות לאחר העדכון
+                TreeLs1.PrintTree(root);
             }
         }
     }
