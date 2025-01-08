@@ -103,6 +103,8 @@ namespace Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX
             UpdateTreeStacks(root.GetRight());
         }
 
+
+
         public class RunStackEx1
         {
             public static void DemoMain()
