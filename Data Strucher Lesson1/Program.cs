@@ -289,10 +289,11 @@ namespace Data_Strucher_Lesson1
             //RunTreeLs1.DemoMain();
             //RunBasicFunctioms.DemoMain();
             //RunTetsBinEx1.DemoMain();
-            //RunMtEx2.DemoMain();
+            RunMtEx2.DemoMain();
             //RunTreeLs2.DemoMain();
-            RunStackEx1.DemoMain();
+            //RunStackEx1.DemoMain();
             //RunMaagar.DemoMain();
+
         }
     }
 
