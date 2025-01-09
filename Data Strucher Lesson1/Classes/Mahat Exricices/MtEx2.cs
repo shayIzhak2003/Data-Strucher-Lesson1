@@ -141,11 +141,12 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
         {
             if (lst == null)
                 throw new ArgumentException("The list cannot be null.");
-
-            int minDistance = int.MaxValue; // ערך המרחק המינימלי
-            int minValue = int.MaxValue;   // הערך בעל המרחק המינימלי
-
             Node<int> outer = lst;
+
+            int minDistance = Distance(lst, outer.GetValue()); // ערך המרחק המינימלי
+            int minValue = outer.GetValue();   // הערך בעל המרחק המינימלי
+
+           
             while (outer != null) // לולאת מעבר על כל הערכים בשרשרת
             {
                 int value = outer.GetValue();
