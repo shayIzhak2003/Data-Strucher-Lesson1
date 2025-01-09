@@ -71,12 +71,12 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
 
             while (pos1 != null && pos2 != null)
             {
-                if(pos1.GetValue() > pos2.GetValue())
+                if (pos1.GetValue() > pos2.GetValue())
                 {
                     return 1;
                 }
 
-                if(pos1.GetValue() < pos2.GetValue())
+                if (pos1.GetValue() < pos2.GetValue())
                 {
                     return 2;
                 }
@@ -94,10 +94,79 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
         //EX4
         //..... do it later 
 
-        //EX5
+        //EX5 pt.1
+        public static int Distance(Node<int> lst, int num)
+        {
+            if (lst == null)
+                return -1; // אם הרשימה ריקה, מחזירים -1
 
-        
-        
+            int position = 0; // מיקום נוכחי בשרשרת
+            int firstOccurrence = -1; // המיקום הראשון של המספר num
+            int lastOccurrence = -1; // המיקום האחרון של המספר num
+            int length = 0; // אורך השרשרת
+
+            Node<int> current = lst;
+
+            // מעבר על כל השרשרת
+            while (current != null)
+            {
+                position++;
+                if (current.GetValue() == num)
+                {
+                    if (firstOccurrence == -1) // שמירה על המיקום הראשון
+                        firstOccurrence = position;
+
+                    lastOccurrence = position; // עדכון המיקום האחרון
+                }
+
+
+                current = current.GetNext();
+            }
+
+            length = position; // האורך הכולל של השרשרת
+
+            // אם לא נמצא num בשרשרת
+            if (firstOccurrence == -1)
+                return -1;
+
+            // חישוב המרחק
+            int distanceFromStart = firstOccurrence;
+            int distanceFromEnd = length - lastOccurrence;
+            return distanceFromStart + distanceFromEnd;
+        }
+
+        //EX5 pt.2
+
+        public static int MinDistanceValue(Node<int> lst)
+        {
+            if (lst == null)
+                throw new ArgumentException("The list cannot be null.");
+
+            int minDistance = int.MaxValue; // ערך המרחק המינימלי
+            int minValue = int.MaxValue;   // הערך בעל המרחק המינימלי
+
+            Node<int> outer = lst;
+            while (outer != null) // לולאת מעבר על כל הערכים בשרשרת
+            {
+                int value = outer.GetValue();
+                int distance = Distance(lst, value); // חישוב המרחק עבור הערך הנוכחי
+
+                if (distance != -1) // לוודא שהערך קיים בשרשרת
+                {
+                    if (distance < minDistance || (distance == minDistance && value < minValue))
+                    {
+                        minDistance = distance;
+                        minValue = value;
+                    }
+                }
+
+                outer = outer.GetNext();
+            }
+
+            return minValue;
+        }
+
+
 
     }
     public class RunMtEx2
@@ -147,10 +216,40 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             Queue<int> averages = MtEx2.AverageQueue(marks, tests);
             Console.WriteLine(averages);
             Console.WriteLine(MtEx2.NumDigits(n1));
-            Console.WriteLine(MtEx2.Compare(n1,n2));
+            Console.WriteLine(MtEx2.Compare(n1, n2));
 
             //EX3
             RunFruitAndAppleApp.DemoMain();
+
+            //EX5
+
+            // Building the linked list: 3 -> 4 -> 7 -> 7 -> 5 -> 7 -> 1 -> 6
+            Node<int> lst = new Node<int>(3);
+            Node<int> node2 = new Node<int>(4);
+            Node<int> node3 = new Node<int>(7);
+            Node<int> node4 = new Node<int>(7);
+            Node<int> node5 = new Node<int>(5);
+            Node<int> node6 = new Node<int>(7);
+            Node<int> node7 = new Node<int>(1);
+            Node<int> node8 = new Node<int>(6);
+
+            // Linking the nodes together
+            lst.SetNext(node2);
+            node2.SetNext(node3);
+            node3.SetNext(node4);
+            node4.SetNext(node5);
+            node5.SetNext(node6);
+            node6.SetNext(node7);
+            node7.SetNext(node8);
+
+            // Testing the Distance method
+            Console.WriteLine(MtEx2.Distance(lst, 7)); // Output: 5
+            Console.WriteLine(MtEx2.Distance(lst, 3)); // Output: 9
+            Console.WriteLine(MtEx2.Distance(lst, 2)); // Output: -1
+
+
+            Console.WriteLine($"the the min value is: => {MtEx2.MinDistanceValue(lst)}");
+
         }
     }
 
