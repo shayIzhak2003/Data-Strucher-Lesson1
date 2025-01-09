@@ -167,6 +167,12 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             return minValue;
         }
 
+        //EX5 pt3. Distance = O(N) , MinDistanceValue = O(N) * 2
+
+        // צריך מחר לעשות את שאלה 7 מהמהט
+
+        //EX8
+
 
 
     }
