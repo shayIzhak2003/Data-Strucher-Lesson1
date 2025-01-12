@@ -1,7 +1,9 @@
 ﻿using Data_Strucher_Lesson1.Classes.Mahat_Exricices.MtEx3;
+using Data_Strucher_Lesson1.Classes.stackStrucher;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -146,7 +148,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             int minDistance = Distance(lst, outer.GetValue()); // ערך המרחק המינימלי
             int minValue = outer.GetValue();   // הערך בעל המרחק המינימלי
 
-           
+
             while (outer != null) // לולאת מעבר על כל הערכים בשרשרת
             {
                 int value = outer.GetValue();
@@ -172,9 +174,122 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
         // צריך מחר לעשות את שאלה 7 מהמהט
 
         //EX8
+        //...... DO THIS LATER
 
+        //EX9
+        public static int NumOf(Stack<int> m)
+        {
+            Stack<int> cloneStack = Lesson2.Clone(m);
+            int count = 0;
 
+            while (!cloneStack.IsEmpty())
+            {
+                count++;
+                cloneStack.Pop();
+            }
+            return count;
+        }
 
+        //EX9 pt.1
+        public static int RandChoice(Stack<int> m)
+        {
+            int StackLength = NumOf(m);
+            Stack<int> stackClone = Lesson2.Clone(m);
+            int valueToReturn = 0;
+            Random random = new Random();
+            int rnd = random.Next(StackLength);
+
+            for (int i = 0; i <= rnd; i++)
+            {
+                valueToReturn = stackClone.Pop();
+            }
+
+            return valueToReturn;
+        }
+
+        //EX9 pt.2
+        public static Stack<int> CreateSmall(Stack<int> m, int a)
+        {
+            Stack<int> stackClone = Lesson2.Clone(m);
+            Stack<int> stackToReturn = new Stack<int>();
+
+            while (!stackClone.IsEmpty())
+            {
+                int currentValue = stackClone.Pop();
+                if (currentValue < a)
+                {
+                    stackToReturn.Push(currentValue);
+                }
+
+            }
+            return stackToReturn;
+
+        }
+
+        //EX9 pt.3
+        public static Stack<int> CreateLarge(Stack<int> m, int a)
+        {
+            Stack<int> stackClone = Lesson2.Clone(m);
+            Stack<int> stackToReturn = new Stack<int>();
+
+            while (!stackClone.IsEmpty())
+            {
+                int currentValue = stackClone.Pop();
+                if (currentValue > a)
+                {
+                    stackToReturn.Push(currentValue);
+                }
+
+            }
+            return stackToReturn;
+        }
+
+        //EX9 pt.4
+        public static void EraseSmalls(Stack<int> m, int k)
+        {
+            
+            Stack<int> stackToReturn = new Stack<int>();
+
+            while (!m.IsEmpty())
+            {
+                int currentValue = m.Pop();
+                if(currentValue < k)
+                {
+                    stackToReturn.Push(currentValue);
+                }
+            }
+
+            while (!stackToReturn.IsEmpty())
+            {
+                int currentValue = stackToReturn.Pop();
+                m.Push(currentValue);
+            }
+
+            Console.WriteLine(m);
+        }
+        //EX9 pt.5
+        public static void EraseLarges(Stack<int> m, int k)
+        {
+
+            Stack<int> stackToReturn = new Stack<int>();
+
+            while (!m.IsEmpty())
+            {
+                int currentValue = m.Pop();
+                if (currentValue > k)
+                {
+                    stackToReturn.Push(currentValue);
+                }
+            }
+
+            while (!stackToReturn.IsEmpty())
+            {
+                int currentValue = stackToReturn.Pop();
+                m.Push(currentValue);
+            }
+
+            Console.WriteLine(m);
+        }
     }
     public class RunMtEx2
     {
@@ -218,6 +333,16 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             node2_2.SetNext(node2_3);
             node2_3.SetNext(node2_4);
 
+            // stack section
+            Stack<int> stack = new Stack<int>();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(2);
+            stack.Push(3);
+            stack.Push(4);
+            stack.Push(4);
+            stack.Push(555);
+
 
             // Calculate averages
             Queue<int> averages = MtEx2.AverageQueue(marks, tests);
@@ -256,7 +381,12 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
 
 
             Console.WriteLine($"the the min value is: => {MtEx2.MinDistanceValue(lst)}");
-
+            Console.WriteLine($"the stack count is :=> {MtEx2.NumOf(stack)}");
+            Console.WriteLine($"getting a random value from the stack: => {MtEx2.RandChoice(stack)}");
+            Console.WriteLine($"stack with the values that are smaller then 3 {MtEx2.CreateSmall(stack, 3)}");
+            Console.WriteLine($"stack with the values that are bigger then 3 {MtEx2.CreateLarge(stack, 3)}");
+            //MtEx2.EraseSmalls(stack, 4);
+            //MtEx2.EraseLarges(stack,2);
         }
     }
 
