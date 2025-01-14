@@ -1,4 +1,5 @@
 ﻿using Data_Strucher_Lesson1.Classes.Mahat_Exricices.MtEx3;
+using Data_Strucher_Lesson1.Classes.Queue;
 using Data_Strucher_Lesson1.Classes.stackStrucher;
 using System;
 using System.Collections.Generic;
@@ -247,13 +248,13 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
         //EX9 pt.4
         public static void EraseSmalls(Stack<int> m, int k)
         {
-            
+
             Stack<int> stackToReturn = new Stack<int>();
 
             while (!m.IsEmpty())
             {
                 int currentValue = m.Pop();
-                if(currentValue < k)
+                if (currentValue < k)
                 {
                     stackToReturn.Push(currentValue);
                 }
@@ -290,6 +291,101 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
 
             Console.WriteLine(m);
         }
+
+
+        //EX10
+        //THIS IS THE MAIN FUNCTION!!
+        public static bool IsPerfect(Queue<Stack<int>> q)
+        {
+            Queue<Stack<int>> queueClone = CloneQueue(q);
+            while (!queueClone.IsEmpty())
+            {
+                Stack<int> prevStack = queueClone.Remove();
+                Stack<int> currentStack = queueClone.Remove();
+
+
+
+                if ((!IsStackAscending(prevStack)) || (!IsStackAscending(currentStack)))
+                {
+                    return false;
+                }
+
+                if (Lesson1.count_stack(prevStack) >= Lesson1.count_stack(currentStack))
+                    return false;
+
+                if (GetStackBottom(prevStack) != GetStackTop(currentStack))
+                { return false; }
+
+                prevStack = currentStack;
+                currentStack = queueClone.Remove();
+            }
+            return true;
+
+        }
+
+        public static Queue<T> CloneQueue<T>(Queue<T> originalQueue)
+        {
+            Queue<T> QueueToReturn = new Queue<T>();
+            Queue<T> temp = new Queue<T>();
+
+            while (!originalQueue.IsEmpty())
+            {
+                T currentObject = originalQueue.Remove();
+                temp.Insert(currentObject);
+            }
+
+            while (!temp.IsEmpty())
+            {
+                T currentObject = temp.Remove();
+                originalQueue.Insert(currentObject);
+                QueueToReturn.Insert(currentObject);
+            }
+            return QueueToReturn;
+        }
+        public static bool IsStackAscending(Stack<int> stack)
+        {
+            Stack<int> stackClone = Lesson2.Clone(stack);
+            int prevValue = stackClone.Pop();
+            int currentValue = stackClone.Pop();
+
+            while (!stackClone.IsEmpty())
+            {
+                if (currentValue <= prevValue)
+                    return false;
+
+                prevValue = currentValue;
+                currentValue = stackClone.Pop();
+            }
+
+            return true;
+        }
+
+        public static int GetStackBottom(Stack<int> stack)
+        {
+            Stack<int> stackClone = Lesson2.Clone(stack);
+            int buttomValue = 0;
+            while (!stackClone.IsEmpty())
+            {
+                buttomValue = stackClone.Pop();
+            }
+            return buttomValue;
+        }
+        public static int GetStackTop(Stack<int> stack)
+        {
+            Stack<int> stackClone = Lesson2.Clone(stack);
+            bool flag = false;
+            int Value = 0;
+            while (!stackClone.IsEmpty())
+            {
+                if (!flag)
+                {
+                    Value = stackClone.Pop();
+                }
+                stackClone.Pop();
+            }
+            return Value;
+        }
+
     }
     public class RunMtEx2
     {
