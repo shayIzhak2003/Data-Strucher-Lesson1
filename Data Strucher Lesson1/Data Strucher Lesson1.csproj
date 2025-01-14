@@ -82,6 +82,7 @@
     <Compile Include="Classes\Lesson7\BuildRandomList.cs" />
     <Compile Include="Classes\Lesson8\Recorsia.cs" />
     <Compile Include="Classes\Lesson8\RecorsiaEx.cs" />
+    <Compile Include="Classes\Mahat Exricices\2024\MahatEx1.cs" />
     <Compile Include="Classes\Mahat Exricices\MtEx1.cs" />
     <Compile Include="Classes\Mahat Exricices\MtEx2.cs" />
     <Compile Include="Classes\Mahat Exricices\MtEx3\Apple.cs" />

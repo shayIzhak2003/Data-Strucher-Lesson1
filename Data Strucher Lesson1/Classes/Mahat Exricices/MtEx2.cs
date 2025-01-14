@@ -516,8 +516,8 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             queue.Insert(stack2);
             queue.Insert(stack3);
 
-            Console.WriteLine(MtEx2.GetStackTop(stack2));
-
+            Console.WriteLine((stack2));
+            
             Console.WriteLine(MtEx2.IsPerfect(queue)); // Output: True
 
 
