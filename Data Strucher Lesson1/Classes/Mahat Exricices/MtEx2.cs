@@ -292,99 +292,110 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             Console.WriteLine(m);
         }
 
-
         //EX10
-        //THIS IS THE MAIN FUNCTION!!
+        // Main function to check if the queue is perfect
         public static bool IsPerfect(Queue<Stack<int>> q)
         {
+            // Clone the queue to preserve its original state
             Queue<Stack<int>> queueClone = CloneQueue(q);
+
+            if (queueClone.IsEmpty())
+                return true;
+
+            Stack<int> prevStack = queueClone.Remove();
+
+            // Check the first stack's ascending order
+            if (!IsStackAscending(prevStack))
+                return false;
+
             while (!queueClone.IsEmpty())
             {
-                Stack<int> prevStack = queueClone.Remove();
                 Stack<int> currentStack = queueClone.Remove();
 
-
-
-                if ((!IsStackAscending(prevStack)) || (!IsStackAscending(currentStack)))
-                {
+                // Check if both stacks are in ascending order
+                if (!IsStackAscending(currentStack))
                     return false;
-                }
 
+                // Ensure the size of the current stack is greater than the previous
                 if (Lesson1.count_stack(prevStack) >= Lesson1.count_stack(currentStack))
                     return false;
 
+                // Ensure the bottom of the previous stack matches the top of the current stack
                 if (GetStackBottom(prevStack) != GetStackTop(currentStack))
-                { return false; }
+                    return false;
 
                 prevStack = currentStack;
-                currentStack = queueClone.Remove();
             }
-            return true;
 
+            return true;
         }
 
+        // Clone the original queue
         public static Queue<T> CloneQueue<T>(Queue<T> originalQueue)
         {
-            Queue<T> QueueToReturn = new Queue<T>();
-            Queue<T> temp = new Queue<T>();
+            Queue<T> clonedQueue = new Queue<T>();
+            Queue<T> tempQueue = new Queue<T>();
 
             while (!originalQueue.IsEmpty())
             {
-                T currentObject = originalQueue.Remove();
-                temp.Insert(currentObject);
+                T item = originalQueue.Remove();
+                tempQueue.Insert(item);
+                clonedQueue.Insert(item);
             }
 
-            while (!temp.IsEmpty())
+            while (!tempQueue.IsEmpty())
             {
-                T currentObject = temp.Remove();
-                originalQueue.Insert(currentObject);
-                QueueToReturn.Insert(currentObject);
+                originalQueue.Insert(tempQueue.Remove());
             }
-            return QueueToReturn;
+
+            return clonedQueue;
         }
+
+        // Check if a stack is sorted in ascending order
         public static bool IsStackAscending(Stack<int> stack)
         {
             Stack<int> stackClone = Lesson2.Clone(stack);
+
+            if (stackClone.IsEmpty())
+                return true;
+
             int prevValue = stackClone.Pop();
-            int currentValue = stackClone.Pop();
 
             while (!stackClone.IsEmpty())
             {
+                int currentValue = stackClone.Pop();
                 if (currentValue <= prevValue)
                     return false;
 
                 prevValue = currentValue;
-                currentValue = stackClone.Pop();
             }
 
             return true;
         }
 
+        // Get the bottom element of a stack
         public static int GetStackBottom(Stack<int> stack)
         {
             Stack<int> stackClone = Lesson2.Clone(stack);
-            int buttomValue = 0;
+            int bottomValue = 0;
+
             while (!stackClone.IsEmpty())
             {
-                buttomValue = stackClone.Pop();
+                bottomValue = stackClone.Pop();
             }
-            return buttomValue;
+
+            return bottomValue;
         }
+
+        // Get the top element of a stack
         public static int GetStackTop(Stack<int> stack)
         {
             Stack<int> stackClone = Lesson2.Clone(stack);
-            bool flag = false;
-            int Value = 0;
-            while (!stackClone.IsEmpty())
-            {
-                if (!flag)
-                {
-                    Value = stackClone.Pop();
-                }
-                stackClone.Pop();
-            }
-            return Value;
+
+            // The top element is the first to be popped
+            return stackClone.Pop();
         }
+
 
     }
     public class RunMtEx2
@@ -483,6 +494,35 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices
             Console.WriteLine($"stack with the values that are bigger then 3 {MtEx2.CreateLarge(stack, 3)}");
             //MtEx2.EraseSmalls(stack, 4);
             //MtEx2.EraseLarges(stack,2);
+
+            Queue<Stack<int>> queue = new Queue<Stack<int>>();
+
+            Stack<int> stack1 = new Stack<int>();
+            stack1.Push(40);
+            stack1.Push(20);
+
+            Stack<int> stack2 = new Stack<int>();
+            stack2.Push(60);
+            stack2.Push(50);
+            stack2.Push(40);
+
+            Stack<int> stack3 = new Stack<int>();
+            stack3.Push(4000);
+            stack3.Push(500);
+            stack3.Push(100);
+            stack3.Push(60);
+
+            queue.Insert(stack1);
+            queue.Insert(stack2);
+            queue.Insert(stack3);
+
+            Console.WriteLine(MtEx2.GetStackTop(stack2));
+
+            Console.WriteLine(MtEx2.IsPerfect(queue)); // Output: True
+
+
+
+
         }
     }
 
