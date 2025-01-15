@@ -30,6 +30,33 @@ namespace Data_Strucher_Lesson1.Classes.Queue
 
             return count;
         }
+
+        //EX2 pt.1
+        public static Queue<T> CloneQueue1<T>(Queue<T> originalQueue)
+        {
+            if (originalQueue == null || originalQueue.IsEmpty())
+                return new Queue<T>(); // Return an empty queue if the original is null or empty
+
+            Queue<T> clonedQueue = new Queue<T>();
+            Queue<T> tempQueue = new Queue<T>();
+
+            // Dequeue all elements from the original queue and copy to both temp and cloned queues
+            while (!originalQueue.IsEmpty())
+            {
+                T item = originalQueue.Remove();
+                clonedQueue.Insert(item);
+                tempQueue.Insert(item);
+            }
+
+            // Restore the original queue
+            while (!tempQueue.IsEmpty())
+            {
+                originalQueue.Insert(tempQueue.Remove());
+            }
+
+            return clonedQueue;
+        }
+
         //EX2
         public static void CloneQueue<T>(Queue<T> line)
         {

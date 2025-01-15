@@ -1,8 +1,10 @@
 ﻿using Data_Strucher_Lesson1.Classes.extrecices_for_test;
+using Data_Strucher_Lesson1.Classes.Queue;
 using Data_Strucher_Lesson1.Classes.stackStrucher;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -77,14 +79,14 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
                     Node<int> innerPos = chain;
                     while (innerPos != null)
                     {
-                        if(innerPos.GetValue() == currentValue)
+                        if (innerPos.GetValue() == currentValue)
                         {
                             count++;
                         }
                         innerPos = innerPos.GetNext();
                     }
 
-                    if(count > 1)
+                    if (count > 1)
                     {
                         return false;
                     }
@@ -98,8 +100,64 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
         }
 
         //EX4
+        public static void What(Stack<int> s)
+        {
+            Stack<int> temp1 = new Stack<int>();
+            Stack<int> temp2 = new Stack<int>();
+            while (!s.IsEmpty())
+            {
+                int x = s.Pop();
+                bool found = false;
+                while (!s.IsEmpty())
+                {
+                    int y = s.Pop();
+                    if (x < y)
+                        found = true;
+                    temp1.Push(y);
+                }
+                while (!temp1.IsEmpty())
+                    s.Push(temp1.Pop());
 
+                if (!found)
+                    temp2.Push(x);
+            }
+            while (!temp2.IsEmpty())
+                s.Push(temp2.Pop());
+        }
+
+        //EX6 
+        public static bool StartWith(Queue<int> q1, Queue<int> q2)
+        {
+            Queue<int> cloneQ1 = QEx.CloneQueue1(q1);
+            Queue<int> cloneQ2 = QEx.CloneQueue1(q2);
+
+            if (QEx.CountQueue(q1) == QEx.CountQueue(q2))
+            {
+                for (int i = 0; i < QEx.CountQueue(q1); i++)
+                {
+                    int currentQ1Value = cloneQ1.Remove();
+                    int currentQ2Value = cloneQ2.Remove();
+
+                    if (currentQ1Value != currentQ2Value)
+                        return false;
+                }
+                return true;
+            }
+
+            else
+            {
+                while (!cloneQ2.IsEmpty() && !cloneQ1.IsEmpty())
+                {
+                    int currentQ1Value = cloneQ1.Remove();
+                    int currentQ2Value = cloneQ2.Remove();
+
+                    if()
+                }
+            }
+        }
     }
+
+
 
     public class RunMahatEx1
     {
@@ -107,10 +165,14 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
         {
 
             Stack<int> stack = new Stack<int>();
-            stack.Push(100000);
-            stack.Push(10000);
-            stack.Push(100);
-            stack.Push(10);
+            stack.Push(1);
+            stack.Push(4);
+            stack.Push(1);
+            stack.Push(4);
+            stack.Push(1);
+            stack.Push(3);
+            stack.Push(6);
+            stack.Push(4);
 
             Queue<int> intQueue = new Queue<int>();
             intQueue.Insert(1);
@@ -131,7 +193,9 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
 
             Console.WriteLine($"the chain ; => {chain.ToPrint()}");
             Console.WriteLine(MahatEx1.UniqNeg(chain));
-
+            Console.WriteLine(stack);
+            MahatEx1.What(stack);
+            Console.WriteLine(stack);
 
         }
     }
