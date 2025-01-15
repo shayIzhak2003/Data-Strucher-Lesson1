@@ -64,11 +64,41 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
 
         //EX3
         public static bool UniqNeg(Node<int> chain)
-        {       
-            Node<int> start = chain;
-            Node<int> current = chain;
+        {
+            Node<int> pos = chain;
+            int count = 0;
+            while (pos != null)
+            {
+                count = 0;
+                int currentValue = pos.GetValue();
 
+                if (currentValue < 0)
+                {
+                    Node<int> innerPos = chain;
+                    while (innerPos != null)
+                    {
+                        if(innerPos.GetValue() == currentValue)
+                        {
+                            count++;
+                        }
+                        innerPos = innerPos.GetNext();
+                    }
+
+                    if(count > 1)
+                    {
+                        return false;
+                    }
+                }
+
+                pos = pos.GetNext();
+            }
+            return true;
+
+            // the runtime function is O(N * N)
         }
+
+        //EX4
+
     }
 
     public class RunMahatEx1
@@ -88,10 +118,21 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
             intQueue.Insert(3);
             intQueue.Insert(4);
 
+            Node<int> chain = new Node<int>(10);
+            chain.SetNext(new Node<int>(-3, new Node<int>(10,
+                new Node<int>(6, new Node<int>(-2,
+                new Node<int>(-8, new Node<int>(7)))))));
+
+
             Console.WriteLine(intQueue);
             Console.WriteLine(MahatEx1.RemoveFromQueue(intQueue, 1));
             Console.WriteLine(intQueue);
             Console.WriteLine(MahatEx1.IsUniform(stack));
+
+            Console.WriteLine($"the chain ; => {chain.ToPrint()}");
+            Console.WriteLine(MahatEx1.UniqNeg(chain));
+
+
         }
     }
 }
