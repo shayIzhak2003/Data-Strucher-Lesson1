@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -128,33 +129,81 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
         //EX6 
         public static bool StartWith(Queue<int> q1, Queue<int> q2)
         {
-            Queue<int> cloneQ1 = QEx.CloneQueue1(q1);
-            Queue<int> cloneQ2 = QEx.CloneQueue1(q2);
-
-            if (QEx.CountQueue(q1) == QEx.CountQueue(q2))
+            // If q2 is empty or null, it always starts with q1
+            if (q2 == null || q2.IsEmpty())
             {
-                for (int i = 0; i < QEx.CountQueue(q1); i++)
-                {
-                    int currentQ1Value = cloneQ1.Remove();
-                    int currentQ2Value = cloneQ2.Remove();
-
-                    if (currentQ1Value != currentQ2Value)
-                        return false;
-                }
                 return true;
             }
 
-            else
+            // If q1 is empty or null, it cannot start with q2
+            if (q1 == null || q1.IsEmpty())
             {
-                while (!cloneQ2.IsEmpty() && !cloneQ1.IsEmpty())
-                {
-                    int currentQ1Value = cloneQ1.Remove();
-                    int currentQ2Value = cloneQ2.Remove();
+                return false;
+            }
 
-                    if()
+            Queue<int> cloneQ1 = QEx.CloneQueue1(q1);
+            Queue<int> cloneQ2 = QEx.CloneQueue1(q2);
+
+            // Compare elements of q2 with the prefix of q1
+            while (!cloneQ1.IsEmpty())
+            {
+                if (cloneQ2.IsEmpty())
+                {
+                    return true; // All elements of q1 matched in q2
+                }
+
+                int currentValue1 = cloneQ1.Remove();
+                int currentValue2 = cloneQ2.Remove();
+
+                if (currentValue1 != currentValue2)
+                {
+                    return false; // Mismatch found
                 }
             }
+
+            return cloneQ1.IsEmpty(); // Ensure all elements of q1 were checked
         }
+
+
+        //EX6 pt.2
+        public static bool Duplication(Queue<int> q1, Queue<int> q2)
+        {
+            // If q1 is null or empty, it cannot be duplicated in q2
+            if (q1 == null || q1.IsEmpty())
+            {
+                return false;
+            }
+
+            // If q2 is null or empty, q1 cannot be a subsequence
+            if (q2 == null || q2.IsEmpty())
+            {
+                return false;
+            }
+
+            Queue<int> cloneQ2 = QEx.CloneQueue1(q2);
+            int matchCount = 0;
+
+            while (!cloneQ2.IsEmpty())
+            {
+                if (StartWith(q1, cloneQ2))
+                {
+                    matchCount++;
+
+                    // If q1 is found more than once in q2, return true
+                    if (matchCount > 1)
+                    {
+                        return true;
+                    }
+                }
+
+                // Progress the search by removing one element from cloneQ2
+                cloneQ2.Remove();
+            }
+
+            return false; // Return false if q1 is found at most once
+        }
+
+
     }
 
 
@@ -180,6 +229,37 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
             intQueue.Insert(3);
             intQueue.Insert(4);
 
+
+            Queue<int> intQueue2 = new Queue<int>();
+            intQueue2.Insert(1);
+            intQueue2.Insert(2);
+            intQueue2.Insert(3);
+            intQueue2.Insert(4);
+
+            Queue<int> q1 = new Queue<int>();
+            q1.Insert(3);
+            q1.Insert(12);
+            q1.Insert(10);
+            q1.Insert(2);
+
+            Queue<int> q2 = new Queue<int>();
+            q2.Insert(3);
+            q2.Insert(12);
+            q2.Insert(10);
+            q2.Insert(2);
+            q2.Insert(3);
+            q2.Insert(12);
+            q2.Insert(10);
+            q2.Insert(2);
+            
+
+
+
+
+
+            //Queue<int> cloneQueue = QEx.CloneQueue1(q2);
+            //Console.WriteLine($"the clone queue: => {cloneQueue}");
+
             Node<int> chain = new Node<int>(10);
             chain.SetNext(new Node<int>(-3, new Node<int>(10,
                 new Node<int>(6, new Node<int>(-2,
@@ -196,7 +276,8 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
             Console.WriteLine(stack);
             MahatEx1.What(stack);
             Console.WriteLine(stack);
-
+            Console.WriteLine($"the results are : => {MahatEx1.StartWith(q1, q2)}");
+            Console.WriteLine($"are the queues duplicated? :=> {MahatEx1.Duplication(q1,q2)}");
         }
     }
 }
