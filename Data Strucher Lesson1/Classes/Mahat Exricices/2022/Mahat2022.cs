@@ -1,4 +1,5 @@
 ﻿using Data_Strucher_Lesson1.Classes.Mahat_Exercises._2022.Ex3;
+using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Lesson2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,11 +77,11 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
             int avarge = 0;
             int sum = 0;
             int count = 0;
-            Stack<int> tempStack = new Stack<int> ();
+            Stack<int> tempStack = new Stack<int>();
             Stack<int> tempLessThenAvarage = new Stack<int>();
             while (!stack1.IsEmpty())
             {
-                
+
                 int currentValue = stack1.Pop();
                 sum += currentValue;
                 count++;
@@ -97,7 +98,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
             while (!stack1.IsEmpty())
             {
                 int currentValue = stack1.Pop();
-                if(currentValue > avarge)
+                if (currentValue > avarge)
                 {
                     tempStack.Push(currentValue);
                 }
@@ -119,7 +120,83 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
 
         }
 
+        //TO DO 3 4 5..... (WRITE THEM DOWN!!)
 
+        //EX6 pt.1
+        public static Node<int> AverageList(Node<int> lst)
+        {
+            if (lst == null)
+                return null; // Handle an empty list
+
+            Node<int> pos = lst;
+            Node<int> averageLst = null; // Head of the averages list
+            Node<int> tail = null;       // Tail of the averages list for appending
+            int sum = 0;
+            int count = 0;
+
+            while (pos != null)
+            {
+                int currentValue = pos.GetValue();
+
+                if (currentValue != -1)
+                {
+                    // Accumulate sum and count for the current group
+                    count++;
+                    sum += currentValue;
+                }
+                else
+                {
+                    // Calculate the average for the current group
+                    if (count > 0)
+                    {
+                        int average = sum / count;
+                        Node<int> newNode = new Node<int>(average);
+
+                        if (averageLst == null)
+                        {
+                            averageLst = newNode; // Initialize head
+                            tail = newNode;       // Initialize tail
+                        }
+                        else
+                        {
+                            tail.SetNext(newNode); // Append to the tail
+                            tail = newNode;        // Update the tail
+                        }
+                    }
+
+                    // Reset sum and count for the next group
+                    sum = 0;
+                    count = 0;
+                }
+
+                pos = pos.GetNext();
+            }
+
+            // Handle the case where the list ends without a final `-1`
+            if (count > 0)
+            {
+                int average = sum / count;
+                Node<int> newNode = new Node<int>(average);
+
+                if (averageLst == null)
+                {
+                    averageLst = newNode; // Initialize head
+                }
+                else
+                {
+                    tail.SetNext(newNode); // Append to the tail
+                }
+            }
+
+            return averageLst;
+        }
+
+        //EX6 PT.2
+
+        public static void Print(Node<int> lst)
+        {
+
+        }
 
     }
     public class RunMahat2022
@@ -127,12 +204,22 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
         public static void DemoMain()
         {
             // Create a linked list: 1 -> 2 -> 3 -> 4 -> 5 -> 6
-            Node<int> node6 = new Node<int>(6);
+            Node<int> node6 = new Node<int>(60);
             Node<int> node5 = new Node<int>(5, node6);
             Node<int> node4 = new Node<int>(4, node5);
             Node<int> node3 = new Node<int>(3, node4);
             Node<int> node2 = new Node<int>(2, node3);
             Node<int> node1 = new Node<int>(1, node2);
+
+            // Create the input list of grades
+            Node<int> grades = new Node<int>(90,
+                                new Node<int>(80,
+                                new Node<int>(70,
+                                new Node<int>(-1,
+                                new Node<int>(85,
+                                new Node<int>(75,
+                                new Node<int>(-1,
+                                new Node<int>(95))))))));
 
             Stack<int> stack1 = new Stack<int>();
             stack1.Push(11);
@@ -157,6 +244,14 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
 
             //EX3
             RunB.DemoMain();
+
+            //EX6
+
+            Node<int> averages = Mahat2022.AverageList(grades);
+
+            // Print the result
+            Console.WriteLine("Averages: " + averages.ToPrint());
+
         }
 
 
