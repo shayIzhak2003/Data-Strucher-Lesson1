@@ -194,8 +194,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
 
         //EX6 PT.2
 
-        
-       public static void Print(Node<int> lst)
+        public static void Print(Node<int> lst)
         {
             int index = 1; // Start indexing from 1
 
@@ -238,6 +237,34 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
             }
         }
 
+        //EX7
+        public static bool IsUpDown(Node<int> chain)
+        {
+            if (chain == null || !chain.HasNext())
+                return true; // A single node or empty list is trivially up-down.
+
+            Node<int> current = chain;
+
+            // Phase 1: Check the increasing sequence.
+            while (current.HasNext() && current.GetValue() < current.GetNext().GetValue())
+            {
+                current = current.GetNext();
+            }
+
+            // If we never transitioned to a decreasing sequence, it's not "up-down".
+            if (!current.HasNext())
+                return false;
+
+            // Phase 2: Check the decreasing sequence.
+            while (current.HasNext() && current.GetValue() > current.GetNext().GetValue())
+            {
+                current = current.GetNext();
+            }
+
+            // If we've reached the end of the list, it's a valid "up-down" sequence.
+            return !current.HasNext();
+        }
+
 
 
     }
@@ -246,12 +273,12 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
         public static void DemoMain()
         {
             // Create a linked list: 1 -> 2 -> 3 -> 4 -> 5 -> 6
-            Node<int> node6 = new Node<int>(60);
-            Node<int> node5 = new Node<int>(5, node6);
-            Node<int> node4 = new Node<int>(4, node5);
-            Node<int> node3 = new Node<int>(3, node4);
-            Node<int> node2 = new Node<int>(2, node3);
-            Node<int> node1 = new Node<int>(1, node2);
+            Node<int> node6 = new Node<int>(1);
+            Node<int> node5 = new Node<int>(3, node6);
+            Node<int> node4 = new Node<int>(40, node5);
+            Node<int> node3 = new Node<int>(30, node4);
+            Node<int> node2 = new Node<int>(20, node3);
+            Node<int> node1 = new Node<int>(10, node2);
 
             // Create the input list of grades
             Node<int> grades = new Node<int>(90,
@@ -262,6 +289,17 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
                                 new Node<int>(75,
                                 new Node<int>(-1,
                                 new Node<int>(95))))))));
+
+            // Create a sample linked list: 2 → 5 → 13 → 19 → 21 → 18 → 13 → 6 → 3
+            Node<int> chain = new Node<int>(2,
+                                new Node<int>(5,
+                                    new Node<int>(13,
+                                        new Node<int>(19,
+                                            new Node<int>(21,
+                                                new Node<int>(18,
+                                                    new Node<int>(13,
+                                                        new Node<int>(6,
+                                                            new Node<int>(3)))))))));
 
             Stack<int> stack1 = new Stack<int>();
             stack1.Push(11);
@@ -294,9 +332,10 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
             // Print the result
             Console.WriteLine("Averages: " + averages.ToPrint());
             Mahat2022.Print(grades);
+            Console.WriteLine(Mahat2022.IsUpDown(chain));
 
         }
 
-    
+
     }
 }
