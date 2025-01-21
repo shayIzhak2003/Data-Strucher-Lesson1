@@ -1,5 +1,6 @@
 ﻿using Data_Strucher_Lesson1.Classes.Mahat_Exercises._2022.Ex3;
 using Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.Lesson2;
+using Data_Structure_Lesson1.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -193,10 +194,51 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
 
         //EX6 PT.2
 
-        public static void Print(Node<int> lst)
+        
+       public static void Print(Node<int> lst)
         {
+            int index = 1; // Start indexing from 1
 
+            while (lst != null)
+            {
+                int sum = 0, count = 0, minScore = int.MaxValue;
+                Node<int> studentScores = lst;
+
+                // Traverse scores for the current student
+                while (studentScores != null && studentScores.GetValue() != -1)
+                {
+                    int score = studentScores.GetValue();
+                    sum += score;
+                    count++;
+                    if (score < minScore)
+                        minScore = score;
+
+                    studentScores = studentScores.GetNext();
+                }
+
+                // Calculate averages
+                double averageBefore = count > 0 ? (double)sum / count : 0;
+                double averageAfter = (count > 1) ? (double)(sum - minScore) / (count - 1) : averageBefore;
+
+                // Print results
+                Console.WriteLine($"Student at index {index}:");
+                Console.WriteLine($"Average before: {averageBefore:F1}, Average after: {averageAfter:F1}");
+
+                // Skip the `-1` node explicitly
+                if (studentScores != null && studentScores.GetValue() == -1)
+                {
+                    lst = studentScores.GetNext(); // Move to the next student's scores
+                }
+                else
+                {
+                    lst = null; // End of the list
+                }
+
+                index++;
+            }
         }
+
+
 
     }
     public class RunMahat2022
@@ -251,9 +293,10 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
 
             // Print the result
             Console.WriteLine("Averages: " + averages.ToPrint());
+            Mahat2022.Print(grades);
 
         }
 
-
+    
     }
 }
