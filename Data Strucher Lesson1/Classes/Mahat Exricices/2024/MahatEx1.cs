@@ -1,4 +1,5 @@
-﻿using Data_Strucher_Lesson1.Classes.extrecices_for_test;
+﻿using Data_Strucher_Lesson1.Classes.Binray_tree.Lessons;
+using Data_Strucher_Lesson1.Classes.extrecices_for_test;
 using Data_Strucher_Lesson1.Classes.Queue;
 using Data_Strucher_Lesson1.Classes.stackStrucher;
 using System;
@@ -204,6 +205,68 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
         }
 
         //EX7
+        public static bool IsUpDown(Node<int> chain)
+        {
+            if (chain == null || !chain.HasNext())
+                return true; // A single node or empty list is trivially up-down.
+
+            Node<int> current = chain;
+
+            // Phase 1: Check the increasing sequence.
+            while (current.HasNext() && current.GetValue() < current.GetNext().GetValue())
+            {
+                current = current.GetNext();
+            }
+
+            // If we never transitioned to a decreasing sequence, it's not "up-down".
+            if (!current.HasNext())
+                return false;
+
+            // Phase 2: Check the decreasing sequence.
+            while (current.HasNext() && current.GetValue() > current.GetNext().GetValue())
+            {
+                current = current.GetNext();
+            }
+
+            // If we've reached the end of the list, it's a valid "up-down" sequence.
+            return !current.HasNext();
+        }
+
+        //EX8
+        public static void PrintSmallerThenTreeAvarge(BinNode<int> root)
+        {
+            if (root == null)
+            {
+                return; // Base case: stop if the node is null
+            }
+
+            // Calculate the average of the tree values once
+            int totalSum = BasicFunctioms.SumOfValuesOfTheTree(root);
+            int totalCount = BasicFunctioms.CountBinTree(root);
+            double average = (double)totalSum / totalCount;
+
+            // Traverse the tree and print nodes smaller than the average
+            TraverseAndPrint(root, average);
+        }
+
+        private static void TraverseAndPrint(BinNode<int> node, double average)
+        {
+            if (node == null)
+            {
+                return; // Stop if the node is null
+            }
+
+            // Check if the current node's value is smaller than the average
+            if (node.GetValue() < average)
+            {
+                Console.WriteLine(node.GetValue());
+            }
+
+            // Recursively traverse left and right subtrees
+            TraverseAndPrint(node.GetLeft(), average);
+            TraverseAndPrint(node.GetRight(), average);
+        }
+
 
     }
 
@@ -252,7 +315,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
             q2.Insert(12);
             q2.Insert(10);
             q2.Insert(2);
-            
+
 
 
 
@@ -266,6 +329,16 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
                 new Node<int>(6, new Node<int>(-2,
                 new Node<int>(-8, new Node<int>(7)))))));
 
+            // int tree
+            // Build a sample tree
+            BinNode<int> root = new BinNode<int>(10);
+            root.SetLeft(new BinNode<int>(4));
+            root.SetRight(new BinNode<int>(15));
+            root.GetLeft().SetLeft(new BinNode<int>(2));
+            root.GetLeft().SetRight(new BinNode<int>(5));
+
+
+
 
             Console.WriteLine(intQueue);
             Console.WriteLine(MahatEx1.RemoveFromQueue(intQueue, 1));
@@ -278,7 +351,8 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
             MahatEx1.What(stack);
             Console.WriteLine(stack);
             Console.WriteLine($"the results are : => {MahatEx1.StartWith(q1, q2)}");
-            Console.WriteLine($"are the queues duplicated? :=> {MahatEx1.Duplication(q1,q2)}");
+            Console.WriteLine($"are the queues duplicated? :=> {MahatEx1.Duplication(q1, q2)}");
+            MahatEx1.PrintSmallerThenTreeAvarge(root);
         }
     }
 }

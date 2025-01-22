@@ -237,33 +237,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
             }
         }
 
-        //EX7
-        public static bool IsUpDown(Node<int> chain)
-        {
-            if (chain == null || !chain.HasNext())
-                return true; // A single node or empty list is trivially up-down.
-
-            Node<int> current = chain;
-
-            // Phase 1: Check the increasing sequence.
-            while (current.HasNext() && current.GetValue() < current.GetNext().GetValue())
-            {
-                current = current.GetNext();
-            }
-
-            // If we never transitioned to a decreasing sequence, it's not "up-down".
-            if (!current.HasNext())
-                return false;
-
-            // Phase 2: Check the decreasing sequence.
-            while (current.HasNext() && current.GetValue() > current.GetNext().GetValue())
-            {
-                current = current.GetNext();
-            }
-
-            // If we've reached the end of the list, it's a valid "up-down" sequence.
-            return !current.HasNext();
-        }
+      
 
 
 
@@ -332,7 +306,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022
             // Print the result
             Console.WriteLine("Averages: " + averages.ToPrint());
             Mahat2022.Print(grades);
-            Console.WriteLine(Mahat2022.IsUpDown(chain));
+            
 
         }
 

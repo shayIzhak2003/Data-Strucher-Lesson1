@@ -295,8 +295,8 @@ namespace Data_Strucher_Lesson1
             //RunTreeLs2.DemoMain();
             //RunStackEx1.DemoMain();
             //RunMaagar.DemoMain();
-            //RunMahatEx1.DemoMain();
-            RunMahat2022.DemoMain();
+            RunMahatEx1.DemoMain();
+            //RunMahat2022.DemoMain();
         }
     }
 
