@@ -237,7 +237,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
         {
             if (root == null)
             {
-                return; // Base case: stop if the node is null
+                return; 
             }
 
             // Calculate the average of the tree values once
