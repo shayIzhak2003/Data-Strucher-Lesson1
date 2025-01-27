@@ -16,15 +16,15 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices.justEx
 
             Stack<int> tempStack = new Stack<int>();
 
-           
+
             while (!stack.IsEmpty())
             {
                 tempStack.Push(stack.Pop());
             }
 
-           
+
             Stack<int> resultStack = new Stack<int>();
-            int prev = tempStack.Pop(); 
+            int prev = tempStack.Pop();
             resultStack.Push(prev);
 
             while (!tempStack.IsEmpty())
@@ -35,14 +35,14 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices.justEx
                 if (!tempStack.IsEmpty())
                 {
                     int next = tempStack.Top();
-                    
+
                     if ((prev < current && current > next) || (prev > current && current < next))
                     {
                         resultStack.Push(current);
                     }
                 }
 
-                prev = current; 
+                prev = current;
             }
 
 
@@ -80,6 +80,35 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices.justEx
             return (sum1 > sum2) ? sum1 : sum2;
         }
 
+        //2011EX pt.1
+        public static void Leaves(BinNode<int> root, Stack<int> stack)
+        {
+            if (root == null)
+                return;
+
+            Leaves(root.GetRight(), stack);
+            stack.Push(root.GetValue());
+            Leaves(root.GetLeft(), stack);
+        }
+
+        //2011EX pt.1
+        public static bool AreTreesEquales(BinNode<int> root1, BinNode<int> root2)
+        {
+            if(root1 == null && root2 == null)
+                return true;
+
+            if ((root1 == null && root2 != null) || (root1 != null && root2 == null))
+            {
+                return false; // One tree is empty while the other is not
+            }
+
+            Stack<int> stack1 = new Stack<int>();
+            Stack<int> stack2 = new Stack<int>();
+
+            Leaves(root1, stack1);
+            Leaves(root2, stack2);
+
+        }
 
 
     }
@@ -88,6 +117,17 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices.justEx
     {
         public static void DemoMain()
         {
+            //Binary tree exsample
+            var root = new BinNode<int>(10);
+            var leftChild = new BinNode<int>(5);
+            var rightChild = new BinNode<int>(15);
+            root.SetLeft(leftChild);
+            root.SetRight(rightChild);
+            leftChild.SetLeft(new BinNode<int>(3));
+            leftChild.SetRight(new BinNode<int>(7));
+            rightChild.SetLeft(new BinNode<int>(12));
+            rightChild.SetRight(new BinNode<int>(18));
+
             // Example usage
             Stack<int> stack = new Stack<int>();
             stack.Push(2);
@@ -97,13 +137,13 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices.justEx
             stack.Push(2);
             stack.Push(1);
             stack.Push(3);
-
+            Stack<int> testStack = new Stack<int>();
             Console.WriteLine("Original stack: " + stack);
 
             RandMahatEx1.InsertDirectionChangingElements(stack);
 
             Console.WriteLine("Modified stack: " + stack);
-            
+
             Console.WriteLine("==============");
             // Initialize two stacks
             Stack<int> stack1 = new Stack<int>();
@@ -127,9 +167,11 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices.justEx
             int biggerSum = RandMahatEx1.GetBiggerSumOfStacks(stack1, stack2);
             Console.WriteLine($"The bigger sum of the two values below the head is: {biggerSum}");
 
-            // Print stacks after the operation to confirm they're restored
-            Console.WriteLine("Stack 1 after operation: " + stack1);
-            Console.WriteLine("Stack 2 after operation: " + stack2);
+            RandMahatEx1.Leaves(root, testStack);
+
+            Console.WriteLine(testStack);
+
+
         }
     }
 }
