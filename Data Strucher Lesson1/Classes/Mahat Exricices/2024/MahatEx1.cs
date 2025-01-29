@@ -267,6 +267,31 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
             TraverseAndPrint(node.GetRight(), average);
         }
 
+        //EX10
+        public static Node<int> What(Node<int> p1)
+        {
+            if (p1.GetNext() == null)
+                return p1;
+            Node<int> p2 = What(p1.GetNext());
+            if (p1.GetValue() < p2.GetValue())
+                return p1;
+            return p2;
+        }
+
+        public static void Why(Node<int> chain)
+        {
+            if (chain.GetNext() != null)
+            {
+                Node<int> p = What(chain);
+                int temp = p.GetValue();
+                p.SetValue(chain.GetValue());
+                chain.SetValue(temp);
+                Why(chain.GetNext());
+            }
+        }
+
+        //EX11
+
 
     }
 
@@ -329,6 +354,15 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
                 new Node<int>(6, new Node<int>(-2,
                 new Node<int>(-8, new Node<int>(7)))))));
 
+
+            // Create a linked list: 1 -> 2 -> 3 -> 4 -> 5 -> 6
+            Node<int> node6 = new Node<int>(6);
+            Node<int> node5 = new Node<int>(8, node6);
+            Node<int> node4 = new Node<int>(5, node5);
+            Node<int> node3 = new Node<int>(10, node4);
+            Node<int> node2 = new Node<int>(4, node3);
+            Node<int> node1 = new Node<int>(3, node2);
+
             // int tree
             // Build a sample tree
             BinNode<int> root = new BinNode<int>(10);
@@ -353,6 +387,14 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024
             Console.WriteLine($"the results are : => {MahatEx1.StartWith(q1, q2)}");
             Console.WriteLine($"are the queues duplicated? :=> {MahatEx1.Duplication(q1, q2)}");
             MahatEx1.PrintSmallerThenTreeAvarge(root);
+            Console.WriteLine("=====");
+            Console.WriteLine(MahatEx1.What(node1));
+            MahatEx1.Why(node1);
+            Console.WriteLine(node1.ToPrint());
+            Node<int> p = MahatEx1.What(node1);
+            Console.WriteLine("===");
+            Console.WriteLine(p);
+            
         }
     }
 }

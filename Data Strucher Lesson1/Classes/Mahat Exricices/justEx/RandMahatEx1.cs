@@ -92,23 +92,23 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices.justEx
         }
 
         //2011EX pt.1
-        public static bool AreTreesEquales(BinNode<int> root1, BinNode<int> root2)
-        {
-            if(root1 == null && root2 == null)
-                return true;
+        //public static bool AreTreesEquales(BinNode<int> root1, BinNode<int> root2)
+        //{
+        //    if(root1 == null && root2 == null)
+        //        return true;
 
-            if ((root1 == null && root2 != null) || (root1 != null && root2 == null))
-            {
-                return false; // One tree is empty while the other is not
-            }
+        //    if ((root1 == null && root2 != null) || (root1 != null && root2 == null))
+        //    {
+        //        return false; // One tree is empty while the other is not
+        //    }
 
-            Stack<int> stack1 = new Stack<int>();
-            Stack<int> stack2 = new Stack<int>();
+        //    Stack<int> stack1 = new Stack<int>();
+        //    Stack<int> stack2 = new Stack<int>();
 
-            Leaves(root1, stack1);
-            Leaves(root2, stack2);
+        //    Leaves(root1, stack1);
+        //    Leaves(root2, stack2);
 
-        }
+        //}
 
 
     }

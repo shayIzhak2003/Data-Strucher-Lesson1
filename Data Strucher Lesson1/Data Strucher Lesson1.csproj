@@ -84,6 +84,7 @@
     <Compile Include="Classes\Lesson8\RecorsiaEx.cs" />
     <Compile Include="Classes\Mahat Exricices\2022\ex3\B.cs" />
     <Compile Include="Classes\Mahat Exricices\2022\Mahat2022.cs" />
+    <Compile Include="Classes\Mahat Exricices\2024\EX11\Grade.cs" />
     <Compile Include="Classes\Mahat Exricices\2024\MahatEx1.cs" />
     <Compile Include="Classes\Mahat Exricices\justEx\RandMahatEx1.cs" />
     <Compile Include="Classes\Mahat Exricices\MtEx1.cs" />
