@@ -13,6 +13,7 @@ using Data_Strucher_Lesson1.Classes.Lesson8;
 using Data_Strucher_Lesson1.Classes.Mahat_Exricices;
 using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022;
 using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024;
+using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.EX11;
 using Data_Strucher_Lesson1.Classes.Mahat_Exricices.justEx;
 using Data_Strucher_Lesson1.Classes.Queue;
 using Data_Strucher_Lesson1.Classes.Queue.campusIL_Course;
@@ -296,9 +297,10 @@ namespace Data_Strucher_Lesson1
             //RunTreeLs2.DemoMain();
             //RunStackEx1.DemoMain();
             //RunMaagar.DemoMain();
-            RunMahatEx1.DemoMain();
+            //RunMahatEx1.DemoMain();
             //RunMahat2022.DemoMain();
             //RunRandMahatEx1.DemoMain();
+            RunStudent.DemoMain();
         }
     }
 
