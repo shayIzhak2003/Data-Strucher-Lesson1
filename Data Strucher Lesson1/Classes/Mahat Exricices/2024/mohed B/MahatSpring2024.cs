@@ -83,6 +83,50 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
             }
         }
 
+        // EX3
+        public static bool IsMiracle(Node<int> chain)
+        {
+            int count = 0;
+            int secondCounter = 0;
+            Node<int> pos = chain;
+            Node<int> secondPos = chain;
+            int startValue = 0;
+            int middleValue = 0;
+            int endValue = 0;
+            bool isBigger = false;
+
+            while (pos != null)
+            {
+                count++;
+                pos = pos.GetNext();
+            }
+
+            while(secondPos != null)
+            {
+                if(secondCounter == 0)
+                {
+                    startValue = secondPos.GetValue();
+                }
+                if (secondCounter == count / 2)
+                {
+                    middleValue = secondPos.GetValue();
+                }
+                if (secondPos.GetNext() == null)
+                {
+                    endValue = secondPos.GetValue();
+                }
+
+                if(secondPos.GetValue() < middleValue)
+                {
+                    isBigger = true;
+                }
+                secondCounter++;
+                secondPos = secondPos.GetNext();
+            }
+            return !isBigger && startValue == endValue;
+
+        }
+
     }
     public class RunMahatSpring2024
     {
@@ -117,7 +161,15 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
             q1.Insert(3);
             q1.Insert(4);
             q1.Insert(5);
-           
+
+            //List section
+            // יצירת רשימה מקושרת: 5 -> 7 -> 10 -> 7 -> 5
+            Node<int> chain = new Node<int>(5,
+                new Node<int>(7,
+                    new Node<int>(3,
+                        new Node<int>(7,
+                            new Node<int>(5, null)))));
+
 
             Console.WriteLine(MahatSpring2024.IsOrdered(stack1)); // true
             Console.WriteLine(MahatSpring2024.IsOrdered(stack2)); // false
@@ -126,6 +178,9 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
             Console.WriteLine(q1);
             MahatSpring2024.UpdateQueue(q1);
             Console.WriteLine(q1);
+            Console.WriteLine("List Section");
+            Console.WriteLine();
+            Console.WriteLine(MahatSpring2024.IsMiracle(chain));
 
         }
     }
