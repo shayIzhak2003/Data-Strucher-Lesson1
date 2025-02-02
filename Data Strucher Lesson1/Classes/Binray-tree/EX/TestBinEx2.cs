@@ -58,13 +58,33 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
         }
 
         // counting function on trees
+
+        //EX1
         public static int GetTreeCount<T>(BinNode<T> root)
         {
-            if(root == null)
+            if (root == null)
             { return 0; }
 
             return 1 + GetTreeCount(root.GetLeft()) + GetTreeCount(root.GetRight());
         }
+        //EX2
+        public static int SumOfEvenValuesInTree(BinNode<int> root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            if (root.GetValue() % 2 == 0)
+            {
+                return root.GetValue() + SumOfEvenValuesInTree(root.GetLeft())
+                           + SumOfEvenValuesInTree(root.GetRight());
+            }
+            return SumOfEvenValuesInTree(root.GetLeft())
+                           + SumOfEvenValuesInTree(root.GetRight());
+        }
+        //EX3
+
+
 
 
     }
@@ -95,6 +115,8 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             Console.WriteLine("=======");
             Console.WriteLine($"the tree count is => {TestBinEx2.GetTreeCount(root)}");
             Console.WriteLine("=======");
+            Console.WriteLine();
+            Console.WriteLine($"the even values sum in the binary tree is :=> {TestBinEx2.SumOfEvenValuesInTree(root)}");
         }
     }
 }
