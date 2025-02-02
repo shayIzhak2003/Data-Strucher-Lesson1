@@ -83,7 +83,34 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
                            + SumOfEvenValuesInTree(root.GetRight());
         }
         //EX3
-
+        public static int SumOfLeavesInTree(BinNode<int> root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            if (root.GetLeft() == null && root.GetRight() == null)
+            {
+                return root.GetValue() + SumOfLeavesInTree(root.GetLeft())
+                          + SumOfLeavesInTree(root.GetRight());
+            }
+            return SumOfLeavesInTree(root.GetLeft())
+                          + SumOfLeavesInTree(root.GetRight());
+        }
+        //EX4
+        public static int CountTwoSonsNodesInTree<T>(BinNode<T> root)
+        {
+            if(root == null)
+            { return 0; }
+            if(root.GetLeft() != null && root.GetRight() != null)
+            {
+                return 1 + CountTwoSonsNodesInTree(root.GetLeft())
+                         + CountTwoSonsNodesInTree(root.GetRight());
+            }
+            return CountTwoSonsNodesInTree(root.GetLeft())
+                         + CountTwoSonsNodesInTree(root.GetRight());
+        }
+        //EX5
 
 
 
@@ -117,6 +144,8 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             Console.WriteLine("=======");
             Console.WriteLine();
             Console.WriteLine($"the even values sum in the binary tree is :=> {TestBinEx2.SumOfEvenValuesInTree(root)}");
+            Console.WriteLine($"the sum of the leaves in the tree is :=> {TestBinEx2.SumOfLeavesInTree(root)}");
+            Console.WriteLine($"the amount od nodes that has to sons on tree is {TestBinEx2.CountTwoSonsNodesInTree(root)}");
         }
     }
 }
