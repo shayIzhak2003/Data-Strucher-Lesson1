@@ -233,6 +233,21 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
             return true;
         }
 
+        //EX8
+        public static bool IsDownBinaryTree(BinNode<int> root)
+        {
+            if(root == null)
+                return true;
+
+            if((root.GetLeft() == null || root.GetRight() == null) ||
+                root.GetValue() < root.GetLeft().GetValue() ||
+                root.GetValue() < root.GetRight().GetValue())
+            {
+                return false;
+            }
+
+            return IsDownBinaryTree(root.GetLeft()) && IsDownBinaryTree(root.GetRight());
+        }
 
     }
     public class RunMahatSpring2024
