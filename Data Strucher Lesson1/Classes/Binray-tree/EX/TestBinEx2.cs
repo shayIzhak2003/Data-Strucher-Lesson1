@@ -100,9 +100,9 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
         //EX4
         public static int CountTwoSonsNodesInTree<T>(BinNode<T> root)
         {
-            if(root == null)
+            if (root == null)
             { return 0; }
-            if(root.GetLeft() != null && root.GetRight() != null)
+            if (root.GetLeft() != null && root.GetRight() != null)
             {
                 return 1 + CountTwoSonsNodesInTree(root.GetLeft())
                          + CountTwoSonsNodesInTree(root.GetRight());
@@ -111,8 +111,21 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
                          + CountTwoSonsNodesInTree(root.GetRight());
         }
         //EX5
-
-
+        public static int CountNodesThatAreBiggerThenBothSons(BinNode<int> root)
+        {
+            if (root == null)
+            { return 0; }
+            if (root.GetLeft() != null && root.GetRight() != null &&
+                root.GetValue() > root.GetLeft().GetValue() &&
+                root.GetValue() > root.GetRight().GetValue())
+            {
+              return  1 + CountNodesThatAreBiggerThenBothSons(root.GetLeft()) +
+                    CountNodesThatAreBiggerThenBothSons(root.GetRight());
+            }
+            return CountNodesThatAreBiggerThenBothSons(root.GetLeft()) +
+                    CountNodesThatAreBiggerThenBothSons(root.GetRight());
+        }
+        //EX6
 
     }
     public class RunTestBinEx2
@@ -146,6 +159,7 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             Console.WriteLine($"the even values sum in the binary tree is :=> {TestBinEx2.SumOfEvenValuesInTree(root)}");
             Console.WriteLine($"the sum of the leaves in the tree is :=> {TestBinEx2.SumOfLeavesInTree(root)}");
             Console.WriteLine($"the amount od nodes that has to sons on tree is {TestBinEx2.CountTwoSonsNodesInTree(root)}");
+            Console.WriteLine($"the number of nodes that are bigger then thire both sons:=> {TestBinEx2.CountNodesThatAreBiggerThenBothSons(root)}");
         }
     }
 }
