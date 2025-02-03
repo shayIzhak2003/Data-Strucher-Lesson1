@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data_Strucher_Lesson1.Classes.Queue;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -249,6 +250,30 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
             return IsDownBinaryTree(root.GetLeft()) && IsDownBinaryTree(root.GetRight());
         }
 
+        //EX9 pt.1
+        public static int MaxDiff(Queue<int> q)
+        {
+            Queue<int> cloneQ1 = QEx.CloneQueue1(q);
+            int firstValue = cloneQ1.Remove(); // Take the first element as a reference
+            int max = firstValue;
+            int min = firstValue;
+            while (!cloneQ1.IsEmpty())
+            {
+                int currentValue = cloneQ1.Remove();
+                if (currentValue < min)
+                {
+                    min = currentValue;
+                }
+                if (currentValue > max)
+                {
+                    max = currentValue;
+                }
+               
+            }
+            return max - min;
+         
+            
+        }
     }
     public class RunMahatSpring2024
     {
@@ -310,12 +335,13 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
             //Console.WriteLine(MahatSpring2024.IsOrdered(stack2)); // false
             //Console.WriteLine(MahatSpring2024.IsOrdered(stack3)); // true
             Console.WriteLine("========");
-            Console.WriteLine(q1);
-            MahatSpring2024.UpdateQueue(q1);
+            //Console.WriteLine(q1);
+            //MahatSpring2024.UpdateQueue(q1);
             Console.WriteLine(q1);
             Console.WriteLine("List Section");
             Console.WriteLine();
             Console.WriteLine(MahatSpring2024.IsMiracle(chain));
+            Console.WriteLine($"the max gap in the queue is :=> {MahatSpring2024.MaxDiff(q1)}");
 
             Console.WriteLine("Stack Section!");
             Console.WriteLine("========");
