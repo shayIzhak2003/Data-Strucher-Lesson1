@@ -302,8 +302,8 @@ namespace Data_Strucher_Lesson1
             //RunMahat2022.DemoMain();
             //RunRandMahatEx1.DemoMain();
             //RunStudent.DemoMain();
-            RunTestBinEx2.DemoMain();
-            //RunMahatSpring2024.DemoMain();
+            //RunTestBinEx2.DemoMain();
+            RunMahatSpring2024.DemoMain();
 
 
         }
