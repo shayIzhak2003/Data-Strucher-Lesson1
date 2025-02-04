@@ -222,9 +222,9 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
             Node<int> second = first.GetNext();
             Node<int> third = second.GetNext();
 
-            while(third != null)
+            while (third != null)
             {
-                if(third.GetValue() != first.GetValue() + second.GetValue())
+                if (third.GetValue() != first.GetValue() + second.GetValue())
                     return false;
 
                 first = second;
@@ -237,10 +237,10 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
         //EX8
         public static bool IsDownBinaryTree(BinNode<int> root)
         {
-            if(root == null)
+            if (root == null)
                 return true;
 
-            if((root.GetLeft() == null || root.GetRight() == null) ||
+            if ((root.GetLeft() == null || root.GetRight() == null) ||
                 root.GetValue() < root.GetLeft().GetValue() ||
                 root.GetValue() < root.GetRight().GetValue())
             {
@@ -268,23 +268,39 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
                 {
                     max = currentValue;
                 }
-               
+
             }
             return max - min;
-         
-            
+
+            // the runtime function is O(N * N)
         }
 
         //EX9 pt.2
         public static bool ExistDiff(Queue<int> q, int num)
         {
             Queue<int> cloneQ1 = QEx.CloneQueue1(q);
-            if(MaxDiff(cloneQ1) == num)
+
+
+            while (!cloneQ1.IsEmpty())
             {
-                return true;
+                Queue<int> cloneQ2 = QEx.CloneQueue1(q);
+                int currentQ1Value = cloneQ1.Remove();
+
+                while (!cloneQ2.IsEmpty())
+                {
+                    int currentQ2Value = cloneQ2.Remove();
+
+                    if (Math.Abs(currentQ1Value - currentQ2Value) == num)
+                    {
+                        return true;
+                    }
+                }
+                
             }
             return false;
         }
+        // the run time function is O(N * N)
+
     }
     public class RunMahatSpring2024
     {
@@ -359,6 +375,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
             Console.WriteLine($"is s1 substack of s2? {MahatSpring2024.IsBottomStack(s1, s2)}");
             Console.WriteLine($"the result stack: {MahatSpring2024.LongestCommonBottom(s1, s2)}");
             Console.WriteLine($"is the node is a fibunachii? {MahatSpring2024.IsFibonacci(chain)}");
+            Console.WriteLine($"is the difrenece of 4 exist? {MahatSpring2024.ExistDiff(q1, 4)}");
 
         }
     }
