@@ -274,6 +274,17 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
          
             
         }
+
+        //EX9 pt.2
+        public static bool ExistDiff(Queue<int> q, int num)
+        {
+            Queue<int> cloneQ1 = QEx.CloneQueue1(q);
+            if(MaxDiff(cloneQ1) == num)
+            {
+                return true;
+            }
+            return false;
+        }
     }
     public class RunMahatSpring2024
     {
