@@ -303,6 +303,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
 
 
         //EX11
+    
     }
     public class RunMahatSpring2024
     {
@@ -321,12 +322,13 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
             stack2.Push(2);
 
             Stack<int> stack3 = new Stack<int>();
-            stack3.Push(5);
-            stack3.Push(3);
-            stack3.Push(1);
-            stack3.Push(8);
-            stack3.Push(6);
+            stack3.Push(2);
             stack3.Push(4);
+            stack3.Push(6);
+            stack3.Push(8);
+            stack3.Push(10);
+            stack3.Push(12);
+            stack3.Push(14);
 
             Stack<int> s1 = new Stack<int>();
             Stack<int> s2 = new Stack<int>();
@@ -364,8 +366,8 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
             //Console.WriteLine(MahatSpring2024.IsOrdered(stack2)); // false
             //Console.WriteLine(MahatSpring2024.IsOrdered(stack3)); // true
             Console.WriteLine("========");
-            //Console.WriteLine(q1);
-            //MahatSpring2024.UpdateQueue(q1);
+            Console.WriteLine(q1);
+            MahatSpring2024.UpdateQueue(q1);
             Console.WriteLine(q1);
             Console.WriteLine("List Section");
             Console.WriteLine();
@@ -378,6 +380,8 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
             Console.WriteLine($"the result stack: {MahatSpring2024.LongestCommonBottom(s1, s2)}");
             Console.WriteLine($"is the node is a fibunachii? {MahatSpring2024.IsFibonacci(chain)}");
             Console.WriteLine($"is the difrenece of 4 exist? {MahatSpring2024.ExistDiff(q1, 4)}");
+
+
 
         }
     }
