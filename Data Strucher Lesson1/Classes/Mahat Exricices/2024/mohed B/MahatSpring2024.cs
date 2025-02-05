@@ -303,7 +303,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B
 
 
         //EX11
-    
+
     }
     public class RunMahatSpring2024
     {

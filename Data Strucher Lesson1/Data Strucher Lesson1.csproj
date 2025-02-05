@@ -92,6 +92,7 @@
     <Compile Include="Classes\Mahat Exricices\2024\mohed B\EX11\DriversData.cs" />
     <Compile Include="Classes\Mahat Exricices\2024\mohed B\EX11\RunDriversApp.cs" />
     <Compile Include="Classes\Mahat Exricices\2024\mohed B\MahatSpring2024.cs" />
+    <Compile Include="Classes\Mahat Exricices\2024\Summer mohed A\MahatSummer2024.cs" />
     <Compile Include="Classes\Mahat Exricices\justEx\RandMahatEx1.cs" />
     <Compile Include="Classes\Mahat Exricices\MtEx1.cs" />
     <Compile Include="Classes\Mahat Exricices\MtEx2.cs" />
