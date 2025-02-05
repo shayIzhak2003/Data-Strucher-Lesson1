@@ -88,6 +88,29 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
                 st.Insert(temp.Remove());
             }
         }
+        //EX3 pt.1
+        public static bool IsDownList(Node<int> chain)
+        {
+            if (chain == null || chain.GetNext() == null || chain.GetNext().GetNext() == null)
+                return false; // חייבים לפחות 3 איברים כדי לבדוק את התנאי
+
+            Node<int> prevPrev = chain;
+            Node<int> prev = chain.GetNext();
+            Node<int> current = chain.GetNext().GetNext();
+
+            while (current != null)
+            {
+                if(current.GetValue() != Math.Abs(prev.GetValue() - prevPrev.GetValue()))
+                    return false;
+
+                prevPrev = prev;
+                prev = current;
+                current = current.GetNext();
+              
+            }
+            return true;
+
+        }
     }
     public class RunMahatSummer2024
     {
@@ -110,9 +133,18 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             q.Insert(15);
             q.Insert(3);
 
+            Node<int> chain1 = new Node<int>(55);
+            chain1.SetNext(new Node<int>(34));
+            chain1.GetNext().SetNext(new Node<int>(21));
+            chain1.GetNext().GetNext().SetNext(new Node<int>(13));
+            chain1.GetNext().GetNext().GetNext().SetNext(new Node<int>(8));
+            chain1.GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(5));
+
             Console.WriteLine($"is the stack balaced? {MahatSummer2024.IsBalanced(stack1)}");
             MahatSummer2024.UpdateMiddleStack(q, 30, 40);
             Console.WriteLine(q);
+            Console.WriteLine("============");
+            Console.WriteLine($"is the list a IsDownList? {MahatSummer2024.IsDownList(chain1)} ");
         }
     }
 }
