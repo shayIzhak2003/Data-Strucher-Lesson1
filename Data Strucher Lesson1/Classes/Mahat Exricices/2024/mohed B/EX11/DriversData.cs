@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B.EX11
+namespace Data_Strucher_Lesson1.Classes
 {
     public class DriversData
     {
@@ -16,30 +11,33 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B.EX11
             this.driversStack = new Stack<Driver>();
         }
 
-        // add driver function 
+        // **Add a driver to the system**
         public void AddDriver(Driver driver)
         {
             driversStack.Push(driver);
         }
 
-        // remove driver function
+        // **Remove a driver by their ID**
         public void RemoveDriverById(string driverId)
         {
             Stack<Driver> temp = new Stack<Driver>();
+
             while (!driversStack.IsEmpty())
             {
                 Driver driver = driversStack.Pop();
-                if(driver.GetId() != driverId)
+                if (driver.GetId() != driverId)
                 {
                     temp.Push(driver);
                 }
             }
+
             while (!temp.IsEmpty())
             {
                 driversStack.Push(temp.Pop());
             }
         }
 
+        // **Get the highest number of offenses committed by an active driver of a specific age**
         public int GetMaxOffensesByAge(int age)
         {
             int maxOffenses = 0;
@@ -61,6 +59,57 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B.EX11
             }
 
             return maxOffenses;
+        }
+
+        // **Suspend licenses for drivers with the highest offenses per age group**
+        public void SuspendDriversByMaxOffenses()
+        {
+            Stack<Driver> temp = new Stack<Driver>();
+            Stack<Driver> ageCheckStack = new Stack<Driver>();
+
+            while (!driversStack.IsEmpty())
+            {
+                Driver driver = driversStack.Pop();
+                int age = driver.GetAge();
+
+                // Get the max offenses for this age
+                int maxOffenses = GetMaxOffensesByAge(age);
+
+                if (driver.IsActive() && driver.GetTrafficOffenses() == maxOffenses && maxOffenses > 0)
+                {
+                    driver.SetActive(false); // Suspend license
+                }
+
+                temp.Push(driver);
+            }
+
+            // Restore stack
+            while (!temp.IsEmpty())
+            {
+                driversStack.Push(temp.Pop());
+            }
+        }
+
+        // **Print all suspended drivers**
+        public void PrintSuspendedDrivers()
+        {
+            Stack<Driver> temp = new Stack<Driver>();
+
+            Console.WriteLine("Suspended Drivers:");
+            while (!driversStack.IsEmpty())
+            {
+                Driver driver = driversStack.Pop();
+                if (!driver.IsActive()) // If license is suspended
+                {
+                    Console.WriteLine(driver);
+                }
+                temp.Push(driver);
+            }
+
+            while (!temp.IsEmpty())
+            {
+                driversStack.Push(temp.Pop());
+            }
         }
     }
 }
