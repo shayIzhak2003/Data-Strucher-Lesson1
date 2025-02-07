@@ -111,6 +111,50 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             return true;
 
         }
+
+        //EX3 pt.2
+        public static Node<int> BuildDown(int num, int a, int b)
+        {
+            if (num <= 0) return null; // טיפול במקרה של מספר לא תקין
+
+            Node<int> head = new Node<int>(a);
+            if (num == 1) return head;
+
+            Node<int> second = new Node<int>(b);
+            head.SetNext(second);
+
+            Node<int> current = second;
+            for (int i = 3; i <= num; i++)
+            {
+                int nextValue = a - b; // יצירת המספר הבא בסדרה
+                Node<int> nextNode = new Node<int>(nextValue);
+                current.SetNext(nextNode);
+                current = nextNode;
+                a = b;
+                b = nextValue;
+            }
+
+            return head;
+        }
+
+        //EX6 pt.1
+        public static void RemoveNumFromList(Stack<int> st, int num)
+        {
+            Stack<int> temp = new Stack<int>();
+            while (!st.IsEmpty())
+            {
+                temp.Push(st.Pop());
+            }
+
+            while (!temp.IsEmpty())
+            {
+                int currentValue = temp.Pop();
+                if(currentValue!= num)
+                    st.Push(currentValue);
+            }
+
+        }
+
     }
     public class RunMahatSummer2024
     {
@@ -140,11 +184,16 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             chain1.GetNext().GetNext().GetNext().SetNext(new Node<int>(8));
             chain1.GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(5));
 
+
+
             Console.WriteLine($"is the stack balaced? {MahatSummer2024.IsBalanced(stack1)}");
             MahatSummer2024.UpdateMiddleStack(q, 30, 40);
             Console.WriteLine(q);
             Console.WriteLine("============");
             Console.WriteLine($"is the list a IsDownList? {MahatSummer2024.IsDownList(chain1)} ");
+
+            Node<int> list = MahatSummer2024.BuildDown(5, 10, 6);
+            Console.WriteLine(list.ToPrint());
         }
     }
 }
