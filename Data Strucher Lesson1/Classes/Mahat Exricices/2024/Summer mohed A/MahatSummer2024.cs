@@ -63,7 +63,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             for (int i = 0; i < counter; i++)
             {
                 int val = st.Remove();
-                if(counter % 2 == 0)
+                if (counter % 2 == 0)
                 {
                     if (i == middle - 1)
                     {
@@ -76,7 +76,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
                 }
                 else
                 {
-                    if(i == middle) 
+                    if (i == middle)
                         temp.Insert(randomValue);
                     else
                         temp.Insert(val);
@@ -100,13 +100,13 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
 
             while (current != null)
             {
-                if(current.GetValue() != Math.Abs(prev.GetValue() - prevPrev.GetValue()))
+                if (current.GetValue() != Math.Abs(prev.GetValue() - prevPrev.GetValue()))
                     return false;
 
                 prevPrev = prev;
                 prev = current;
                 current = current.GetNext();
-              
+
             }
             return true;
 
@@ -149,11 +149,19 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             while (!temp.IsEmpty())
             {
                 int currentValue = temp.Pop();
-                if(currentValue!= num)
+                if (currentValue != num)
                     st.Push(currentValue);
             }
 
         }
+        //EX6 pt.2
+        public static Stack<int> CommonValues(Stack<int> s1, Stack<int> s2)
+        {
+
+        }
+
+
+
 
     }
     public class RunMahatSummer2024
@@ -167,7 +175,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             stack1.Push(0);
             stack1.Push(-1);
             stack1.Push(-10);
-           
+
 
             Queue<int> q = new Queue<int>();
             q.Insert(5);
