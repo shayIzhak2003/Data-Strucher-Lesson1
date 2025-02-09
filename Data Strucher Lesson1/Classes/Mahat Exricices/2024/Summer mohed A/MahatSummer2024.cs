@@ -243,6 +243,74 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
         }
 
 
+        //EX8
+        public static bool IsAscendingChain(BinNode<int> root)
+        {
+            if (root == null)
+                return true; // An empty tree is considered valid
+
+            if (root.HasLeft())
+                return false; // No node should have a left child
+
+            if (!root.HasRight())
+                return true; // If there's no right child, it's a valid chain
+
+            BinNode<int> rightChild = root.GetRight();
+
+            if (root.GetValue() % 2 != 0 || root.GetValue() < 0 ||
+                rightChild.GetValue() % 2 != 0 || rightChild.GetValue() < 0)
+                return false; // All values must be even
+
+            if (rightChild.GetValue() <= root.GetValue())
+                return false; // Each right child must be greater than its parent
+
+            return IsAscendingChain(rightChild); // Continue checking the right side
+        }
+        //EX9 pt.1
+        public static int ValueAt(Queue<int> q, int pos)
+        {
+            Queue<int> temp = new Queue<int>();
+            int index = 0;
+            int valueToReturn = -1;
+            while (!q.IsEmpty())
+            {
+                int currentValue = q.Remove();
+                temp.Insert(currentValue);
+
+                if(pos == index)
+                    valueToReturn = currentValue;
+
+                index++;
+            }
+            return valueToReturn;
+        }
+
+        //EX9 pt.2
+        public static Queue<int> Merge(Queue<int> q1, Queue<int> q2)
+        {
+            Queue<int> q3 = new Queue<int>();
+            Queue<int> tempQ2 = new Queue<int>();
+
+            // הופכים את התור 2 (q2) כדי שנוכל לגשת לאיבר האחרון קודם
+            while (!q2.IsEmpty())
+                tempQ2.Insert(q2.Remove());
+
+            // מיזוג התורים לפי הכלל המבוקש
+            while (!q1.IsEmpty())
+            {
+                // מכניסים את האיבר הראשון מהתור 1
+                int firstValue = q1.Remove();
+                q3.Insert(firstValue);
+
+                // מכניסים את האיבר האחרון מהתור 2
+                int lastValue = tempQ2.Remove();
+                q3.Insert(lastValue);
+            }
+
+            return q3;
+        }
+
+        // the runctime function for both of the function is O(N). 
 
 
 
@@ -286,12 +354,37 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             q.Insert(15);
             q.Insert(3);
 
+            // Create two queues
+            Queue<int> q1 = new Queue<int>();
+            Queue<int> q2 = new Queue<int>();
+
+            // Add some values to the first queue (q1)
+            q1.Insert(1);
+            q1.Insert(2);
+            q1.Insert(3);
+            q1.Insert(4);
+
+            // Add some values to the second queue (q2)
+            q2.Insert(5);
+            q2.Insert(6);
+            q2.Insert(7);
+            q2.Insert(8);
+
             Node<int> chain1 = new Node<int>(55);
             chain1.SetNext(new Node<int>(34));
             chain1.GetNext().SetNext(new Node<int>(21));
             chain1.GetNext().GetNext().SetNext(new Node<int>(13));
             chain1.GetNext().GetNext().GetNext().SetNext(new Node<int>(8));
             chain1.GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(5));
+
+            BinNode<int> root = new BinNode<int>(2);
+            root.SetRight(new BinNode<int>(4));
+            root.GetRight().SetRight(new BinNode<int>(6));
+            root.GetRight().GetRight().SetRight(new BinNode<int>(8));
+            root.GetRight().GetRight().GetRight().SetRight(new BinNode<int>(10));
+            root.GetRight().GetRight().GetRight().GetRight().SetRight(new BinNode<int>(12));
+
+
 
 
 
@@ -306,6 +399,12 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
 
             Console.WriteLine("===============");
             Console.WriteLine(MahatSummer2024.CommonValues(stack1, stack2));
+            Console.WriteLine("===============");
+            Console.WriteLine(MahatSummer2024.IsAscendingChain(root));
+            Console.WriteLine("===============");
+            Console.WriteLine($"the value in index 3 in the queue is:=> {MahatSummer2024.ValueAt(q, 3)}");
+            Console.WriteLine("===============");
+            Console.WriteLine($"the results queue is: => {MahatSummer2024.Merge(q1, q2)}");
         }
     }
 }
