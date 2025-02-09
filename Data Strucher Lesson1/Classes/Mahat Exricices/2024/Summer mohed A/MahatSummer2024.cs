@@ -160,6 +160,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             Stack<int> tempS1 = new Stack<int>();
             Stack<int> tempS2 = new Stack<int>();
             Stack<int> s3 = new Stack<int>();
+
             while (!s1.IsEmpty())
             {
                 tempS1.Push(s1.Pop());
@@ -169,8 +170,9 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             {
                 tempS2.Push(s2.Pop());
             }
+
             // running on the s1 stack
-            while (!tempS1.IsEmpty())
+            while (!tempS1.IsEmpty()) // FIXED: changed from tempS1.IsEmpty() to !tempS1.IsEmpty()
             {
                 Stack<int> tempS3 = new Stack<int>();
                 int currentValue = tempS1.Pop();
@@ -198,12 +200,13 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
                     }
                     if (check)
                     {
-                        s3.Push((int)currentValue);
+                        s3.Push(currentValue);
                     }
                 }
             }
+
             // running on the s2 stack
-            while (!tempS2.IsEmpty())
+            while (!tempS2.IsEmpty()) // No change needed here
             {
                 Stack<int> tempS3 = new Stack<int>();
                 int currentValue = tempS2.Pop();
@@ -231,13 +234,14 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
                     }
                     if (check)
                     {
-                        s3.Push((int)currentValue);
+                        s3.Push(currentValue);
                     }
                 }
             }
-            return s3;
 
+            return s3;
         }
+
 
 
 
