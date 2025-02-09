@@ -157,6 +157,85 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
         //EX6 pt.2
         public static Stack<int> CommonValues(Stack<int> s1, Stack<int> s2)
         {
+            Stack<int> tempS1 = new Stack<int>();
+            Stack<int> tempS2 = new Stack<int>();
+            Stack<int> s3 = new Stack<int>();
+            while (!s1.IsEmpty())
+            {
+                tempS1.Push(s1.Pop());
+            }
+
+            while (!s2.IsEmpty())
+            {
+                tempS2.Push(s2.Pop());
+            }
+            // running on the s1 stack
+            while (!tempS1.IsEmpty())
+            {
+                Stack<int> tempS3 = new Stack<int>();
+                int currentValue = tempS1.Pop();
+                s1.Push(currentValue);
+                if (s3.IsEmpty())
+                {
+                    s3.Push(currentValue);
+                }
+                else
+                {
+                    bool check = true;
+                    while (!s3.IsEmpty())
+                    {
+                        int currentS3Value = s3.Pop();
+                        tempS3.Push(currentS3Value);
+
+                        if (currentS3Value == currentValue)
+                        {
+                            check = false;
+                        }
+                    }
+                    while (!tempS3.IsEmpty())
+                    {
+                        s3.Push(tempS3.Pop());
+                    }
+                    if (check)
+                    {
+                        s3.Push((int)currentValue);
+                    }
+                }
+            }
+            // running on the s2 stack
+            while (!tempS2.IsEmpty())
+            {
+                Stack<int> tempS3 = new Stack<int>();
+                int currentValue = tempS2.Pop();
+                s2.Push(currentValue);
+                if (s3.IsEmpty())
+                {
+                    s3.Push(currentValue);
+                }
+                else
+                {
+                    bool check = true;
+                    while (!s3.IsEmpty())
+                    {
+                        int currentS3Value = s3.Pop();
+                        tempS3.Push(currentS3Value);
+
+                        if (currentS3Value == currentValue)
+                        {
+                            check = false;
+                        }
+                    }
+                    while (!tempS3.IsEmpty())
+                    {
+                        s3.Push(tempS3.Pop());
+                    }
+                    if (check)
+                    {
+                        s3.Push((int)currentValue);
+                    }
+                }
+            }
+            return s3;
 
         }
 
@@ -168,13 +247,31 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
     {
         public static void DemoMain()
         {
+            //Stack<int> stack1 = new Stack<int>();
+            //stack1.Push(1);
+            //stack1.Push(2);
+            //stack1.Push(0);
+            //stack1.Push(0);
+            //stack1.Push(-1);
+            //stack1.Push(-10);
+
             Stack<int> stack1 = new Stack<int>();
             stack1.Push(1);
+            stack1.Push(3);
+            stack1.Push(6);
             stack1.Push(2);
-            stack1.Push(0);
-            stack1.Push(0);
-            stack1.Push(-1);
-            stack1.Push(-10);
+            stack1.Push(14);
+            stack1.Push(6);
+            stack1.Push(3);
+
+            Stack<int> stack2 = new Stack<int>();
+            stack2.Push(5);
+            stack2.Push(3);
+            stack2.Push(7);
+            stack2.Push(6);
+            stack2.Push(14);
+            stack2.Push(8);
+            stack2.Push(1);
 
 
             Queue<int> q = new Queue<int>();
@@ -202,6 +299,9 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
 
             Node<int> list = MahatSummer2024.BuildDown(5, 10, 6);
             Console.WriteLine(list.ToPrint());
+
+            Console.WriteLine("===============");
+            Console.WriteLine(MahatSummer2024.CommonValues(stack1, stack2));
         }
     }
 }
