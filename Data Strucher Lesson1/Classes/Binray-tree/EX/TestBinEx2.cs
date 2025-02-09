@@ -119,13 +119,38 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
                 root.GetValue() > root.GetLeft().GetValue() &&
                 root.GetValue() > root.GetRight().GetValue())
             {
-              return  1 + CountNodesThatAreBiggerThenBothSons(root.GetLeft()) +
-                    CountNodesThatAreBiggerThenBothSons(root.GetRight());
+                return 1 + CountNodesThatAreBiggerThenBothSons(root.GetLeft()) +
+                      CountNodesThatAreBiggerThenBothSons(root.GetRight());
             }
             return CountNodesThatAreBiggerThenBothSons(root.GetLeft()) +
                     CountNodesThatAreBiggerThenBothSons(root.GetRight());
         }
         //EX6
+        public static bool EvaluateBooleanTree(BinNode<string> root)
+        {
+            if (root == null)
+                throw new ArgumentNullException(nameof(root));
+
+
+            if (root.GetValue() == "T")
+                return true;
+            if (root.GetValue() == "F")
+                return false;
+
+
+            if (root.GetValue() == "AND")
+            {
+                return EvaluateBooleanTree(root.GetLeft()) && EvaluateBooleanTree(root.GetRight());
+            }
+            else if (root.GetValue() == "OR")
+            {
+                return EvaluateBooleanTree(root.GetLeft()) || EvaluateBooleanTree(root.GetRight());
+            }
+            else
+            {
+                throw new InvalidOperationException("Invalid operator: " + root.GetValue());
+            }
+        }
 
     }
     public class RunTestBinEx2
@@ -143,6 +168,17 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             leftChild.SetRight(new BinNode<int>(7));
             rightChild.SetLeft(new BinNode<int>(12));
             rightChild.SetRight(new BinNode<int>(18));
+
+            BinNode<string> tree = new BinNode<string>(
+                new BinNode<string>("T"),
+                "AND",
+                new BinNode<string>(
+                    new BinNode<string>("F"),
+                    "OR",
+                    new BinNode<string>("T")
+                )
+            );
+
             Console.WriteLine("the main Tree:");
             TreeLs1.PrintTree(root);
             Console.WriteLine("the left side values");
@@ -160,6 +196,7 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             Console.WriteLine($"the sum of the leaves in the tree is :=> {TestBinEx2.SumOfLeavesInTree(root)}");
             Console.WriteLine($"the amount od nodes that has to sons on tree is {TestBinEx2.CountTwoSonsNodesInTree(root)}");
             Console.WriteLine($"the number of nodes that are bigger then thire both sons:=> {TestBinEx2.CountNodesThatAreBiggerThenBothSons(root)}");
+            Console.WriteLine($"the result of the tree is :=> {TestBinEx2.EvaluateBooleanTree(tree)}");
         }
     }
 }

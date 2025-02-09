@@ -310,7 +310,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             return q3;
         }
 
-        // the runctime function for both of the function is O(N). 
+        // the runctime function for both of the function is O(N).         
 
 
 
