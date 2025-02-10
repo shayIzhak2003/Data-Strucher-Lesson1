@@ -351,6 +351,82 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             }
         }
 
+        public static Node<int> Why(Node<int> chain, bool flag)
+        {
+            int count = 0;
+            Node<int> p = chain;
+            while (p != null)
+            {
+                int x = p.GetValue();
+                bool f = (x % 2 == 0);
+                if (f == flag)
+                    count++;
+                p = p.GetNext();
+            }
+            return new Node<int>(count);
+        }
+
+        public static void What(Node<int> chain)
+        {
+            Node<int> p = chain;
+            Node<int> temp;
+            while (p != null)
+            {
+                if (p.GetValue() % 2 == 0)
+                    temp = Why(p.GetNext(), false);
+                else
+                    temp = Why(p.GetNext(), true);
+                temp.SetNext(p.GetNext());
+                p.SetNext(temp);
+                p = temp.GetNext();
+            }
+        }
+
+        public static Node<int> MoveLastNToFront(Node<int> head, int N)
+        {
+            if (head == null || N <= 0) return head;
+
+            // 1. חישוב האורך של הרשימה
+            int length = 0;
+            Node<int> temp = head;
+            while (temp != null)
+            {
+                length++;
+                temp = temp.GetNext();
+            }
+
+            // אם N גדול או שווה לאורך, אין צורך להזיז, פשוט מחזירים את הראש
+            if (N >= length) return head;
+
+            // 2. מציאת הצומת שלפני ה-N האחרון
+            int breakPoint = length - N;
+            Node<int> prev = null;
+            Node<int> current = head;
+            for (int i = 0; i < breakPoint; i++)
+            {
+                prev = current;
+                current = current.GetNext();
+            }
+
+            // 3. ניתוק הרשימה לשני חלקים
+            prev.SetNext(null); // חותך את הרשימה
+
+            // 4. מציאת סוף החלק החדש שנעביר קדימה
+            Node<int> newHead = current;
+            while (current.GetNext() != null)
+            {
+                current = current.GetNext();
+            }
+
+            // 5. חיבור סוף החלק החדש לתחילת הרשימה המקורית
+            current.SetNext(head);
+
+            // 6. החזרת ראש הרשימה החדש
+            return newHead;
+        }
+
+
+
 
 
 
@@ -410,12 +486,12 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             q2.Insert(7);
             q2.Insert(8);
 
-            Node<int> chain1 = new Node<int>(55);
-            chain1.SetNext(new Node<int>(34));
-            chain1.GetNext().SetNext(new Node<int>(21));
-            chain1.GetNext().GetNext().SetNext(new Node<int>(13));
-            chain1.GetNext().GetNext().GetNext().SetNext(new Node<int>(8));
-            chain1.GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(5));
+            Node<int> chain1 = new Node<int>(10);
+            chain1.SetNext(new Node<int>(7));
+            chain1.GetNext().SetNext(new Node<int>(14));
+            chain1.GetNext().GetNext().SetNext(new Node<int>(5));
+            chain1.GetNext().GetNext().GetNext().SetNext(new Node<int>(7));
+            chain1.GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(2));
 
             Node<int> chain2 = new Node<int>(10);
             chain2.SetNext(new Node<int>(2));
@@ -453,11 +529,14 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             Console.WriteLine($"the results queue is: => {MahatSummer2024.Merge(q1, q2)}");
 
             Console.WriteLine("===============");
+            //Console.WriteLine(chain1.ToPrint());
+            //MahatSummer2024.One(chain1);
+            //Console.WriteLine(chain1.ToPrint());
+            //Node<int> resultNode =  MahatSummer2024.Three(chain1);
+            //Console.WriteLine(resultNode.ToPrint());
+
+            MahatSummer2024.What(chain1);
             Console.WriteLine(chain1.ToPrint());
-            MahatSummer2024.One(chain1);
-            Console.WriteLine(chain1.ToPrint());
-            Node<int> resultNode =  MahatSummer2024.Three(chain1);
-            Console.WriteLine(resultNode.ToPrint());
 
         }
     }
