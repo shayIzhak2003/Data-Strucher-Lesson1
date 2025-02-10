@@ -277,7 +277,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
                 int currentValue = q.Remove();
                 temp.Insert(currentValue);
 
-                if(pos == index)
+                if (pos == index)
                     valueToReturn = currentValue;
 
                 index++;
@@ -310,7 +310,47 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             return q3;
         }
 
-        // the runctime function for both of the function is O(N).         
+        // the runctime function for both of the function is O(N). 
+
+
+        //EX12 functions for check!
+        public static void One(Node<int> n)
+        {
+            if (n != null)
+            {
+                if (n.GetValue() % 2 == 0)
+                {
+                    n.SetNext(new Node<int>(0, n.GetNext()));
+                    n = n.GetNext();
+                }
+                One(n.GetNext());
+            }
+        }
+
+        public static void Two(Node<int> n)
+        {
+            if (n.GetNext() != null)
+            {
+                if (n.GetNext().GetValue() % 2 == 0)
+                    n.SetNext(n.GetNext().GetNext());
+                else
+                    n = n.GetNext();
+                Two(n);
+            }
+        }
+
+        public static Node<int> Three(Node<int> n)
+        {
+            if (n == null) return null;
+            if (n.GetValue() % 2 == 0)
+                return Three(n.GetNext());
+            else
+            {
+                Two(n);
+                return n;
+            }
+        }
+
 
 
 
@@ -377,6 +417,12 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             chain1.GetNext().GetNext().GetNext().SetNext(new Node<int>(8));
             chain1.GetNext().GetNext().GetNext().GetNext().SetNext(new Node<int>(5));
 
+            Node<int> chain2 = new Node<int>(10);
+            chain2.SetNext(new Node<int>(2));
+            chain2.GetNext().SetNext(new Node<int>(3));
+            chain2.GetNext().GetNext().SetNext(new Node<int>(4));
+
+
             BinNode<int> root = new BinNode<int>(2);
             root.SetRight(new BinNode<int>(4));
             root.GetRight().SetRight(new BinNode<int>(6));
@@ -405,6 +451,14 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             Console.WriteLine($"the value in index 3 in the queue is:=> {MahatSummer2024.ValueAt(q, 3)}");
             Console.WriteLine("===============");
             Console.WriteLine($"the results queue is: => {MahatSummer2024.Merge(q1, q2)}");
+
+            Console.WriteLine("===============");
+            Console.WriteLine(chain1.ToPrint());
+            MahatSummer2024.One(chain1);
+            Console.WriteLine(chain1.ToPrint());
+            Node<int> resultNode =  MahatSummer2024.Three(chain1);
+            Console.WriteLine(resultNode.ToPrint());
+
         }
     }
 }

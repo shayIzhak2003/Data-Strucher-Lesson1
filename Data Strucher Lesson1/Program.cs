@@ -308,8 +308,8 @@ namespace Data_Strucher_Lesson1
             //RunTestBinEx2.DemoMain();
             //RunMahatSpring2024.DemoMain();
             //RunDriversApp.DemoMain();
-            //RunMahatSummer2024.DemoMain();
-            RunStudentsApp.DemoMain();
+            RunMahatSummer2024.DemoMain();
+            //RunStudentsApp.DemoMain();
 
         }
     }
