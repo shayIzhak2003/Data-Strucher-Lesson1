@@ -382,6 +382,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             }
         }
 
+        // a qustion that maby will apper in the test!
         public static Node<int> MoveLastNToFront(Node<int> head, int N)
         {
             if (head == null || N <= 0) return head;
@@ -535,8 +536,9 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A
             //Node<int> resultNode =  MahatSummer2024.Three(chain1);
             //Console.WriteLine(resultNode.ToPrint());
 
-            MahatSummer2024.What(chain1);
+            //MahatSummer2024.What(chain1);
             Console.WriteLine(chain1.ToPrint());
+            Console.WriteLine(MahatSummer2024.MoveLastNToFront(chain1, 2).ToPrint());
 
         }
     }
