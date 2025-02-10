@@ -17,6 +17,7 @@ using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.EX11;
 using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B;
 using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.mohed_B.EX11;
 using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A;
+using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A.EX11;
 using Data_Strucher_Lesson1.Classes.Mahat_Exricices.justEx;
 using Data_Strucher_Lesson1.Classes.Queue;
 using Data_Strucher_Lesson1.Classes.Queue.campusIL_Course;
@@ -307,7 +308,8 @@ namespace Data_Strucher_Lesson1
             //RunTestBinEx2.DemoMain();
             //RunMahatSpring2024.DemoMain();
             //RunDriversApp.DemoMain();
-            RunMahatSummer2024.DemoMain();
+            //RunMahatSummer2024.DemoMain();
+            RunStudentsApp.DemoMain();
 
         }
     }

@@ -20,6 +20,21 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A.EX1
         {
             studentsQueue.Insert(student);
         }
+        public void PrintAllStudents()
+        {
+            Queue<Student> temp = new Queue<Student>();
+
+            while (!studentsQueue.IsEmpty())
+            {
+                Student currentStudent = studentsQueue.Remove();
+                Console.WriteLine(currentStudent);
+                temp.Insert(currentStudent);
+            }
+            while (!temp.IsEmpty())
+            {
+                studentsQueue.Insert(temp.Remove());
+            }
+        }
 
         // remove student by id
         public void EraseStudent(string id)
@@ -65,13 +80,21 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A.EX1
                     Student currentStudent = temp.Remove();
                     studentsQueue.Insert(currentStudent);
 
-                    if(currentStudent.HasCar() && currentStudent.GetAdditionalLanguage() 
+                    if (currentStudent.HasCar() && currentStudent.GetAdditionalLanguage()
                         == lang)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine(currentStudent);
                         Console.ResetColor();
                     }
+                }
+            }
+            else
+            {
+                while (!temp.IsEmpty())
+                {
+                    Student currentStudent = temp.Remove();
+                    studentsQueue.Insert(currentStudent);
                 }
             }
         }
@@ -86,14 +109,29 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.Summer_mohed_A.EX1
                 Student currentStudent = studentsQueue.Remove();
                 temp.Insert(currentStudent);
 
-                if(currentStudent.GetCity() == city) 
+                if (currentStudent.GetCity() == city)
                     numOfStudentsInTheCityCounter++;
             }
-            while(!temp.IsEmpty())
+            while (!temp.IsEmpty())
             {
                 studentsQueue.Insert(temp.Remove());
             }
             return numOfStudentsInTheCityCounter;
+        }
+
+        public string CityName(string[] cities)
+        {
+            int maxCity = 0;
+            string maxCityName = "";
+            for (int i = 0; i < cities.Length; i++)
+            {
+                if (NumStudents(cities[i]) > maxCity)
+                {
+                    maxCity = NumStudents(cities[i]);
+                    maxCityName = cities[i];
+                }
+            }
+            return maxCityName;
         }
 
 

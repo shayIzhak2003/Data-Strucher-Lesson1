@@ -92,6 +92,7 @@
     <Compile Include="Classes\Mahat Exricices\2024\mohed B\EX11\DriversData.cs" />
     <Compile Include="Classes\Mahat Exricices\2024\mohed B\EX11\RunDriversApp.cs" />
     <Compile Include="Classes\Mahat Exricices\2024\mohed B\MahatSpring2024.cs" />
+    <Compile Include="Classes\Mahat Exricices\2024\Summer mohed A\EX11\RunStudentsApp.cs" />
     <Compile Include="Classes\Mahat Exricices\2024\Summer mohed A\EX11\Student.cs" />
     <Compile Include="Classes\Mahat Exricices\2024\Summer mohed A\EX11\StudentsData.cs" />
     <Compile Include="Classes\Mahat Exricices\2024\Summer mohed A\MahatSummer2024.cs" />
