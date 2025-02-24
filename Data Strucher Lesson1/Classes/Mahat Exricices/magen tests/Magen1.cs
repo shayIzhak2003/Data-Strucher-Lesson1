@@ -112,7 +112,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices.magen_tests
             int count = 0;
             Queue<int> q = new Queue<int>();
             for (int i = 0; i < x; i++)
-            {
+            {    
                 count++;
                 for(int j = 0; j <=count; j++)
                 {

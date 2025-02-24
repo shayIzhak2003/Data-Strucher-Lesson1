@@ -312,7 +312,7 @@ namespace Data_Strucher_Lesson1
             //RunDriversApp.DemoMain();
             //RunMahatSummer2024.DemoMain();
             //RunStudentsApp.DemoMain();
-            //RunMahatSummer2023.DemoMain();
+            RunMahatSummer2023.DemoMain();
             //RunMagen1.DemoMain();
 
         }
