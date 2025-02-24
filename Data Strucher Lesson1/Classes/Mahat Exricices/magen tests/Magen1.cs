@@ -106,6 +106,22 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices.magen_tests
             return number;
         }
 
+        //EX3 
+        public static Queue<int> BuildQ(int x)
+        {
+            int count = 0;
+            Queue<int> q = new Queue<int>();
+            for (int i = 0; i < x; i++)
+            {
+                count++;
+                for(int j = 0; j <=count; j++)
+                {
+                    q.Insert(j);
+                }
+            }
+            return q;
+        }
+
     }
     public class RunMagen1
     {
@@ -132,6 +148,7 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices.magen_tests
             }
 
             Console.WriteLine(Magen1.CheckStackPalindrome(stack));
+            Console.WriteLine(Magen1.BuildQ(6));
         }
     }
 }

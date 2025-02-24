@@ -152,6 +152,13 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
             }
         }
 
+        public static bool CheckTree(BinNode<int> tr)
+        {
+            tr.SetRight(new BinNode<int>(tr.GetValue() / 2));
+            tr.SetLeft(new BinNode<int>(2));
+            return true;
+        }
+
     }
     public class RunTestBinEx2
     {
@@ -160,43 +167,39 @@ namespace Data_Strucher_Lesson1.Classes.Binray_tree.EX
 
             // int tree
             var root = new BinNode<int>(10);
-            var leftChild = new BinNode<int>(5);
-            var rightChild = new BinNode<int>(15);
-            root.SetLeft(leftChild);
-            root.SetRight(rightChild);
-            leftChild.SetLeft(new BinNode<int>(3));
-            leftChild.SetRight(new BinNode<int>(7));
-            rightChild.SetLeft(new BinNode<int>(12));
-            rightChild.SetRight(new BinNode<int>(18));
 
-            BinNode<string> tree = new BinNode<string>(
-                new BinNode<string>("T"),
-                "AND",
-                new BinNode<string>(
-                    new BinNode<string>("F"),
-                    "OR",
-                    new BinNode<string>("T")
-                )
-            );
 
-            Console.WriteLine("the main Tree:");
+            //BinNode<string> tree = new BinNode<string>(
+            //    new BinNode<string>("T"),
+            //    "AND",
+            //    new BinNode<string>(
+            //        new BinNode<string>("F"),
+            //        "OR",
+            //        new BinNode<string>("T")
+            //    )
+            //);
+
+            //Console.WriteLine("the main Tree:");
+            //TreeLs1.PrintTree(root);
+            //Console.WriteLine("the left side values");
+            //TestBinEx2.PrintLeftChildrenByInnerPrint(root);
+            //TestBinEx2.UpdateFatherToSumOfChilldren(root);
+            //Console.WriteLine("the tree after the change:");
+            //Console.ForegroundColor = ConsoleColor.Green;
+            //TreeLs1.PrintTree(root);
+            //Console.ResetColor();
+            //Console.WriteLine("=======");
+            //Console.WriteLine($"the tree count is => {TestBinEx2.GetTreeCount(root)}");
+            //Console.WriteLine("=======");
+            //Console.WriteLine();
+            //Console.WriteLine($"the even values sum in the binary tree is :=> {TestBinEx2.SumOfEvenValuesInTree(root)}");
+            //Console.WriteLine($"the sum of the leaves in the tree is :=> {TestBinEx2.SumOfLeavesInTree(root)}");
+            //Console.WriteLine($"the amount od nodes that has to sons on tree is {TestBinEx2.CountTwoSonsNodesInTree(root)}");
+            //Console.WriteLine($"the number of nodes that are bigger then thire both sons:=> {TestBinEx2.CountNodesThatAreBiggerThenBothSons(root)}");
+            //Console.WriteLine($"the result of the tree is :=> {TestBinEx2.EvaluateBooleanTree(tree)}");
+
+            Console.WriteLine(TestBinEx2.CheckTree(root));
             TreeLs1.PrintTree(root);
-            Console.WriteLine("the left side values");
-            TestBinEx2.PrintLeftChildrenByInnerPrint(root);
-            TestBinEx2.UpdateFatherToSumOfChilldren(root);
-            Console.WriteLine("the tree after the change:");
-            Console.ForegroundColor = ConsoleColor.Green;
-            TreeLs1.PrintTree(root);
-            Console.ResetColor();
-            Console.WriteLine("=======");
-            Console.WriteLine($"the tree count is => {TestBinEx2.GetTreeCount(root)}");
-            Console.WriteLine("=======");
-            Console.WriteLine();
-            Console.WriteLine($"the even values sum in the binary tree is :=> {TestBinEx2.SumOfEvenValuesInTree(root)}");
-            Console.WriteLine($"the sum of the leaves in the tree is :=> {TestBinEx2.SumOfLeavesInTree(root)}");
-            Console.WriteLine($"the amount od nodes that has to sons on tree is {TestBinEx2.CountTwoSonsNodesInTree(root)}");
-            Console.WriteLine($"the number of nodes that are bigger then thire both sons:=> {TestBinEx2.CountNodesThatAreBiggerThenBothSons(root)}");
-            Console.WriteLine($"the result of the tree is :=> {TestBinEx2.EvaluateBooleanTree(tree)}");
         }
     }
 }
