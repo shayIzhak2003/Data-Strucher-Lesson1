@@ -85,6 +85,11 @@
     <Compile Include="Classes\Lesson8\RecorsiaEx.cs" />
     <Compile Include="Classes\Mahat Exricices\2022\ex3\B.cs" />
     <Compile Include="Classes\Mahat Exricices\2022\Mahat2022.cs" />
+    <Compile Include="Classes\Mahat Exricices\2023\EX6\Employee.cs" />
+    <Compile Include="Classes\Mahat Exricices\2023\EX6\Lecturer.cs" />
+    <Compile Include="Classes\Mahat Exricices\2023\EX6\Head.cs" />
+    <Compile Include="Classes\Mahat Exricices\2023\EX6\TeachingStaff.cs" />
+    <Compile Include="Classes\Mahat Exricices\2023\EX6\Tutor.cs" />
     <Compile Include="Classes\Mahat Exricices\2023\MahatSummer2023.cs" />
     <Compile Include="Classes\Mahat Exricices\2024\EX11\Grade.cs" />
     <Compile Include="Classes\Mahat Exricices\2024\EX11\Student.cs" />
