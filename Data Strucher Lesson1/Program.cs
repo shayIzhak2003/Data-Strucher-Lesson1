@@ -12,6 +12,7 @@ using Data_Strucher_Lesson1.Classes.Lesson7;
 using Data_Strucher_Lesson1.Classes.Lesson8;
 using Data_Strucher_Lesson1.Classes.Mahat_Exricices;
 using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022;
+using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022.summer_mohed_a;
 using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2023;
 using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024;
 using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2024.EX11;
@@ -312,8 +313,9 @@ namespace Data_Strucher_Lesson1
             //RunDriversApp.DemoMain();
             //RunMahatSummer2024.DemoMain();
             //RunStudentsApp.DemoMain();
-            RunMahatSummer2023.DemoMain();
+            //RunMahatSummer2023.DemoMain();
             //RunMagen1.DemoMain();
+            RunMohedA2022.DemoMain();
 
         }
     }
