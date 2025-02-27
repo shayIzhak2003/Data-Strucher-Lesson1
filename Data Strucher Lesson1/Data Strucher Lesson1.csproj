@@ -90,6 +90,11 @@
     <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\EX5\Clown.cs" />
     <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\EX5\RunClownApp.cs" />
     <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\EX5\Pyramid.cs" />
+    <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\EX9\Appartment.cs" />
+    <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\EX9\GardenApp.cs" />
+    <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\EX9\Luxary.cs" />
+    <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\EX9\Penthouse.cs" />
+    <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\EX9\RealEstateSystem.cs" />
     <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\MohedA2022.cs" />
     <Compile Include="Classes\Mahat Exricices\2023\EX6\Employee.cs" />
     <Compile Include="Classes\Mahat Exricices\2023\EX6\Lecturer.cs" />
