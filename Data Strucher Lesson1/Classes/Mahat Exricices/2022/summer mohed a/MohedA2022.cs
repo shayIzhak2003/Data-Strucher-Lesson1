@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022.summer_mohed_a.EX5;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
@@ -84,6 +85,12 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022.summer_mohed_a
         // he function processes each stack element twice (once while checking, once while restoring).
         // Since all operations(push/pop) are O(1), the total remains O(n).
 
+        //EX5
+        public static void RunEX5()
+        {
+            RunClownApp.DemoMain();
+        }
+
         //EX8
         //pt.1
         public static int SumQueue(Queue<int> q)
@@ -113,6 +120,26 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022.summer_mohed_a
             return lastValue;
         }
         //pt.3
+        public static Queue<int>CheckQueueNode(Node<Queue<int>> lst)
+        {
+            Node<Queue<int>> pos = lst;
+            Queue<int> queueToReturn = new Queue<int>();
+            while (pos != null)
+            {
+                Queue<int> current = pos.GetValue();
+                int currentValue = current.Remove();
+                current.Insert(currentValue);
+                if (currentValue % 2 != 0)
+                    queueToReturn.Insert(SumQueue(current));
+                else
+                {
+                    queueToReturn.Insert(LastValue(current));
+                }
+                pos = pos.GetNext();
+            }
+            return queueToReturn;
+            
+        }
     }
     public class RunMohedA2022
     {
@@ -131,13 +158,32 @@ namespace Data_Strucher_Lesson1.Classes.Mahat_Exricices._2022.summer_mohed_a
             stack.Push(200);
             stack.Push(30);
             stack.Push(5);
- 
+
+            Queue<int> q1 = new Queue<int>();
+            q1.Insert(3);
+            q1.Insert(5);
+            q1.Insert(7);
+
+            Queue<int> q2 = new Queue<int>();
+            q2.Insert(4);
+            q2.Insert(4);
+            q2.Insert(2);
+
+            Node<Queue<int>> node2 = new Node<Queue<int>>(q2);
+            Node<Queue<int>> node1 = new Node<Queue<int>>(q1, node2);
+
+
 
             //EX1
             Console.WriteLine(MohedA2022.DifferenceList(original).ToPrint());
             Console.WriteLine(MohedA2022.TheSurvives(original).ToPrint());
             //EX2
             Console.WriteLine(MohedA2022.SumStack(stack));
+            //EX5
+            MohedA2022.RunEX5();
+            //EX8
+            Console.WriteLine(MohedA2022.CheckQueueNode(node1));
+
 
         }
     }
