@@ -85,6 +85,8 @@
     <Compile Include="Classes\Lesson8\RecorsiaEx.cs" />
     <Compile Include="Classes\Mahat Exricices\2022\ex3\B.cs" />
     <Compile Include="Classes\Mahat Exricices\2022\Mahat2022.cs" />
+    <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\EX10\SpeedCamera.cs" />
+    <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\EX10\SpeedCameraNetwork.cs" />
     <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\EX5\Clown.cs" />
     <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\EX5\RunClownApp.cs" />
     <Compile Include="Classes\Mahat Exricices\2022\summer mohed a\EX5\Pyramid.cs" />
