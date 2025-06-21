@@ -4,6 +4,7 @@ using Data_Strucher_Lesson1.Classes.Binray_tree.EX;
 using Data_Strucher_Lesson1.Classes.Binray_tree.Lessons;
 using Data_Strucher_Lesson1.Classes.exrisice_for_summer_smaster;
 using Data_Strucher_Lesson1.Classes.extrecices_for_test;
+using Data_Strucher_Lesson1.Classes.Guy;
 using Data_Strucher_Lesson1.Classes.Lesson3;
 using Data_Strucher_Lesson1.Classes.Lesson4HomeWork;
 using Data_Strucher_Lesson1.Classes.Lesson5;
@@ -315,7 +316,8 @@ namespace Data_Strucher_Lesson1
             //RunStudentsApp.DemoMain();
             //RunMahatSummer2023.DemoMain();
             //RunMagen1.DemoMain();
-            RunMohedA2022.DemoMain();
+            //RunMohedA2022.DemoMain();
+            IntNodeExGuy.DemoMain();
 
         }
     }
