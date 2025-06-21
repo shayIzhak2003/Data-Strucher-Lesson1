@@ -48,9 +48,11 @@ using static Data_Strucher_Lesson1.Classes.stackStrucher.stack_Objects.EX.StackE
 
 namespace Data_Strucher_Lesson1
 {
+
+
     internal class Program
     {
-
+        // void function 
         static void Main(string[] args)
         {
 
@@ -317,8 +319,9 @@ namespace Data_Strucher_Lesson1
             //RunMahatSummer2023.DemoMain();
             //RunMagen1.DemoMain();
             //RunMohedA2022.DemoMain();
-            IntNodeExGuy.DemoMain();
-
+            //IntNodeExGuy.DemoMain();
+            NodeExGuy.VirtualMain();
+            
         }
     }
 
