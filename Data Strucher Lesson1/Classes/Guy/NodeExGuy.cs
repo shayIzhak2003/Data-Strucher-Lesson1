@@ -75,16 +75,36 @@ namespace Data_Strucher_Lesson1.Classes.Guy
             return lst;
         }
 
+        public static Node<int> DeleteAfter(Node<int> lst, Node<int> prev)
+        {
+            if (lst == null)
+                return null;
+
+            if (prev == null)
+            {
+                // מוחק את הראש של הרשימה
+                return lst.GetNext();
+            }
+
+            if (prev.GetNext() != null) // הערך שצריך למחוק
+            {
+                // דילוג על הצומת הבא (כלומר מחיקה)
+                prev.SetNext(prev.GetNext().GetNext()); // צורת מחיקה
+            }
+
+            return lst;
+        }
+
         public static void VirtualMain()
         {
             Node<int> node5 = new Node<int>(5);
-            Node<int> node4 = new Node<int>(4, node5);
+            Node<int> node4 = new Node<int>(4, node5); 
             Node<int> node3 = new Node<int>(3, node4);
             Node<int> node2 = new Node<int>(2, node3);
             Node<int> node1 = new Node<int>(1, node2);
             Console.ForegroundColor = ConsoleColor.Green;
             //Console.WriteLine(MinNode(node1));
-            Console.WriteLine(AfterSteps(node1, 2, 14));
+            Console.WriteLine(DeleteAfter(node1, node3));
             Console.WriteLine(node1.ToPrint());
 
         }
